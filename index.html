@@ -17,6 +17,13 @@
 						<h1><a href="index.html">Grace + Yosep</a></h1>
 						<nav id="nav">
 							<ul>
+								<li class="language-toggle">
+									<a href="#language-options" id="language-toggle" class="languageButton"><span></span></a>
+									<div id="language-options" class="language-options hidden">
+										<a href="#" data-lang="en">English</a>
+										<a href="#" data-lang="ko">한국어</a>
+									</div>
+								</li>
 								<li class="special">
 									<a href="#menu" class="menuToggle"><span></span></a>
 									<div id="menu">
@@ -33,21 +40,20 @@
 					</header>
 
 				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<p>We're getting married!</p>
-							<h2>Grace & Yosep</h2>
-							<p>May 3, 2025</p>
-							<br><br><br><br><br><br>
-						</div>
-						<a href="#one" class="more scrolly"></a>
-					</section>
+				<section id="banner">
+					<div class="inner">
+						<p id="banner-text" data-en="We're getting married!" data-ko="저희 결혼합니다!">We're getting married!</p>
+						<h2 id="banner-name" data-en="Grace & Yosep" data-ko="김은지 & 이요셉">Grace & Yosep</h2>
+						<p id="banner-date" data-en="May 3, 2025" data-ko="2025년 5월 3일">May 3, 2025</h2>
+					</div>
+					<a href="#one" class="more scrolly"></a>
+				</section>
 
 				<!-- INVITATION -->
 				<section id="one" class="wrapper style1 special">
 					<div class="inner">
 						<header class="major">
-							<h2>You are invited!</h2>
+							<h2 id="invitation-text" data-en="You are invited!" data-ko="초대합니다">You are invited!</h2>
 							<p>Dear Friends and Family,</p>
 								We are so excited to share this special time with you! As we prepare for our big day, we want to thank you for your love and support. Each of you has played an important role in our lives, and we can't wait to celebrate with you.
 								This website has all the details you'll need, from event schedules to travel info, so you’re all set for the celebration. Thank you for being part of our journey – we’re so grateful to have you with us!</p>								
@@ -114,6 +120,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/language.js"></script>
 			<script>
 				var countDownDate = new Date("May 3, 2025 17:00:00").getTime();
 			
@@ -136,6 +143,6 @@
 						document.getElementById("countdown--minutes").innerHTML = '🎉'
 					}
 				}, 1000);
-			</script>
+			</script>			
 	</body>
 </html>
