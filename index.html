@@ -85,19 +85,43 @@
 					</div>
 				</section>				
 
-				<!-- Countdown -->
-					<section id="countdown" class="wrapper style2 special">
-						<div class="header--countdown">
-							<img src="images/calendar.png" alt="Calendar" class="calendar-image" />
-							<span class="highlight" id="countdown--days">-</span> days 
-							<span class="highlight" id="countdown--hours">-</span> hours 
-							<span class="highlight" id="countdown--minutes">-</span> minutes
+				<!-- Message Form -->
+				<section id="message-section" class="container my-4">
+					<div class="message-form">
+						<h2 class="text-center">Leave a Message</h2>
+						<!-- Enter Messages -->
+						<div class="col-6 col-12-xsmall">
+							<div style="display: flex; gap: 10px; align-items: center;">
+								<input type="text" id="message-name" placeholder="Your Name*" required />
+								<input type="password" id="message-password" placeholder="Enter a password" required />
+							</div>							
+							<textarea id="message-content" rows="4" placeholder="Write your message here" required></textarea>
+							<button type="button" id="submit-message" class="primary">Submit</button>
 						</div>
-						<!-- <div class="countdown-text">
-						<p>We are so excited to see you all in May in Chicago. We can't wait to celebrate our love surrounded by our favorite people! 
-							Please use this website for the latest event details and most importantly - to let us know if you're able to attend.</p>
-						</div> -->
-					</section>
+						
+						<!-- Display Messages -->
+						<div id="messages-display" class="mt-4">
+							<h2 class="text-center">Messages</h2>
+								<div id="messages-container" class="mt-4">
+								<!-- Example message -->
+								</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Countdown -->
+				<section id="countdown" class="wrapper style2 special">
+					<div class="header--countdown">
+						<img src="images/calendar.png" alt="Calendar" class="calendar-image" />
+						<span class="highlight" id="countdown--days">-</span> days 
+						<span class="highlight" id="countdown--hours">-</span> hours 
+						<span class="highlight" id="countdown--minutes">-</span> minutes
+					</div>
+					<!-- <div class="countdown-text">
+					<p>We are so excited to see you all in May in Chicago. We can't wait to celebrate our love surrounded by our favorite people! 
+						Please use this website for the latest event details and most importantly - to let us know if you're able to attend.</p>
+					</div> -->
+				</section>
 
 				<!-- Footer -->
 					<footer id="footer">
@@ -121,6 +145,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/language.js"></script>
+			<script src="assets/js/message.js"></script>
 			<script>
 				var countDownDate = new Date("May 3, 2025 17:00:00").getTime();
 			
@@ -143,6 +168,6 @@
 						document.getElementById("countdown--minutes").innerHTML = '🎉'
 					}
 				}, 1000);
-			</script>			
+			</script>		
 	</body>
 </html>
