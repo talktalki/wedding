@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Grace + Yosep Wedding</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Grace + Yosep</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span></span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="ourstory.html">Our Story</a></li>
+											<li><a href="hotel.html">Travel & Hotel</a></li>
+											<li><a href="registry.html">Registry</a></li>
+											<li><a href="rsvp.html">RSVP</a></li>
+											<li><a href="faq.html">FAQs</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+				
+
+				<!-- Q&A -->
+				<section id="qa-section" class="wrapper style4 special">
+					<div class="inner">
+					<header class="major">
+					<h2>Frequently Asked Questions</h2>
+					<p></p>
+
+				    <!-- Question 1 -->
+					<div class="qa-item">
+						<button class="qa-question">
+							Where should I stay?<span class="arrow"></span>
+						</button>
+						<div class="qa-answer">
+						  <p>We have reserved a block of rooms at Hampton Inn Yorkville under the "Kim-Lee Wedding Block".</p>
+						</div>
+					</div>
+
+					<!-- Question 2 -->
+					<div class="qa-item">
+						<button class="qa-question">
+							What time should I arrive?<span class="arrow"></span>
+						</button>
+						<div class="qa-answer">
+						<p>Please arrive by 4:45 PM. The ceremony will begin promptly at 5:00 PM.</p>
+						</div>
+					</div>
+					
+					<!-- Question 3 -->
+					<div class="qa-item">
+						<button class="qa-question">
+							When is the RSVP deadline?<span class="arrow"></span>
+						</button>
+						<div class="qa-answer">
+						<p>Please RSVP by March 21st, so we can have an accurate headcount.</p>
+						</div>
+					</div>
+					
+					<!-- Question 3 -->
+					<div class="qa-item">
+						<button class="qa-question">
+							Will the ceremony be indoors or outdoors?<span class="arrow"></span>
+						</button>
+						<div class="qa-answer">
+						<p>The Ceremony will be outdoors, immediately followed by the Reception which will be indoors.</p>
+						</div>
+					</div>
+
+					<!-- Question 3 -->
+					<div class="qa-item">
+						<button class="qa-question">
+							Where should I park?<span class="arrow"></span>
+						</button>
+						<div class="qa-answer">
+						<p>There will be plenty of free parking at the venue.</p>
+						</div>
+					</div>
+
+					</header>
+					</div>
+				</section>
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<!-- <ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul> -->
+						<ul class="copyright">
+							<li>&copy; talktalki</li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+			const questionButtons = document.querySelectorAll('.qa-question');
+			
+			// Add click event listeners to each question button
+			questionButtons.forEach(button => {
+			  button.addEventListener('click', function() {
+				// Toggle the visibility of the associated answer
+				const answer = this.nextElementSibling;
+				const arrow = this.querySelector('.arrow');
+				
+				// Toggle the display of the answer
+				if (answer.style.display === 'block') {
+				  answer.style.display = 'none';
+				  arrow.style.transform = 'rotate(0deg)'; // Arrow points down
+				} else {
+				  answer.style.display = 'block';
+				  arrow.style.transform = 'rotate(180deg)'; // Arrow points up
+				}
+			  });
+			});
+			</script>
+	</body>
+</html>
