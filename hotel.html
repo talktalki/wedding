@@ -13,57 +13,51 @@
 			<div id="page-wrapper-hotel">
 
 				<!-- Header -->
-					<header id="header">
-						<h1><a href="index.html">Grace + Yosep</a></h1>
-						<nav id="nav">
-							<ul>
-								<li class="special">
-									<a href="#menu" class="menuToggle"><span></span></a>
-									<div id="menu">
-										<ul>
-											<li><a href="ourstory.html">Our Story</a></li>
-											<li><a href="hotel.html">Travel & Hotel</a></li>
-											<li><a href="registry.html">Registry</a></li>
-											<li><a href="rsvp.html">RSVP</a></li>
-											<li><a href="faq.html">FAQs</a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</nav>
-					</header>
+				<header id="header">
+					<h1><a href="index.html">Grace + Yosep</a></h1>
+					<nav id="nav">
+						<ul>
+							<li class="language-toggle">
+								<a href="#language-options" id="language-toggle" class="languageButton"><span></span></a>
+								<div id="language-options" class="language-options hidden">
+									<a href="#" data-lang="en">English</a>
+									<a href="#" data-lang="ko">한국어</a>
+								</div>
+							</li>
+							<li class="special">
+								<a href="#menu" class="menuToggle"><span></span></a>
+								<div id="menu">
+									<ul>
+										<li><a href="ourstory.html" data-en="Our Story" data-ko="우리 이야기">Our Story</a></li> 
+										<li><a href="hotel.html" data-en="Travel Guide" data-ko="오시는 길">Travel Guide</a></li>
+										<li><a href="registry.html" data-en="Registry" data-ko="마음 전할 곳">Registry</a></li>
+										<li><a href="rsvp.html" data-en="RSVP" data-ko="RSVP">RSVP</a></li>
+										<li><a href="faq.html" data-en="FAQs" data-ko="자주 묻는 질문">FAQs</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</nav>
+				</header>
 
 				<!-- Main -->
-					<article id="main">
-						<header>
-							<h2>Travel & Hotel</h2>
-							<!-- <p>:)</p> -->
-						</header>
-						<section class="wrapper style5">
-							<div class="inner">
-									<h2>Hotel</h2>
-								<p>We have rooms blocked off at Hampton Inn for Fri. 5/2 and Sat. 5/3. 
-									You can use the custom URL below to book at our discounted rate or call (111) 111-1111 and mention the Kim-Lee Wedding.</p>
-								<ul class="actions">
-									<li><a href="#" class="button primary">Book A Room</a></li>
-								</ul>
-							</div>
-						</section>
-					</article>
+				<article id="main">
+					<header>
+						<h2 data-en="Travel & Hotel" data-ko="여행 및 호텔">Travel & Hotel</h2>
+					</header>
+					<section class="wrapper style5">
+						<div class="inner">
+							<h2 data-en="Hotel" data-ko="호텔">Hotel</h2>
+							<p data-en="We have rooms blocked off at Hampton Inn for Fri. 5/2 and Sat. 5/3. You can use the custom URL below to book at our discounted rate or call (111) 111-1111 and mention the Kim-Lee Wedding." data-ko="우리는 5월 2일 금요일과 5월 3일 토요일에 햄프턴 인에서 방을 예약해 두었습니다. 아래의 맞춤 URL을 사용하여 할인된 요금으로 예약하거나 (111) 111-1111로 전화하여 Kim-Lee 결혼식을 언급하십시오.">We have rooms blocked off at Hampton Inn for Fri. 5/2 and Sat. 5/3. You can use the custom URL below to book at our discounted rate or call (111) 111-1111 and mention the Kim-Lee Wedding.</p>
+							<ul class="actions">
+								<li><a href="#" class="button primary" data-en="Book A Room" data-ko="방 예약">Book A Room</a></li>
+							</ul>
+						</div>
+					</section>
+				</article>
 
 				<!-- Footer -->
-					<footer id="footer">
-						<!-- <ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-						</ul> -->
-						<ul class="copyright">
-							<li>&copy; talktalki</li>
-						</ul>
-					</footer>
+				<div id="footer-placeholder"></div>
 
 			</div>
 
@@ -76,6 +70,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/language.js"></script>
+			<script src="assets/js/common.js"></script>
 
 	</body>
 </html>

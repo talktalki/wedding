@@ -14,17 +14,26 @@ document.querySelectorAll("#language-options a").forEach((option) => {
     });
 });
 
-function changeLanguage(lang){
+function changeLanguage(lang) {
     document.documentElement.setAttribute("lang", lang); // Change `lang` attribute
 
     // Update all elements with multilingual content
-    document.querySelectorAll("[id]").forEach(element => {
+    document.querySelectorAll("[data-ko], [data-en]").forEach(element => {
         const text = element.getAttribute(`data-${lang}`);
-        if (text) element.textContent = text;
+        if (text) {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.value = text; // Update value for input and textarea elements
+            } else {
+                element.innerHTML = text; // Use innerHTML to preserve HTML tags like <br>
+            }
+        }
     });
 
     // Optional: Close the language menu after selection
-    document.getElementById("language-options").classList.add("hidden");
+    const languageOptions = document.getElementById("language-options");
+    if (languageOptions) {
+        languageOptions.classList.add("hidden");
+    }
 }
 
 // Default language is English

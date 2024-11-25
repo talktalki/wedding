@@ -13,32 +13,43 @@
 			<div id="page-wrapper-rsvp">
 
 				<!-- Header -->
-					<header id="header">
-						<h1><a href="index.html">Grace + Yosep</a></h1>
-						<nav id="nav">
-							<ul>
-								<li class="special">
-									<a href="#menu" class="menuToggle"><span></span></a>
-									<div id="menu">
-										<ul>
-											<li><a href="ourstory.html">Our Story</a></li>
-											<li><a href="hotel.html">Travel & Hotel</a></li>
-											<li><a href="registry.html">Registry</a></li>
-											<li><a href="rsvp.html">RSVP</a></li>
-											<li><a href="faq.html">FAQs</a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</nav>
-					</header>
+				<!-- <div id="header-placeholder"></div> -->
+				<header id="header" class="alt">
+					<h1><a href="index.html">Grace + Yosep</a></h1>
+					<nav id="nav">
+						<ul>
+							<li class="language-toggle">
+								<a href="#language-options" id="language-toggle" class="languageButton"><span></span></a>
+								<div id="language-options" class="language-options hidden">
+									<a href="#" data-lang="en">English</a>
+									<a href="#" data-lang="ko">한국어</a>
+								</div>
+							</li>
+							<li class="special">
+								<a href="#menu" class="menuToggle"><span></span></a>
+								<div id="menu">
+									<ul>
+										<li><a href="ourstory.html" data-en="Our Story" data-ko="우리 이야기">Our Story</a></li> 
+										<li><a href="hotel.html" data-en="Travel Guide" data-ko="오시는 길">Travel Guide</a></li>
+										<li><a href="registry.html" data-en="Registry" data-ko="마음 전할 곳">Registry</a></li>
+										<li><a href="rsvp.html" data-en="RSVP" data-ko="RSVP">RSVP</a></li>
+										<li><a href="faq.html" data-en="FAQs" data-ko="자주 묻는 질문">FAQs</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</nav>
+				</header>
 
 				<!-- Main -->
 					<article id="main">
 						<header>
-							<h2>RSVP</h2>
-							<p>We look forward to seeing you!<br />
-							Kindly respond by March 21st</p>
+							<h2 data-en="RSVP" data-ko="RSVP">RSVP</h2>
+							<p data-en="We look forward to seeing you! Kindly respond by March 21st" 
+								data-ko="우리는 당신을 보기를 기대합니다! 3월 21일까지 응답해 주세요">
+								We look forward to seeing you!<br>
+								Kindly respond by March 21st
+								</p>
 						</header>
 						<section class="wrapper style5">
 							<div class="inner">
@@ -48,38 +59,36 @@
 									<form id="wedding-form" method="post" action="#">
 										<div class="row gtr-uniform">
 											<div class="col-6 col-12-xsmall">
-												<input type="text" name="Name" id="name" value="" placeholder="Name*" required="required"/>
+												<input type="text" name="Name" id="name" value="" placeholder="Name*" required="required" data-en="Name*" data-ko="이름*"/>
 											</div>
 											<div class="col-6 col-12-xsmall">
-												<input type="email" name="Email" id="email" value="" placeholder="Email*" required="required"/>
+												<input type="email" name="Email" id="email" value="" placeholder="Email*" required="required" data-en="Email*" data-ko="이메일*"/>
 											</div>
 											<div class="col-4 col-12-small">
-												<label>Will you be coming?</label>
+												<label data-en="Will you be coming?" data-ko="참석하실 건가요?">Will you be coming?</label>
 												<input type="radio" id="rsvp-yes" name="RSVP" value="Yes" required="required"/>
-												<label for="rsvp-yes">Happy to be there :)</label>
+												<label for="rsvp-yes" data-en="Happy to be there :)" data-ko="기쁘게 참석할게요 :)">Happy to be there :)</label>
 												<input type="radio" id="rsvp-no" name="RSVP" value="No" >
-												<label for="rsvp-no">Sad to miss it :(</label>
-											</div>
-											<!-- <div class="col-6 col-12-small">
-												<input type="checkbox" id="demo-copy" name="demo-copy">
-												<label for="demo-copy">Because my family member is making me</label>
-											</div>
-											<div class="col-6 col-12-small">
-												<input type="checkbox" id="demo-human" name="demo-human">
-												<label for="demo-human">Because I'm hoping something dramatic happens</label>
-											</div> -->
-											<div class="col-12">
-												<label>Who do you like better, Grace or Yosep? Why?</label>
-												<textarea name="Message" id="message" placeholder="Please submit a minimum of two paragraphs." rows="6"></textarea>
+												<label for="rsvp-no" data-en="Sad to miss it :(" data-ko="참석 못해서 아쉬워요 :(">Sad to miss it :(</label>
 											</div>
 											<div class="col-12">
-												<label>Questions or Comments</label>
+												<label data-en="What city are you located in?" data-ko="어디 사시나요?">What city are you located in?</label>
+												<textarea name="City" id="city" placeholder="Example: Chicago, Illinois, USA" rows="1" 
+												data-en="Example: Chicago, Illinois, USA" data-ko="예시: 서울, 한국"></textarea>
+											</div>
+											<div class="col-12">
+												<label data-en="Who do you like better, Grace or Yosep? Why?" data-ko="Grace와 Yosep 중 누구를 더 좋아하나요? 이유는?">Who do you like better, Grace or Yosep? Why?</label>
+												<textarea name="Poll" id="poll" placeholder="Minimum word count: 1000000000." rows="6" 
+												data-en="Please submit a minimum of two paragraphs." data-ko="500자 이내로 서술하시오."></textarea>
+											</div>
+											<div class="col-12">
+												<label data-en="Questions or Comments" data-ko="질문이나 의견">Questions or Comments</label>
 												<textarea name="Message" id="message" placeholder="" rows="6"></textarea>
 											</div>
 											<div class="col-12">
 												<ul class="actions">
-													<li><input type="submit" value="Submit" class="primary" /></li>
-													<li><input type="reset" value="Reset" /></li>
+													<li><input type="submit" value="Submit" class="primary" data-en="Submit" data-ko="제출" /></li>
+													<li><input type="reset" value="Reset" data-en="Reset" data-ko="초기화" /></li>
 												</ul>
 											</div>
 										</div>
@@ -90,18 +99,7 @@
 					</article>
 
 				<!-- Footer -->
-					<footer id="footer">
-						<!-- <ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-						</ul> -->
-						<ul class="copyright">
-							<li>&copy; talktalki</li>
-						</ul>
-					</footer>
+				<div id="footer-placeholder"></div>
 
 			</div>
 
@@ -113,6 +111,8 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/common.js"></script>
+			<script src="assets/js/language.js"></script>
 
 			<script>
 				$('#wedding-form').on('submit', function (e) {
