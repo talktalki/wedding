@@ -1,20 +1,13 @@
 // common.js
 function loadFooter() {
-    fetch('../assets/html/footer.html') 
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-        });
+    data = <footer id="footer">
+        <ul class="icons">
+            <li><a href="https://www.instagram.com/talktalki/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; talktalki</li>
+        </ul>
+    </footer>
+    document.getElementById('footer-placeholder').innerHTML = data;
 }
-
-function loadHeader() {
-    fetch('../assets/html/header.html') 
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('nav-placeholder')
-        console.log("nav loaded");
-    });
-}
-
 document.addEventListener('DOMContentLoaded', loadFooter);
-document.addEventListener('DOMContentLoaded', loadHeader);
