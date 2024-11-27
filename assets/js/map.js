@@ -14,8 +14,11 @@ const SHEET_API_URL = 'https://sheets.googleapis.com/v4/spreadsheets/1OAm8bZG1l7
 
 function initMap() {
     // Initialize the map
+    var isMobile = window.innerWidth <= 768; // Check if the screen width is 768px or less
+    var zoomLevel = isMobile ? 1.5: 2.25; // Set zoom level based on screen size
+
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 2.25,
+      zoom: zoomLevel,
       center: { lat: 35.0, lng: -160.0 }, 
       mapTypeControl: false,  // Disable the map type (satellite, terrain, etc.)
       zoomControl: false,     // Disable the zoom controls (+/-)
