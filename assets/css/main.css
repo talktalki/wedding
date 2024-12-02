@@ -2959,13 +2959,13 @@ button:disabled,
 
 .wrapper.style1 {
 	padding: 40px 0;
-	background-color: #FFFAF1;
+	background-color: #F6F0E4;
 	color: #583B20;
 }
 
 .wrapper.style1 strong,
 .wrapper.style1 b {
-	color: #583B20;
+	color: #1B3541;
 }
 
 .wrapper.style1 h2,
@@ -2973,7 +2973,7 @@ button:disabled,
 .wrapper.style1 h4,
 .wrapper.style1 h5,
 .wrapper.style1 h6 {
-	color: #583B20;
+	color: #1B3541;
 }
 
 .wrapper.style1 hr {
@@ -2981,7 +2981,7 @@ button:disabled,
 }
 
 .wrapper.style1 header p {
-	color: #583B20;
+	color: #1B3541;
 }
 
 .wrapper.style1 header.major h2,
@@ -2995,14 +2995,14 @@ button:disabled,
 }
 
 .wrapper.style1 header.major p {
-	color: black;
+	color: #1B3541;
 	line-height: 1.5em;
 	font-size: 20px;
 	margin-bottom: 0.5em;
 }
 
 .wrapper.style1 label {
-	color: #583B20;
+	color: #1B3541;
 }
 
 .wrapper.style1 input[type="text"],
@@ -3071,7 +3071,7 @@ button:disabled,
 }
 
 .wrapper.style3 {
-	background-color: #6A6D61;
+	background-color: #4F513E;
 	color: #E0D8CB;
 }
 
@@ -3349,7 +3349,7 @@ button:disabled,
 }
 
 .wrapper.style5 {
-	background-color: #ffffff;
+	background-color: #F4EEE3;
 	color: #4E4852;
 }
 
@@ -3542,8 +3542,8 @@ button:disabled,
 	transition: opacity 0.5s ease;
 	opacity: 1;
 	padding-top: 3em;
-	background-color: #ffffff;
-	background-image: url("../../images/ENGAGEMENT Alfred-13.JPG");
+	/* background-color: #ffffff; */
+	/* background-image: url("../../images/ENGAGEMENT Alfred-13.JPG"); */
 	background-size: cover;
 	/* Ensures the image covers the entire area */
 	background-position: center;
@@ -3551,6 +3551,38 @@ button:disabled,
 	background-repeat: no-repeat;
 	/* Prevents tiling */
 }
+
+#title-ourstory {
+	-moz-transition: opacity 0.5s ease;
+	-webkit-transition: opacity 0.5s ease;
+	-ms-transition: opacity 0.5s ease;
+	transition: opacity 0.5s ease;
+	opacity: 1;
+	padding-top: 3em;
+	z-index: 1;
+	position: relative;
+	background-image: url("../../images/ENGAGEMENT Alfred-13.JPG");
+	background-size: contain;
+	height: 100vh; 
+	background-repeat: no-repeat;
+}
+
+#title-schedule {
+	background-color: #4F513E;
+}
+#title-hotel {
+	/* background-color: #808063; */
+	background-image: url("../../images/IMG_4562.JPG");
+	background-size: contain;
+	position: relative;
+	height: 50vh; 
+	background-repeat: no-repeat;
+}
+#title-schedule {
+	background-color: #4F513E;
+}
+
+
 
 
 #page-wrapper-rsvp {
@@ -3680,13 +3712,10 @@ body.is-menu-visible #menu {
 /* Header */
 
 #header {
-	/* -moz-transition: background-color 0.2s ease;
+	-moz-transition: background-color 0.2s ease;
 	-webkit-transition: background-color 0.2s ease;
 	-ms-transition: background-color 0.2s ease;
-	transition: background-color 0.2s ease; */
-	position: relative;
-	/* background: #2e3842; */
-	/* background: white; */
+	transition: background-color 0.2s ease;
 	height: 3em;
 	left: 0;
 	top: 0;
@@ -4101,11 +4130,12 @@ body.is-mobile #main>header {
 #footer {
 	padding: 3em 0 1em 0;
 	text-align: center;
-	/* background-color: #6A6D61; */
+	background-color: #E5E0DA;
 }
 
 #footer .icons {
 	font-size: 1.25em;
+	color: #583B20;
 }
 
 #footer .icons a {
@@ -4113,7 +4143,7 @@ body.is-mobile #main>header {
 }
 
 #footer .icons a:hover {
-	color: #fff;
+	color: #583B20;
 }
 
 #footer .copyright {
@@ -4127,6 +4157,7 @@ body.is-mobile #main>header {
 
 #footer .copyright li {
 	border-left: solid 1px rgba(255, 255, 255, 0.5);
+	color: #583B20;
 	display: inline-block;
 	line-height: 1em;
 	margin-left: 1em;
@@ -4587,7 +4618,7 @@ h2.text-center {
 	content: '';
 	position: absolute;
 	width: 2px;
-	background-color: #333;
+	background-color: #1B3541;
 	top: 0;
 	bottom: 0;
 	left: 50%;
@@ -4627,7 +4658,7 @@ h2.text-center {
 	width: 12px;
 	height: 12px;
 	background-color: white;
-	border: 2px solid #333;
+	border: 2px solid #1B3541;
 	border-radius: 50%;
 	top: 50%;
 	transform: translateY(-50%);
@@ -4652,12 +4683,12 @@ h2.text-center {
 
 .time {
 	font-weight: bold;
-	color: #666;
+	color: #1B3541;
 	min-width: 80px;
 }
 
 .event {
-	color: #333;
+	color: #1B3541;
 }
 
 /* Arrows */
@@ -4684,7 +4715,7 @@ h2.text-center {
 	text-align: center;
 	margin-top: 30px;
 	font-style: italic;
-	color: #666;
+	color: #1B3541;
 }
 
 .inner {
