@@ -26,9 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Handle Submit
     document.getElementById("submit-message").addEventListener("click", async function () {
         // Get input values
-        const name = document.getElementById("message-name").value.trim();
-        const messageContent = document.getElementById("message-content").value.trim();
-        const password = document.getElementById("message-password").value.trim();
+        const messageNameInput = document.getElementById("message-name");
+        const messageContentInput = document.getElementById("message-content");
+        const messagePasswordInput = document.getElementById("message-password");
+
+
+        const name = messageNameInput.value.trim();
+        const messageContent = messageContentInput.value.trim();
+        const password = messagePasswordInput.value.trim();
 
         // Validate inputs
         if (name === "" || messageContent === "" || password === "") {
@@ -49,6 +54,12 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("message-name").value = "";
             document.getElementById("message-content").value = "";
             document.getElementById("message-password").value = "";
+            // Trigger confetti effect
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
         } catch (error) {
             console.error("Error adding message:", error);
             alert("Failed to send message. Please try again.");
@@ -76,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
         messageElement.innerHTML = `
             <div class="message-header">
                 <strong>${message.name}</strong>
-                <div>
+                <div class="message-actions">
                     <button class="edit-button" data-id="${message.id}" data-password="${message.password}">Edit</button>
                     <button class="delete-button" data-id="${message.id}" data-password="${message.password}">Delete</button>
                 </div>

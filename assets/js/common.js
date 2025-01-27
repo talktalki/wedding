@@ -3,13 +3,9 @@
 function loadFooter() {
     data = `<footer id="footer">
         <ul class="copyright">
-            <li>&copy; talktalki</li>
+            <li>&copy; eunseoya</li>
         </ul>
     </footer>`
     document.getElementById('footer-placeholder').innerHTML = data;
 }
 document.addEventListener('DOMContentLoaded', loadFooter);
-
-// <ul class="icons">
-//     <li><a href="https://www.instagram.com/talktalki/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-// </ul>

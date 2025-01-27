@@ -28,6 +28,9 @@ function changeLanguage(lang) {
             }
         }
     });
+    document.querySelectorAll('input[data-' + lang + '-placeholder], textarea[data-' + lang + '-placeholder]').forEach(element => {
+        element.placeholder = element.getAttribute('data-' + lang + '-placeholder');
+    });
 
     // Optional: Close the language menu after selection
     const languageOptions = document.getElementById("language-options");
