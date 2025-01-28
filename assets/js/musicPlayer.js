@@ -1,14 +1,27 @@
+const musicList = [
+    'assets/music/davichi-fanfare.mp3',
+    'assets/music/davichi-fanfare.mp3',
+    'assets/music/davichi-fanfare.mp3',
+    'assets/music/davichi-fanfare.mp3',
+]
+
 class MusicPlayer {
     constructor() {
-        this.audio = new Audio('assets/music/davichi-fanfare.mp3'); // Replace with your actual music URL
+        this.currentTrackIndex = 0;
+        this.audio = new Audio(musicList[this.currentTrackIndex]);
         this.isPlaying = false;
         this.createPlayer();
-        this.autoplay(); // Autoplay the music when the player is created
+        this.autoplay();
+
+        this.audio.addEventListener('ended', () => {
+            this.currentTrackIndex = (this.currentTrackIndex + 1) % musicList.length;
+            this.audio.src = musicList[this.currentTrackIndex];
+            this.audio.play();
+        });
     }
 
     createPlayer() {
         const toggleButton = document.createElement('button');
-        // make button size smaller
         toggleButton.innerHTML = '⏵︎';
         toggleButton.className = 'reset-style';
 
@@ -19,8 +32,7 @@ class MusicPlayer {
         li.appendChild(toggleButton);
         ul.prepend(li);
 
-        this.button = toggleButton; // Set this.button to the toggleButton element
-        this.audio.loop = true;
+        this.button = toggleButton;
     }
 
     togglePlay() {
@@ -38,13 +50,13 @@ class MusicPlayer {
     autoplay() {
         this.audio.play().then(() => {
             this.isPlaying = true;
+            this.button.innerHTML = '⏸︎';
         }).catch(error => {
             console.error("Autoplay failed:", error);
         });
     }
 }
 
-// Initialize the music player when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
     new MusicPlayer();
 });
