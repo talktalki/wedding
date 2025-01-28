@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // Set pictures for all events
-    events[0].setPicture("../../images/ring.jpg");
+    events[0].setPicture("../images/ring.jpg");
 
     const dates = events.map(event => event.getDdate());
     const ddates = events.map(event => event.getDdate());
