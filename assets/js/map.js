@@ -51,53 +51,60 @@ function initMap() {
     // https://snazzymaps.com/style/151/ultra-light-with-labels
     const mapStyle = [
         {
-            "featureType": "water",
-            "elementType": "geometry",
+            "featureType": "poi",
             "stylers": [
                 {
-                    "color": "#e9e9e9"
-                },
-                {
-                    "lightness": 17
+                    "visibility": "off"
                 }
             ]
         },
         {
-            "featureType": "landscape",
-            "elementType": "geometry",
             "stylers": [
                 {
-                    "color": "#f5f5f5"
+                    "saturation": -70
                 },
                 {
-                    "lightness": 20
+                    "lightness": 37
+                },
+                {
+                    "gamma": 1.15
                 }
             ]
         },
         {
-            "featureType": "road.highway",
-            "elementType": "geometry.fill",
+            "elementType": "labels",
             "stylers": [
                 {
-                    "color": "#ffffff"
+                    "gamma": 0.26
                 },
                 {
-                    "lightness": 17
+                    "visibility": "off"
                 }
             ]
         },
         {
-            "featureType": "road.highway",
-            "elementType": "geometry.stroke",
+            "featureType": "road",
             "stylers": [
                 {
-                    "color": "#ffffff"
+                    "lightness": 0
                 },
                 {
-                    "lightness": 29
+                    "saturation": 0
                 },
                 {
-                    "weight": 0.2
+                    "hue": "#ffffff"
+                },
+                {
+                    "gamma": 0
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "labels.text.stroke",
+            "stylers": [
+                {
+                    "visibility": "off"
                 }
             ]
         },
@@ -106,79 +113,39 @@ function initMap() {
             "elementType": "geometry",
             "stylers": [
                 {
-                    "color": "#ffffff"
-                },
-                {
-                    "lightness": 18
+                    "lightness": 20
                 }
             ]
         },
         {
-            "featureType": "road.local",
+            "featureType": "road.highway",
             "elementType": "geometry",
             "stylers": [
                 {
-                    "color": "#ffffff"
+                    "lightness": 50
                 },
                 {
-                    "lightness": 16
+                    "saturation": 0
+                },
+                {
+                    "hue": "#ffffff"
                 }
             ]
         },
         {
-            "featureType": "poi",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#f5f5f5"
-                },
-                {
-                    "lightness": 21
-                }
-            ]
-        },
-        {
-            "featureType": "poi.park",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#dedede"
-                },
-                {
-                    "lightness": 21
-                }
-            ]
-        },
-        {
-            "elementType": "labels.text.stroke",
+            "featureType": "administrative.province",
             "stylers": [
                 {
                     "visibility": "on"
                 },
                 {
-                    "color": "#ffffff"
-                },
-                {
-                    "lightness": 16
+                    "lightness": -50
                 }
             ]
         },
         {
-            "elementType": "labels.text.fill",
-            "stylers": [
-                {
-                    "saturation": 36
-                },
-                {
-                    "color": "#333333"
-                },
-                {
-                    "lightness": 40
-                }
-            ]
-        },
-        {
-            "elementType": "labels.icon",
+            "featureType": "administrative.province",
+            "elementType": "labels.text.stroke",
             "stylers": [
                 {
                     "visibility": "off"
@@ -186,41 +153,11 @@ function initMap() {
             ]
         },
         {
-            "featureType": "transit",
-            "elementType": "geometry",
+            "featureType": "administrative.province",
+            "elementType": "labels.text",
             "stylers": [
                 {
-                    "color": "#f2f2f2"
-                },
-                {
-                    "lightness": 19
-                }
-            ]
-        },
-        {
-            "featureType": "administrative",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    "color": "#fefefe"
-                },
-                {
-                    "lightness": 20
-                }
-            ]
-        },
-        {
-            "featureType": "administrative",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#fefefe"
-                },
-                {
-                    "lightness": 17
-                },
-                {
-                    "weight": 1.2
+                    "visibility": "off"
                 }
             ]
         }
@@ -250,11 +187,12 @@ function initMap() {
                                 position: results[0].geometry.location,
                                 title: city,
                                 icon: {
-                                    path: 'M 0,-24 6,-7.5 24,-7.5 10,3 15,21 0,9 -15,21 -10,3 -24,-7.5 -6,-7.5 z',
-                                    fillColor: '#506f21',
-                                    fillOpacity: 0.8,
-                                    scale: 0.5,
-                                    strokeWeight: 0
+                                    url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                            <path fill="#506f21" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                        </svg>
+                                    `),
+                                    scaledSize: new google.maps.Size(24, 24)
                                 }
                             });
 

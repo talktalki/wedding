@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             isWithinTimeline = entry.isIntersecting;
 
             dateContainer.style.opacity = isWithinTimeline ? "1" : "0";
+            dateContainer.style.bottom = '20px';
 
 
         });
@@ -58,11 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
     
     
     const events = [
-        new Event("2018.4.1", "Cubs"),
-        new Event("2018.6.3", "Started Dating"),
-        new Event("2019.5.1", "Cambodia"),
-        new Event("2020.5.11", "Graduation"),
-        new Event("2021.2.26 ", "1000 Days"),
+        new Event("2018.4.1", "Went to the Cubs game with Toni + Brad. Yosep told Grace not to worry because they’re very down to earth!"),
+        new Event("2018.6.3", "Started Dating - 한달간 떨어져 있다가 은지가 한국으로 온 그 다음 날, 고속터미널에서 "),
+        new Event("2019.5.1", "Cambodia - 요셉이와 함께 캄보디아 가서 엄마아빠 만나기 + 아빠랑 같이 Zzz"),
+        new Event("2020.5.11", "Graduation - 코로나 시절, 조용한 캠퍼스에 둘이 졸업. "),
+        new Event("2021.2.26 ", "1000 Days - 요셉이가 한국으로 떠나고 롱디를 본격적으로 시작한 날. 이 날만큼은 펑펑 울었다. "),
         new Event("2021.8.25 ", "LDR Started"),
         new Event("2022.5.22", "Reunite after 9 months"),
         new Event("2022.8.1", "LDR Ended"),
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // Set pictures for all events
-    events[0].setPicture("../images/ring.jpg");
+    events[0].setPicture("url('../images/ring.jpg')");
 
     const dates = events.map(event => event.getDdate());
     const ddates = events.map(event => event.getDdate());
@@ -93,32 +94,31 @@ document.addEventListener("DOMContentLoaded", function () {
         
         const content = document.createElement('div');
         content.className = 'timeline-content';
-        if (events[index].getPicture()) {
-            const imageContainer = document.createElement('div');
-            imageContainer.className = 'timeline-image';
-            
-            const img = document.createElement('img');
-            img.src = events[index].getPicture();
-            img.alt = events[index].getDescription();
-            img.onerror = () => {
-                console.error(`Failed to load image for ${date}`);
-                imageContainer.style.display = 'none';
-            };
 
-            // make the image smaller
-            img.style.width = '100%';
-            
-            imageContainer.appendChild(img);
-            content.appendChild(imageContainer);
-        }
+        const textContent = document.createElement('div');
+        textContent.className = 'timeline-text-content';
+
         const description = document.createElement('p');
         description.textContent = events[index].getDescription();
         const eventDate = document.createElement('p');
         eventDate.textContent = events[index].getDate();
+
+
         
-        content.appendChild(eventDate);
-        content.appendChild(description);
+        if (events[index].getPicture()) {
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'timeline-image';
+            imageContainer.style.backgroundImage = events[index].getPicture();
+            imageContainer.style.backgroundSize = 'cover';
+            imageContainer.style.backgroundPosition = 'center';
+            imageContainer.style.height = '200px';
+            content.appendChild(imageContainer);
+        }
         
+        textContent.appendChild(eventDate);
+        textContent.appendChild(description);
+        textContent.style.margin = '20px 0 0 0';
+        content.appendChild(textContent);
         // section.appendChild(dateMarker);
         section.appendChild(content);
         timeline.appendChild(section);

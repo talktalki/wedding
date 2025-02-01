@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Gowun Dodum&family=Over+the+Rainbow&display=swap');
-@import url('https://fonts.cdnfonts.com/css/amalfi-coast');
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Gowun+Dodum&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/amalfi-coast'); /* for title */
+
 html,
 body,
 div,
@@ -192,7 +194,7 @@ input,
 select,
 textarea {
 	color: #fff;
-	font-family: 'Gowun Dodum', sans-serif;
+	font-family: "Noto Sans", sans-serif;
 	font-size: 15pt;
 	font-weight: 300;
 	letter-spacing: 0.075em;
@@ -297,7 +299,7 @@ h4,
 h5,
 h6 {
 	color: #fff;
-	font-weight: 800;
+	font-weight: 300;
 	letter-spacing: 2px; /* 0.225em; */
 	line-height: 1em;
 	margin: 0 0 1em 0;
@@ -315,7 +317,7 @@ h6 a {
 }
 
 h2 {
-	font-family: 'Gowun Dodum', sans-serif;
+	font-family: "Noto Sans", sans-serif;
 	font-size: 1.35em;
 	line-height: 1.75em;
 }
@@ -2044,7 +2046,7 @@ input[type="radio"] {
 	-webkit-appearance: none;
 	-ms-appearance: none;
 	appearance: none;
-	display: block;
+	display: none;
 	float: left;
 	margin-right: -2em;
 	opacity: 0;
@@ -2055,21 +2057,19 @@ input[type="radio"] {
 input[type="checkbox"]+label,
 input[type="radio"]+label {
 	text-decoration: none;
+	display: none;
 	color: #fff;
 	cursor: pointer;
 	display: inline-block;
 	font-size: 1em;
 	font-weight: 400;
-	padding-left: 2.4em;
-	padding-right: 0.75em;
-	position: relative;
 }
 
 input[type="checkbox"]+label:before,
 input[type="radio"]+label:before {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
-	display: inline-block;
+	display: none;
 	font-style: normal;
 	font-variant: normal;
 	text-rendering: auto;
@@ -2097,6 +2097,7 @@ input[type="radio"]+label:before {
 
 input[type="checkbox"]:checked+label:before,
 input[type="radio"]:checked+label:before {
+	display: none;
 	background: #2e3842;
 	color: #fff;
 	content: '\f00c';
@@ -2569,7 +2570,7 @@ button,
 	color: #fff;
 	cursor: pointer;
 	display: inline-block;
-	font-family: 'Gowun Dodum', sans-serif;
+	font-family: "Noto Sans", sans-serif;
 	font-size: 0.8em;
 	font-weight: 600;
 	height: 3.125em;
@@ -3076,7 +3077,7 @@ button.reset-style {
 
 .wrapper.style1 input[type="checkbox"]+label,
 .wrapper.style1 input[type="radio"]+label {
-	color: #c8ece9;
+	color: #ffffff;
 }
 
 .wrapper.style1 input[type="checkbox"]+label:before,
@@ -3123,7 +3124,8 @@ button.reset-style {
 	/* border-bottom: 1px solid #000;  */
 }
 
-.wrapper.style3 {
+.wrapper.style3 {	
+	padding: 150px 0;
 	background-color: #ffffff;
 	color: #000000;
 	/* border-bottom: 1px solid #000;  */
@@ -3599,7 +3601,9 @@ button.reset-style {
 	.wrapper {
 		padding: 3em 2em 1em 2em;
 	}
-
+	.wrapper.style5 {
+		padding: 3em 0em 1em 0em;
+	}
 }
 
 /* Page Wrapper + Menu */
@@ -3798,7 +3802,7 @@ body.is-menu-visible #menu {
 	transition: opacity 0.2s ease;
 	height: inherit;
 	left: 1.25em;
-	padding-top: 5px;
+	/* padding-top: 5px; */
 	line-height: inherit;
 	position: absolute;
 	top: 0;
@@ -3810,7 +3814,7 @@ body.is-menu-visible #menu {
 	display: block;
 	height: inherit;
 	line-height: inherit;
-	font-family: "Gowun Dodum", sans-serif;
+	font-family: "Noto Sans", sans-serif;
 }
 
 @media screen and (max-width: 736px) {
@@ -3893,7 +3897,7 @@ body.is-menu-visible #menu {
 
 #header.alt {
 	font-weight: 100;
-	font-family: 'Gowun Dodum', sans-serif;
+	font-family: "Noto Sans", sans-serif;
 	background: transparent;
 }
 
@@ -4402,7 +4406,7 @@ body.is-mobile.landing #footer {
 	width: 100%;
 	text-align: left;
 	font-size: 1em;
-	font-family: 'Gowun Dodum', sans-serif;
+	font-family: "Noto Sans", sans-serif;
 	cursor: pointer;
 	display: flex;
 	justify-content: space-between;
@@ -4631,7 +4635,7 @@ h2.text-center {
 
 /* Name styling */
 .message-header strong {
-	font-family: 'Gowun Dodum', sans-serif;
+	font-family: "Noto Sans", sans-serif;
 	margin-right: 10px;
 	color: #583B20;
 	font-size: 16px;
@@ -4645,7 +4649,7 @@ h2.text-center {
 	border: none; /* Remove border */
 	outline: none;
 	color: #583B20;
-	font-family: "Gowun Dodum", sans-serif;
+	font-family: "Noto Sans", sans-serif;
 	cursor: pointer; /* Pointer cursor for buttons */
 	margin-left: 10px; /* Spacing between buttons */
 	padding: 0; /* Remove padding */
@@ -4667,7 +4671,7 @@ h2.text-center {
 	/* Allow the text to take up available space */
 	margin-right: 15px;
 	/* Space between text and buttons */
-	font-family: 'Gowun Dodum', sans-serif;
+	font-family: "Noto Sans", sans-serif;
 }
 .message-actions {
 	display: flex; 
@@ -4916,15 +4920,12 @@ h2.text-center {
 }
 
 #rsvp, #submit-message {
-	width: 100%;
+	width: 50%;
 }
-
 
 #hotel-button,
 #registry-button {
-    /* width: 200px; */
 	width: 100%;
-	padding:0;
 }
 
 /* General Mobile Styles */
@@ -4936,6 +4937,7 @@ h2.text-center {
 	}
 	
 	#rsvp-button {
+	/* width: 50%; */
 	width: 50%;
 	font-size: 16px;
 	padding-top: 6px;
@@ -4947,7 +4949,6 @@ h2.text-center {
 		font-size: 14px;
 	}
 	#registry-button {
-	width: 60%;
 	font-size: 14px; /* Adjust font size for mobile screens */
 	}
 }
@@ -5040,7 +5041,6 @@ h2.text-center {
 #date-container {
     transition: opacity 0.3s ease;
     position: fixed; /* Changed from fixed */
-    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
@@ -5050,7 +5050,6 @@ h2.text-center {
     z-index: 1000;
     min-width: 100px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 #date-display {
     color: black;
@@ -5075,4 +5074,113 @@ h2.text-center {
 		padding-right: calc(50% + 10px);
 	}
 
+}
+/* Dropdown Container */
+.dropdown {
+    width: 50%;
+	display: inline-block;
+}
+
+.dropdown input[type="checkbox"] {
+    display: none;
+}
+
+.dropbtn {
+    background-color: #586451;
+    border: none;
+    border-radius: 4px;
+	width: 100%;
+	height: 40px;
+	margin: 1em 0 0 0;
+	padding-top: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.dropbtn:hover {
+    background-color: #485a3d;
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 0 0 4px 4px;
+    transition: max-height 0.3s ease-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dropdown input[type="checkbox"]:checked ~ .dropdown-content {
+    max-height: 500px;
+}
+
+.dropdown-content a {
+    color: #586451;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+.dropbtn .arrow {
+	transition: transform 0.3s ease;
+	float: right;
+	margin-right: 20px; /* Add space between the arrow and the button edge */
+	font-weight: 800;
+}
+.dropdown input[type="checkbox"]:checked + .dropbtn .arrow {
+	transform: rotate(180deg);
+}
+
+@media screen and (max-width: 768px) {
+    .dropdown {
+        max-width: none;
+    }
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.close:hover {
+    color: black;
+}
+
+.qr-code {
+    max-width: 200px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
 }

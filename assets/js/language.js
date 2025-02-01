@@ -45,7 +45,7 @@ function changeLanguage(lang) {
 // Optional: Close the menu if clicked outside
 document.addEventListener("click", function (e) {
     const languageContainer = document.querySelector(".language-container");
-    if (!languageContainer.contains(e.target)) {
+    if (languageContainer && !languageContainer.contains(e.target)) {
         document.getElementById("language-options").classList.add("hidden");
     }
 });
