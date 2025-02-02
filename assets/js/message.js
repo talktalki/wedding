@@ -79,26 +79,69 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    function appendMessageToDOM(message) {
-        const messageElement = document.createElement("div");
-        messageElement.classList.add("message");
-        messageElement.id = message.id;
+    let visibleMessageCount = 3;
 
-        messageElement.innerHTML = `
-            <div class="message-header">
-                <strong>${message.name}</strong>
-                <div class="message-actions">
-                    <button class="edit-button" data-id="${message.id}" data-password="${message.password}">Edit</button>
-                    <button class="delete-button" data-id="${message.id}" data-password="${message.password}">Delete</button>
-                </div>
+function appendMessageToDOM(message) {
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("message");
+    messageElement.id = message.id;
+
+    messageElement.innerHTML = `
+        <div class="message-header">
+            <strong>${message.name}</strong>
+            <div class="message-actions">
+                <button class="delete-button" data-id="${message.id}" data-password="${message.password}">x</button>
             </div>
-            <p class="message-text">${message.content}</p>
-        `;
+        </div>
+        <p class="message-text">${message.content}</p>
+    `;
 
-        // Add the new message to the messages container
-        messagesContainer.appendChild(messageElement);
+    // Add message but hide if beyond visible count
+    messageElement.style.display = messagesContainer.children.length >= visibleMessageCount ? 'none' : 'block';
+    messagesContainer.appendChild(messageElement);
+
+    // Add or update "Show More" button
+    updateShowMoreButton();
+}
+let isExpanded = false;
+
+function updateShowMoreButton() {
+    let showMoreButton = document.getElementById('show-more-button');
+    let showMoreTextKo = '더보기';
+    let showLessTextKo = '줄이기'
+    if (!showMoreButton) {
+        showMoreButton = document.createElement('button');
+        showMoreButton.id = 'show-more-button';
+        showMoreButton.classList.add('button', 'primary');
+        showMoreButton.textContent = 'Show More';
+        showMoreButton.setAttribute('data-ko', showMoreTextKo);
+        messagesContainer.after(showMoreButton);
     }
 
+    const totalMessages = messagesContainer.children.length;
+    showMoreButton.style.display = totalMessages > 3 ? 'block' : 'none';
+    showMoreButton.textContent = isExpanded ? 'Show Less' : 'Show More';
+    showMoreButton.setAttribute('data-ko', isExpanded ? showLessTextKo : showMoreTextKo);
+
+    showMoreButton.onclick = () => {
+        const messages = Array.from(messagesContainer.children);
+        if (isExpanded) {
+            // Show only first 3 messages
+            messages.forEach((msg, index) => {
+                msg.style.display = index < 3 ? 'block' : 'none';
+            });
+            visibleMessageCount = 3;
+        } else {
+            // Show all messages
+            messages.forEach(msg => {
+                msg.style.display = 'block';
+            });
+            visibleMessageCount = messages.length;
+        }
+        isExpanded = !isExpanded;
+        updateShowMoreButton();
+    };
+}
     async function handleEdit(button) {
         const messageId = button.dataset.id;
         const enteredPassword = prompt("Enter the password to edit this message:");
