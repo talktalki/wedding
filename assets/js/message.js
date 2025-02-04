@@ -86,6 +86,7 @@ function appendMessageToDOM(message) {
     messageElement.classList.add("message");
     messageElement.id = message.id;
 
+    const langAttribute = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(message.content) ? 'ko' : 'en';
     messageElement.innerHTML = `
         <div class="message-header">
             <strong>${message.name}</strong>
@@ -95,7 +96,10 @@ function appendMessageToDOM(message) {
         </div>
         <p class="message-text">${message.content}</p>
     `;
-
+    const messageText = messageElement.querySelector(".message-header strong");
+    const messageName =  messageElement.querySelector(".message-text");
+    messageText.style.fontFamily = langAttribute === 'ko' ? 'Gowun Dodum, serif' : 'Noto Sans, sans-serif';
+    messageName.style.fontFamily = langAttribute === 'ko' ? 'Gowun Dodum, serif' : 'Noto Sans, sans-serif';
     // Add message but hide if beyond visible count
     messageElement.style.display = messagesContainer.children.length >= visibleMessageCount ? 'none' : 'block';
     messagesContainer.appendChild(messageElement);
@@ -156,7 +160,7 @@ function updateShowMoreButton() {
             // If Cancel is clicked, simply return without doing anything
             return;
         }
-        if (entereÍPassword === button.dataset.password) {
+        if (enteredPassword === button.dataset.password) {
             const messageElement = document.getElementById(messageId);
             const messageText = messageElement.querySelector(".message-text");
 
@@ -207,17 +211,12 @@ function updateShowMoreButton() {
             return;
         }
         if (enteredPassword === button.dataset.password) {
-            try {
-                // Delete the message from Firestore
-                await deleteDoc(doc(db, "messages", messageId));
+            // Delete the message from Firestore
+            await deleteDoc(doc(db, "messages", messageId));
 
-                // Remove the message from the DOM
-                const messageElement = document.getElementById(messageId);
-                messageElement.remove();
-            } catch (error) {
-                console.error("Error deleting message:", error);
-                alert("Failed to delete message. Please try again.");
-            }
+            // Remove the message from the DOM
+            const messageElement = document.getElementById(messageId);
+            messageElement.remove();
         } else {
             alert("Incorrect password. You cannot delete this message.");
         }
