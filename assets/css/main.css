@@ -217,17 +217,33 @@ html[lang="ko"] h2 {
 	font-family: "Gowun Dodum", sans-serif;
 }
 
-html[lang="ko"] button {
+html[lang="ko"] .intro-border {
+	border-color: transparent;
+}
+
+html[lang="ko"] .qa-question {
 	font-family: "Gowun Dodum", sans-serif;
+	font-size: 1em;
+	font-weight: 300;
 }
 
 .wrapper.style3.special[data-show-lang="ko"] {
 	padding: 35px 35px;
 }
 
+.names {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+
+.names .div {
+	display: flex; flex-direction: column; align-items: center;
+}
+
 .details-ko,
 .details-us {
-	padding: 20px 0;
+	padding: 40px 0;
 }
 
 @media screen and (max-width: 1680px) {
@@ -1928,6 +1944,7 @@ header.major h4,
 header.major h5,
 header.major h6 {
 	/* border-bottom: solid 2px #fff; */
+
 	display: inline-block;
 	padding-bottom: 0.1em;
 	position: relative;
@@ -2686,7 +2703,6 @@ button.reset-style {
 	cursor: pointer;
 	/* Ensure the button retains its pointer cursor */
 	font-size: 1.8em;
-	padding: 0.09em 0.8em;
 	/* Remove padding */
 	margin: 0;
 	/* Remove margin */
@@ -3043,7 +3059,7 @@ button.reset-style {
 .wrapper.style1 h4,
 .wrapper.style1 h5,
 .wrapper.style1 h6 {
-	color: #000000;
+	color: #586451;
 }
 
 
@@ -3161,7 +3177,7 @@ button.reset-style {
 .wrapper.style3 h4,
 .wrapper.style3 h5,
 .wrapper.style3 h6 {
-	color: #000000;
+	color: #586451;
 }
 
 .wrapper.style3 hr {
@@ -3874,12 +3890,12 @@ body.is-menu-visible #menu {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	padding-right: 10px;
 	white-space: nowrap;
 }
 
 #header nav>ul>li {
 	display: inline-block;
-	padding: 0;
 }
 
 #header nav>ul>li>a {
@@ -4133,7 +4149,7 @@ body.is-menu-visible #menu {
 	padding: 2em;
 	max-width: 800px;
 	margin: 0 auto;
-	border-color: #586451;
+	border-color: #000;
 	background-color: rgba(255, 255, 255, 0.95);
 	/* animation: drawBorder 3s ease-in-out forwards; */
 	box-sizing: border-box;
@@ -4461,6 +4477,7 @@ body.is-mobile.landing #footer {
 	align-items: center;
 	transition: background-color 0.3s ease;
 	letter-spacing: 0.1em;
+	max-width: unset;
 }
 
 .qa-question .arrow {
@@ -4500,6 +4517,7 @@ body.is-mobile.landing #footer {
 	position: relative;
 }
 
+
 .language-options {
 	position: absolute;
 	top: 100%;
@@ -4535,7 +4553,6 @@ body.is-mobile.landing #footer {
 
 /* Align the nav items */
 #nav>ul {
-	display: flex;
 	align-items: center;
 	gap: 10px;
 }
@@ -4554,8 +4571,6 @@ body.is-mobile.landing #footer {
 	max-width: 700px;
 	background-color: rgba(255, 255, 255, 0.95);
 	/* animation: drawBorder 3s ease-in-out forwards; */
-	overflow: hidden;
-	/* Prevent content from spilling out */
 
 }
 
@@ -5229,7 +5244,7 @@ h2.text-center {
 }
 
 .dropdown-label .arrow {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Cpath d='M133.404444 349.108148l365.131852 352.616296c1.232593 1.137778 2.56 2.085926 3.982222 2.939259 7.205926 4.361481 16.592593 3.508148 22.945185-2.56l365.131852-352.616296c7.68-7.395556 7.774815-19.816296 0-27.306667-7.395556-7.205926-19.342222-6.826667-26.737778 0.379259l-351.762963 339.626667c0 0 0 0-0.094815 0L160.047407 322.180741c-7.395556-7.205926-19.342222-7.49037-26.737778-0.379259C125.62963 329.291852 125.724444 341.712593 133.404444 349.108148z' fill='%23ffffff'/%3E%3C/svg%3E");
+	background-image: url("images/arrow-down-svgrepo-com.svg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;

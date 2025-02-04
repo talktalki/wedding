@@ -107,21 +107,26 @@ let isExpanded = false;
 
 function updateShowMoreButton() {
     let showMoreButton = document.getElementById('show-more-button');
-    let showMoreTextKo = '더보기';
-    let showLessTextKo = '줄이기'
+    const showMoreTextEn = 'Show More';
+    const showLessTextEn = 'Show Less';
+    const showMoreTextKo = '더보기';
+    const showLessTextKo = '줄이기';
+
     if (!showMoreButton) {
         showMoreButton = document.createElement('button');
         showMoreButton.id = 'show-more-button';
         showMoreButton.classList.add('button', 'primary');
-        showMoreButton.textContent = 'Show More';
         showMoreButton.setAttribute('data-ko', showMoreTextKo);
+        showMoreButton.setAttribute('data-en', showMoreTextEn);
+        showMoreButton.textContent = showMoreTextEn;
         messagesContainer.after(showMoreButton);
     }
 
     const totalMessages = messagesContainer.children.length;
     showMoreButton.style.display = totalMessages > 3 ? 'block' : 'none';
-    showMoreButton.textContent = isExpanded ? 'Show Less' : 'Show More';
+    showMoreButton.textContent = isExpanded ? showLessTextEn : showMoreTextEn;
     showMoreButton.setAttribute('data-ko', isExpanded ? showLessTextKo : showMoreTextKo);
+    showMoreButton.setAttribute('data-en', isExpanded ? showLessTextEn : showMoreTextEn);
 
     showMoreButton.onclick = () => {
         const messages = Array.from(messagesContainer.children);
@@ -151,7 +156,7 @@ function updateShowMoreButton() {
             // If Cancel is clicked, simply return without doing anything
             return;
         }
-        if (enteredPassword === button.dataset.password) {
+        if (entereÍPassword === button.dataset.password) {
             const messageElement = document.getElementById(messageId);
             const messageText = messageElement.querySelector(".message-text");
 

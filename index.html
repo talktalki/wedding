@@ -9,6 +9,19 @@
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
+
+	 <!-- Open Graph meta tags -->
+	 <meta property="og:title" content="Grace + Yosep Wedding" />
+	 <meta property="og:description" content="Join us in celebrating our wedding!" />
+	 <meta property="og:image" content="https://talktalki.github.io/wedding/images/ENGAGEMENT%20L-161.JPG" />
+	 <meta property="og:url" content="https://talktalki.github.io/wedding" />
+	 <meta property="og:type" content="website" />
+ 
+	 <!-- Twitter Card meta tags -->
+	 <meta name="twitter:card" content="summary_large_image" />
+	 <meta name="twitter:title" content="Grace + Yosep Wedding" />
+	 <meta name="twitter:description" content="Join us in celebrating the wedding of Grace and Yosep!" />
+	 <meta name="twitter:image" content="https://talktalki.github.io/wedding/images/ENGAGEMENT%20L-161.JPG" />
 </head>
 
 <body class="landing is-preload">
@@ -28,19 +41,18 @@
 							<a href="#" data-lang="ko">한국어</a>
 						</div>
 					</li>
-					<li class="special">
+					<!-- <li class="special">
 						<a href="#menu" class="menuToggle"><span></span></a>
 						<div id="menu">
 							<ul>
 								<li><a href="ourstory.html" data-en="Our Story" data-ko="우리 이야기">Our Story</a></li>
-								<!-- <li><a href="registry.html" data-en="Registry" data-ko="마음 전할 곳">Registry</a></li> -->
 								<li><a href="faq.html" data-en="FAQs" data-ko="자주 묻는 질문">FAQs</a></li>
 							</ul>
 							<ul class="actions special">
 								<li><a href="rsvp.html" id='rsvp-button' class="button primary">RSVP</a></li>
 							</ul>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 			</nav>
 		</header>
@@ -76,7 +88,7 @@
 		<!-- INTRO & MESSAGE -->
 		<section id="intro" class="wrapper style1 special">
 			<div class="inner">
-				<div class="intro-border">
+				<div data-en="" data-ko="" class="intro-border">
 					<div class="content">
 						<p data-en="Dear Friends and Family," data-ko="저희 결혼합니다">Dear Friends and Family,</p>
 						<p data-show-lang="en">
@@ -100,10 +112,15 @@
 						</p>
 						<p data-en="With love," data-ko="사랑을 담아,">With love,</p>
 						<p data-show-lang="en" class="signature" data-en="Grace & Yosep" data-ko="은지 & 요셉">Grace & Yosep</p>
-						<div data-show-lang="ko">
-							김상균 · 유연순의 장녀 김은지
-						</br>
-							이기철 · 김영순의 막내 이요셉
+						<div data-show-lang="ko" class="names">
+							<div>
+								김상균·유연순의 
+							</br>딸 김은지
+							</div>
+							<div>
+								이기철·김영순의
+							</br>아들 이요셉
+							</div>
 						</div>
 					</div>
 				</div>
@@ -121,7 +138,8 @@
 			</header>
 			<p class="address">5126 Stephens Rd, Oswego, IL 60543</p>
 			<p><a href="https://maps.app.goo.gl/X3Nby15BiNPENjCr8" target="_blank">Map</a> |
-				<a href="hotel.html">Travel Guide</a>
+				<a href="hotel.html">Travel Guide</a> |
+				<a href="faq.html">FAQ</a>
 			</p>
 			<a href="rsvp.html" id="rsvp" class="button primary">RSVP</a>
 		</div>
@@ -130,10 +148,10 @@
 	<section id="one" data-show-lang="ko" class="wrapper style3 special">
 		<div class="inner">
 			<div class="details-us">
-				<h2>미국 예식 안내</h2>
+				<h2>미국 예식</h2>
 
 					<p class="day">2025년 5월 3일 오후 5시</p>
-					<p class="venue"> 미국 시카고 VENUE 5126</p>
+					<p class="venue"> 미국 시카고 <a href="https://maps.app.goo.gl/X3Nby15BiNPENjCr8" target="_blank">VENUE 5126</a></p>
 			</div>
 			<div class="details-ko">
 				<h2>국내 피로연 안내</h2>
@@ -141,7 +159,7 @@
 					<p>거리가 멀어 본식에 참석하지 못하시는 분들을 위해 한국에서의 피로연 자리를 마련하였습니다. </br>
 						부디 참석하시어 두사람의 앞날을 축복해 주시길 바랍니다.</p>
 					<p class="day" style="margin-bottom: 0;">⏰  2025년 5월 24일 토요일 오후 5시</p>
-					<p class="venue">📍 광주 서쪽으로 가는 기쁨의 교회</p>
+					<p class="venue">📍 <a href="https://maps.app.goo.gl/E3EE3Y5Pi8197s688" target="_blank"> 광주 서쪽으로 가는 기쁨의 교회</a></p>
 				</header>
 			</div>
 		</div>
@@ -240,17 +258,14 @@
 	<section id="messages-wrapper" class="wrapper style1 special">
 		<div class="inner">
 			<h2 data-en="Registry" data-ko="마음 전할 곳">Registry</h2>
-			<p data-en="Many of you are traveling across the globe to celebrate with us, 
-					so your presence means the world to us and is all we ask for. If you'd still like to 
-					contribute to our registry or honeymoon funds, please use the link below."
-				data-ko="시카고에서 하는 결혼식인만큼 참석해 주시기 어려운 상황을 이해합니다. 축의금에 대한 어떠한 부담도 갖지 않으셔도 됩니다. 여러분의 축복과 기도만으로도 큰 힘이 될 거에요. 한국에서는 식사 자리로 만나요! 그럼에도 꼭 마음을 표현하고 싶다면, 신혼여행과 같이 살 신혼집을 꾸리는 데에 사용하겠습니다 :)">
+			<p data-show-lang="en">
 				Many of you are traveling across the globe to celebrate with us,
 				so your presence means the world to us and is all we ask for. If you'd still like to
 				contribute to our registry or honeymoon funds, please use the link below.
 			</p>
 			<div class="dropdown-container">
 				<div data-show-lang="en" class="dropdown-block">
-					<div class="dropdown-label" data-en="Gift Registry" data-ko="선물하기">Gift Registry
+					<div class="dropdown-label" data-en="Gift Registry" data-ko="선물하기">Gift Registry 
 						<span class="arrow"></span>
 					</div>
 					<div class="dropdown-item">
@@ -258,23 +273,25 @@
 					</div>
 				</div>
 				<div class="dropdown-block">
-					<div class="dropdown-label" data-en="Cash Fund" data-ko="계좌번호">Cash Fund
+					<div class="dropdown-label" data-en="Cash Fund" data-ko="계좌번호">Cash Fund 
 						<span class="arrow"></span>
 					</div>
 					<div class="dropdown-item">
 						<a data-show-lang="en" href="https://venmo.com/talktalki_?txn=pay" target="_blank" data-en="Venmo" data-ko="벤모">Venmo</a>
 						<a data-show-lang="en" href="#" onclick="document.getElementById('zellePopup').style.display='block'; return false;" data-en="Zelle" data-ko="젤">Zelle</a>
-						<a data-show-lang="ko" href="#" onclick="navigator.clipboard.writeText('512002-04-174664'); return false;">
-							국민 512002-04-174664 이요셉
-							 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+						<a data-show-lang="ko" href="#" onclick="copyToClipboard('412910-53-951207', this); return false;">
+							하나 412910-53-951207 이요셉
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
 								<path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
 							</svg>
+							<span class="copy-feedback"></span>
 						</a>
-						<a data-show-lang="ko" href="#" onclick="navigator.clipboard.writeText('512002-04-174664'); return false;">
+						<a data-show-lang="ko" href="#" onclick="copyToClipboard('512002-04-174664', this); return false;">
 							국민 512002-04-174664 김은지
-							 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
 								<path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
 							</svg>
+							<span class="copy-feedback"></span>
 						</a>
 						<div id="zellePopup" class="popup">
 							<div class="popup-content">

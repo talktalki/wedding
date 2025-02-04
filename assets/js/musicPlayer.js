@@ -1,8 +1,5 @@
 const musicList = [
-    'assets/music/davichi-fanfare.mp3',
-    'assets/music/davichi-fanfare.mp3',
-    'assets/music/davichi-fanfare.mp3',
-    'assets/music/davichi-fanfare.mp3',
+    'assets/music/sothisislove.m4a'
 ]
 
 class MusicPlayer {
