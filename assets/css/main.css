@@ -107,6 +107,15 @@ section {
 	display: block;
 }
 
+section {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	scroll-snap-align: start;
+}
+
 body {
 	line-height: 1;
 }
@@ -205,22 +214,19 @@ textarea {
 html[lang="ko"] body,
 html[lang="ko"] input,
 html[lang="ko"] select,
-html[lang="ko"] textarea {
+html[lang="ko"] textarea{
 	font-family: "Gowun Dodum", sans-serif !important;
+	font-size: 0.9em;
 }
 
 html[lang="ko"] .venue,
 html[lang="ko"] .day {
 	font-size: 1em;
 }
-html[lang="ko"] h2 {
+html[lang="ko"] h2, 
+html[lang="ko"] button {
 	font-family: "Gowun Dodum", sans-serif;
 }
-
-html[lang="ko"] .intro-border {
-	border-color: transparent;
-}
-
 html[lang="ko"] .qa-question {
 	font-family: "Gowun Dodum", sans-serif;
 	font-size: 1em;
@@ -3156,6 +3162,7 @@ button.reset-style {
 
 .wrapper.style2 {
 	padding: 0 0 0.5em 0;
+	height: unset;
 	/* border-bottom: 1px solid #000;  */
 }
 
@@ -3195,16 +3202,15 @@ button.reset-style {
 .wrapper.style3 header.major h6 {
 	border-color: rgba(0, 0, 0, 0.125);
 	color: #586451;
-	font-size: 20px;
+	font-size: 22px;
 	padding-top: 0em;
 	padding-bottom: 0em;
 }
 
 .wrapper.style3 header.major p {
-	color: #000000;
+	color: #586451;
 	padding-top: 0em;
 	padding-bottom: 0em;
-	
 }
 
 @media screen and (max-width: 768px) {
@@ -3249,6 +3255,7 @@ button.reset-style {
 .venue {
 	font-size: 22px;
 	margin-bottom: 0.2em;
+
 	/* Small space below the venue */
 }
 
@@ -3674,6 +3681,7 @@ button.reset-style {
 	/* Centers the image */
 	background-repeat: no-repeat;
 	/* Prevents tiling */
+	scroll-snap-type: y mandatory;
 }
 
 #title-ourstory {
@@ -3839,7 +3847,7 @@ body.is-menu-visible #menu {
 	-ms-transition: background-color 0.2s ease;
 	transition: background-color 0.2s ease;
 	height: 3em;
-	left: 0;
+	/* left: 0; */
 	top: 0;
 	line-height: 3em;
 	position: fixed;
@@ -4143,13 +4151,12 @@ body.is-menu-visible #menu {
 	height: auto;
 	width: 100%;
 	background: transparent;
-	border: 2px solid transparent;
-	/* Initial border color */
-	border-radius: 30px;
+	/* border: 2px solid transparent;
+	border-color: #000;
+	border-radius: 30px; */
 	padding: 2em;
 	max-width: 800px;
 	margin: 0 auto;
-	border-color: #000;
 	background-color: rgba(255, 255, 255, 0.95);
 	/* animation: drawBorder 3s ease-in-out forwards; */
 	box-sizing: border-box;
@@ -4578,6 +4585,8 @@ body.is-mobile.landing #footer {
 
 }
 
+
+
 #leave-message-section {
 	background-color: #ffffff;
 }
@@ -4827,6 +4836,7 @@ h2.text-center {
 }
 
 #show-more-button {
+	width: 50%;
 	display: block;
 	margin: 20px auto;
 	background-color: #586451;
@@ -5231,28 +5241,28 @@ h2.text-center {
 }
 
 .dropdown-label {
-	background-color: #586451;
-	color: #ffffff;
-	padding: 10px;
-	border-radius: 4px;
-	width: 100%;
-	text-align: left;
-	cursor: pointer;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	transition: background-color 0.3s ease;
-	letter-spacing: 0.1em;
-	/* font-weight: 600; */
+    background-color: #586451;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.1em;
+    /* font-weight: 600; */
 }
 
 .dropdown-label .arrow {
-	background-image: url("images/arrow-down-svgrepo-com.svg");
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-	width: 1.5em;
-	height: 1.5em;
+	display: inline-block;
+    background-image: url("images/arrow-down-svgrepo-com.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 1.5em;
+    height: 1.5em;
 }
 
 .dropdown-item {
@@ -5293,9 +5303,6 @@ h2.text-center {
 #ending {
 	transition: opacity 0.5s ease;
 	padding-bottom: 0;
-}
-
-#ending .inner {
 	background-image: url("../../images/ENGAGEMENT Alfred-13.JPG");
 	background-position: 70% center;
 	background-size: cover;
@@ -5303,6 +5310,21 @@ h2.text-center {
 	position: relative;
 	height: 85vh;
 	display: flex; /* Add flexbox */
+	width: 100%;
+	margin: 0;
+	align-items: flex-end; /* Align content to bottom */
+}
+
+#ending .inner {
+	/* background-image: url("../../images/ENGAGEMENT Alfred-13.JPG");
+	background-position: 70% center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	height: 85vh;
+	display: flex; /* Add flexbox */
+	/* width: 100%;
+	margin: 0; */
 	align-items: flex-end; /* Align content to bottom */
 }
 
@@ -5316,12 +5338,7 @@ h2.text-center {
 	background: linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
 }
 
-.ending-border {
-	width: 50%;
-	padding: 4em;  /* Add some padding */
-	position: relative; /* For proper stacking context */
-	z-index: 1; /* Ensure content appears above the gradient */
-}
+
 
 .ending-border .content {
 	/* color: #fff; */
@@ -5339,4 +5356,18 @@ h2.text-center {
 		width: 90%;
 		padding: 2em;
 	}
+}
+@media screen and (max-width: 980px) {
+
+	#messages-wrapper {
+		display: block;
+	}
+}
+
+
+#venue {
+	background-color: #fdf5e3;
+	color: #586451;
+	height: 50vh;
+
 }

@@ -100,6 +100,18 @@
 function changeLanguage(lang) {
     document.documentElement.setAttribute("lang", lang); // Change `lang` attribute
 
+    // Change font family based on language
+    document.documentElement.style.setProperty('--main-font', 
+        lang === 'ko' ? "'Gowun Dodum', sans-serif" : "'Noto Sans', sans-serif"
+    );
+    // in korean, the margin is 0 auto and max-width is 390ox for the main container
+    // in english, the margin is 0 auto and max-width is 600px for the main container
+    document.documentElement.style.margin = lang === 'ko' ? "0 auto" : "";
+    document.documentElement.style.maxWidth = lang === 'ko' ? "430px" : "";
+    document.documentElement.style.backgroundColor = lang === 'ko' ? "white" : "";
+    document.querySelector('header').style.maxWidth = lang === 'ko' ? "430px" : "";
+    document.querySelector('#messages-wrapper').style.display = lang === 'ko' ? "block" : "";
+
     // Update all elements with multilingual content
     document.querySelectorAll("[data-ko], [data-en]").forEach(element => {
         const text = element.getAttribute(`data-${lang}`);

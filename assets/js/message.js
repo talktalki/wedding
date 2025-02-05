@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const messageContentInput = document.getElementById("message-content");
         const messagePasswordInput = document.getElementById("message-password");
 
-
         const name = messageNameInput.value.trim();
         const messageContent = messageContentInput.value.trim();
         const password = messagePasswordInput.value.trim();
@@ -118,17 +117,19 @@ function updateShowMoreButton() {
 
     if (!showMoreButton) {
         showMoreButton = document.createElement('button');
+        showMoreButton.type = 'button';
         showMoreButton.id = 'show-more-button';
-        showMoreButton.classList.add('button', 'primary');
-        showMoreButton.setAttribute('data-ko', showMoreTextKo);
-        showMoreButton.setAttribute('data-en', showMoreTextEn);
-        showMoreButton.textContent = showMoreTextEn;
+        showMoreButton.classList.add('primary');
         messagesContainer.after(showMoreButton);
     }
 
     const totalMessages = messagesContainer.children.length;
     showMoreButton.style.display = totalMessages > 3 ? 'block' : 'none';
-    showMoreButton.textContent = isExpanded ? showLessTextEn : showMoreTextEn;
+
+    const currentLang = document.documentElement.lang === 'ko' ? 'ko' : 'en';
+    const showMoreText = currentLang === 'ko' ? showMoreTextKo : showMoreTextEn;
+    const showLessText = currentLang === 'ko' ? showLessTextKo : showLessTextEn;
+    showMoreButton.textContent = isExpanded ? showLessText : showMoreText;
     showMoreButton.setAttribute('data-ko', isExpanded ? showLessTextKo : showMoreTextKo);
     showMoreButton.setAttribute('data-en', isExpanded ? showLessTextEn : showMoreTextEn);
 
