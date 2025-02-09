@@ -32,9 +32,6 @@ function initMap() {
     const mapElement = document.getElementById("map");
     const mapWrapper = document.createElement("div");
     mapWrapper.className = "map-wrapper";
-
-    mapWrapper.style.padding = "10px";
-
     mapElement.parentNode.insertBefore(mapWrapper, mapElement);
     mapWrapper.appendChild(mapElement);
 

@@ -1,14 +1,16 @@
 // common.js
 
 function loadFooter() {
-    data = `<footer id="footer">
-        <ul class="copyright">
-            <li>&copy; eunseoya</li>
-        </ul>
-    </footer>`
-    document.getElementById('footer-placeholder').innerHTML = data;
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        });
 }
-document.addEventListener('DOMContentLoaded', loadFooter);
+
+document.addEventListener("DOMContentLoaded", function() {
+    loadFooter();
+});
 
 function copyToClipboard(text, element) {
 

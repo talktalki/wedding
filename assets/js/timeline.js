@@ -46,11 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const timelineObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             isWithinTimeline = entry.isIntersecting;
-
             dateContainer.style.opacity = isWithinTimeline ? "1" : "0";
-            dateContainer.style.bottom = '20px';
-
-
         });
 
     }, {
@@ -80,7 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Create timeline sections
     const timeline = document.createElement('div');
     timeline.className = 'timeline-container';
-    timeline.appendChild(dateContainer);
+
+    // timeline.appendChild(dateContainer);
     timelineObserver.observe(timeline);
 
     ddates.forEach((date, index) => {
@@ -102,8 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
         description.textContent = events[index].getDescription();
         const eventDate = document.createElement('p');
         eventDate.textContent = events[index].getDate();
-
-
         
         if (events[index].getPicture()) {
             const imageContainer = document.createElement('div');
@@ -126,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Insert timeline into the page
+    document.querySelector('.wrapper.style5').appendChild(dateContainer);
     document.querySelector('.wrapper.style5 .inner').appendChild(timeline);
 
     // Intersection Observer for sections with better options

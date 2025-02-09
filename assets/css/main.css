@@ -109,7 +109,6 @@ section {
 
 section {
 	width: 100%;
-	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -214,7 +213,7 @@ textarea {
 html[lang="ko"] body,
 html[lang="ko"] input,
 html[lang="ko"] select,
-html[lang="ko"] textarea{
+html[lang="ko"] textarea {
 	font-family: "Gowun Dodum", sans-serif !important;
 	font-size: 0.9em;
 }
@@ -223,10 +222,12 @@ html[lang="ko"] .venue,
 html[lang="ko"] .day {
 	font-size: 1em;
 }
-html[lang="ko"] h2, 
+
+html[lang="ko"] h2,
 html[lang="ko"] button {
 	font-family: "Gowun Dodum", sans-serif;
 }
+
 html[lang="ko"] .qa-question {
 	font-family: "Gowun Dodum", sans-serif;
 	font-size: 1em;
@@ -244,7 +245,9 @@ html[lang="ko"] .qa-question {
 }
 
 .names .div {
-	display: flex; flex-direction: column; align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .details-ko,
@@ -2084,6 +2087,7 @@ input[type="radio"]+label {
 	text-decoration: none;
 	display: none;
 	color: #fff;
+	/* background-color: rgba(144, 144, 144, 0.25); */
 	cursor: pointer;
 	display: inline-block;
 	font-size: 1em;
@@ -2329,6 +2333,8 @@ ul {
 
 ul li {
 	padding-left: 0.5em;
+	list-style: none;
+
 }
 
 ul.alt {
@@ -3224,7 +3230,7 @@ button.reset-style {
 		font-size: 1em;
 
 	}
-	
+
 	.wrapper.style3 header.major p {
 		width: 93%;
 		/* Limit width on mobile */
@@ -4279,6 +4285,8 @@ body.is-mobile #main>header {
 	padding: 3em 0 1em 0;
 	text-align: center;
 	background-color: #586451;
+	list-style: none;
+
 }
 
 #footer .icons {
@@ -5241,32 +5249,21 @@ h2.text-center {
 }
 
 .dropdown-label {
-    background-color: #586451;
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 4px;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    letter-spacing: 0.1em;
-    /* font-weight: 600; */
-}
-
-.dropdown-label .arrow {
-	display: inline-block;
-    background-image: url("images/arrow-down-svgrepo-com.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 1.5em;
-    height: 1.5em;
+	background-color: #586451;
+	color: #ffffff;
+	padding: 10px;
+	border-radius: 4px;
+	width: 100%;
+	text-align: left;
+	cursor: pointer;
+	justify-content: space-between;
+	align-items: center;
+	transition: background-color 0.3s ease;
+	letter-spacing: 0.1em;
 }
 
 .dropdown-item {
-	display: none;
+
 	text-align: left;
 	overflow: hidden;
 	background-color: #ffffff;
@@ -5295,8 +5292,9 @@ h2.text-center {
 
 @media screen and (max-width: 768px) {
 	.dropdown-container {
-		width: 100%;
+		width: 75%;
 		padding: 10px;
+		justify-self: center;
 	}
 }
 
@@ -5309,10 +5307,12 @@ h2.text-center {
 	background-repeat: no-repeat;
 	position: relative;
 	height: 85vh;
-	display: flex; /* Add flexbox */
+	display: flex;
+	/* Add flexbox */
 	width: 100%;
 	margin: 0;
-	align-items: flex-end; /* Align content to bottom */
+	align-items: flex-end;
+	/* Align content to bottom */
 }
 
 #ending .inner {
@@ -5325,7 +5325,8 @@ h2.text-center {
 	display: flex; /* Add flexbox */
 	/* width: 100%;
 	margin: 0; */
-	align-items: flex-end; /* Align content to bottom */
+	align-items: flex-end;
+	/* Align content to bottom */
 }
 
 #ending .inner::before {
@@ -5334,7 +5335,8 @@ h2.text-center {
 	top: 0;
 	left: 0;
 	right: 0;
-	height: 250px; /* Adjust height of fade effect */
+	height: 250px;
+	/* Adjust height of fade effect */
 	background: linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
 }
 
@@ -5345,10 +5347,13 @@ h2.text-center {
 	font-style: italic;
 	opacity: 0;
 	animation: fadeIn 1s ease-in-out forwards;
-	text-align: left;  /* Align text to left */
-	max-width: 50%;  /* Limit content width */
+	text-align: left;
+	/* Align text to left */
+	max-width: 50%;
+	/* Limit content width */
 	padding-right: 0.5em;
-	margin-bottom: 2em; /* Add some space from bottom */
+	margin-bottom: 2em;
+	/* Add some space from bottom */
 }
 
 @media screen and (max-width: 768px) {
@@ -5357,6 +5362,7 @@ h2.text-center {
 		padding: 2em;
 	}
 }
+
 @media screen and (max-width: 980px) {
 
 	#messages-wrapper {

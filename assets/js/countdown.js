@@ -23,6 +23,7 @@ function updateElement(elementId, value) {
     }
 }
 
+
 var countdown = setInterval(function() {
     var now = new Date().getTime();
     var distance = countDownDate - now;
@@ -42,4 +43,7 @@ var countdown = setInterval(function() {
         updateElement("countdown--hours", '🎉');
         updateElement("countdown--minutes", '🎉');
     }
+
+
+
 }, 1000);	
