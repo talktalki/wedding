@@ -26,7 +26,7 @@ const SHEET_API_URL = 'https://sheets.googleapis.com/v4/spreadsheets/1OAm8bZG1l7
 function initMap() {
     // Initialize the map
     var isMobile = window.innerWidth <= 768; // Check if the screen width is 768px or less
-    var zoomLevel = isMobile ? 1.5 : 2.25; // Set zoom level based on screen size
+    var zoomLevel = isMobile ? 3 : 3.7; // Set zoom level based on screen size
 
     // Wrap the map element with the new wrapper class
     const mapElement = document.getElementById("map");
@@ -37,7 +37,7 @@ function initMap() {
 
     const map = new google.maps.Map(mapElement, {
         zoom: zoomLevel,
-        center: { lat: 35.0, lng: -160.0 },
+        center: { lat: 39.8283, lng: -98.5795 }, // Center the map on the USA
         mapTypeControl: false,  // Disable the map type (satellite, terrain, etc.)
         zoomControl: false,     // Disable the zoom controls (+/-)
         streetViewControl: false,  // Disable the street view button

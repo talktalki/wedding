@@ -14,28 +14,22 @@ document.addEventListener('DOMContentLoaded', function() {
             container.appendChild(square);
         }
     });
-    //if mobile handle grid differently
-    if (window.innerWidth < 768) {
-        let containers = document.querySelectorAll('.image-grid-container');
 
-        containers.forEach(container => {
-            for (let i = 0; i < 16; i++) {
+    containers = document.querySelectorAll('.checkerboard');
+    containers.forEach(container => {
+        const rows = 6, cols = 6;
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols; col++) {
                 const square = document.createElement('div');
-                square.className = `square ${(i + Math.floor(i/6)) % 3? 'yellow' : 'green'}`;
+                square.classList.add("square");
+                if ((row + col) % 2 === 0) {
+                    square.style.backgroundColor = "#FEFCE7";
+                } else {
+                    square.style.backgroundColor = "#276A34";
+                }
                 container.appendChild(square);
             }
-        });
-    } else {
-   
-
-    containers = document.querySelectorAll('.image-grid-container');
-    containers.forEach(container => {
-        for (let i = 0; i < 48; i++) {
-            const square = document.createElement('div');
-            square.className = `square ${(i + Math.floor(i/6)) % 2 ? 'yellow' : 'green'}`;
-            container.appendChild(square);
         }
     });
 
-}   
 });
