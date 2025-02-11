@@ -1,6 +1,10 @@
-const musicList = [
-    'assets/music/sothisislove.m4a'
-]
+// const musicList = [
+//     'assets/music/sothisislove.m4a',
+// ]
+
+const musicList = window.location.pathname.includes('home.html') ? 
+    ['assets/music/marriedlife.m4a'] : 
+    ['assets/music/sothisislove.m4a'];
 
 class MusicPlayer {
     constructor() {

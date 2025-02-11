@@ -37,7 +37,7 @@
             </span>
             <nav id="nav">
                 <ul>
-                    <li>▶&#xFE0E; </li>
+                    <!-- <li>▶&#xFE0E; </li> -->
                 </ul>
             </nav>
         </header>
@@ -56,8 +56,11 @@
                                     fill="#F6DCD0" />
                             </svg>
                             <span class="countdown-number" id="countdown--days" data-value="00">00</span>
+                            <div class="countdown-label">
+                                <p>days</p>
+                            </div>
                         </div>
-                        <p>days</p>
+
                     </div>
                     <div class="time-unit">
                         <div class="heart-wrapper">
@@ -68,8 +71,11 @@
                                     fill="#F6DCD0" />
                             </svg>
                             <span class="countdown-number" id="countdown--hours" data-value="00">00</span>
+                            <div class="countdown-label">
+                                <p>hours</p>
+                            </div>
                         </div>
-                        <p>hours</p>
+
                     </div>
                     <div class="time-unit">
                         <div class="heart-wrapper">
@@ -80,8 +86,11 @@
                                     fill="#F6DCD0" />
                             </svg>
                             <span class="countdown-number" id="countdown--minutes" data-value="00">00</span>
+
+                            <div class="countdown-label">
+                                <p>minutes</p>
+                            </div>
                         </div>
-                        <p>minutes</p>
                     </div>
 
                 </section>
@@ -178,7 +187,8 @@
                 <!-- <h2 class="dotted">Accommodations</h2>    -->
                 <h2 class="dotted">Accommodations</h2>
                 <p>We have reserved a block of rooms at Hampton Inn Yorkville near the venue for May 2nd (Friday) and
-                    May 3rd (Saturday). You can use the custom URL below to book at our discounted rate or call (630)
+                    May 3rd (Saturday). </br> You can use the custom URL below to book at our discounted rate or call
+                    (630)
                     553-9805 and mention the Kim-Lee Wedding.</p>
                 <a href="https://www.hilton.com/en/book/reservation/deeplink/?ctyhocn=CHIYVHX&groupCode=CHH904&arrivaldate=2025-05-02&departuredate=2025-05-04&cid=OM,WW,HILTONLINK,EN,DirectLink&fromId=HILTONLINKDIRECT,"
                     target="_blank" class="button">Book A Room</a>
@@ -194,36 +204,36 @@
                     gift we could ask for. If you'd still like to share a gift, we have three ways we can receive them.
                     Thank you for celebrating with us!</p>
                 <div class="registry-cards">
-                    <section class="flip-card">
-                        <a href="https://www.amazon.com/wedding/share/graceyosepyay" target="_blank"
-                            style="display: block; width: 100%; height: 100%;">
-                            <svg viewBox="0 0 100 100" class="circular-text">
-                                <defs>
-                                    <path id="circlePath" d="M 50,50 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
-                                </defs>
-                                <text fill="#276A34" font-size="6" font-weight="bold">
-                                    <textPath href="#circlePath">Click Me Click Me Click Me</textPath>
-                                </text>
-                            </svg>
-                            <div class="flip-card-inner special">
+                    <!-- <svg viewBox="0 0 100 100" class="circular-text">
+                        <defs>
+                            <path id="circlePath" d="M 50,50 m -40,0 a 40,40 0 0,1 40,-40" fill="none" />
+                        </defs>
+                        <text fill="#FFFFFF" font-size="6">
+                            <textPath href="#circlePath">Click Me</textPath>
+                        </text>
+                    </svg> -->
+                    <section class="registry-circle">
+
+                        <a href="https://www.amazon.com/wedding/share/graceyosepyay" target="_blank">
+
+                            <div class="registry-circle-inner special">
                                 <img src="images/amazon.png" class="registry-character">
                                 <span>Gift Registry</span>
                             </div>
                         </a>
                     </section>
-                    <section class="flip-card">
-                        <a href="https://venmo.com/talktalki_?txn=pay" target="_blank"
-                            style="display: block; width: 100%; height: 100%;">
-                            <div class="flip-card-inner special">
+                    <section class="registry-circle">
+                        <a href="https://venmo.com/talktalki_?txn=pay" target="_blank">
+                            <div class="registry-circle-inner special">
                                 <img src="images/venmo.png" class="registry-character">
                                 <span>Venmo</span>
                             </div>
                         </a>
                     </section>
-                    <section class="flip-card">
-                        <a href="#" onclick="document.getElementById('zellePopup').style.display='block'; return false;"
-                            style="display: block; width: 100%; height: 100%;">
-                            <div class="flip-card-inner special">
+                    <section class="registry-circle">
+                        <a href="#"
+                            onclick="document.getElementById('zellePopup').style.display='block'; return false;">
+                            <div class="registry-circle-inner special">
                                 <img src="images/zelle.png" class="registry-character">
                                 <span>Zelle</span>
                             </div>
@@ -491,6 +501,7 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/musicPlayer.js"></script>
     <script src="assets/js/cards.js"></script>
     <script src="assets/js/checkerboard.js"></script>
     <script src="assets/js/map.js"></script>

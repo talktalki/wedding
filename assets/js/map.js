@@ -27,7 +27,8 @@ function initMap() {
     // Initialize the map
     var isMobile = window.innerWidth <= 768; // Check if the screen width is 768px or less
     var zoomLevel = isMobile ? 3 : 3.7; // Set zoom level based on screen size
-
+    var isFullScreen = window.innerWidth >= 1280; // Check if the screen width is 1024px or more
+    zoomLevel = isFullScreen ? 4 : zoomLevel; // Set zoom level based on screen size
     // Wrap the map element with the new wrapper class
     const mapElement = document.getElementById("map");
     const mapWrapper = document.createElement("div");
