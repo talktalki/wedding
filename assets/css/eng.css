@@ -109,6 +109,10 @@ menu,
 nav,
 section {
 	display: block;
+	/* overflow-x: hidden; */
+}
+
+section {
 	overflow-x: hidden;
 }
 
