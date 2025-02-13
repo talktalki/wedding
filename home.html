@@ -478,44 +478,125 @@
 
     <section id="ending-bottom-grid" class="special">
         <div class="inner">
-            <div class="end-message">
-                <h2> See you soon! </h2>
+            <div class="grid-container-a"></div>
+            <div class="grid-container-b"></div>
+            <div class="ending">
+                <div class="ending-message">
+                    <div class="ending-message-text">
+                        <h2>See you soon!</h2>
+                        <svg class="end-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+
+                    </div>
+                </div>
                 <div class="ending-gif">
                     <img src="images/yosep_football.png">
                     <img src="images/grace_football.png">
                 </div>
+
             </div>
             <style>
-                .inner {
+                .ending {
                     position: relative;
+                    height: 50vh;
                 }
 
-                .end-message {
-                    position: relative;
-                    z-index: 2;
+                @media screen and (max-width: 768px) {
+                    .ending {
+                        height: 30vh;
+                    }
+
+                }
+
+                .ending-message {
+                    background-color: transparent;
+                    position: absolute;
+                    bottom: 40%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 1;
+                    width: 100%;
+                }
+
+                .ending-message-text {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
                     text-align: center;
+                    padding: 2em;
+                    z-index: 2;
+                }
+
+                /* increase padding for larger screens */
+                @media screen and (min-width: 768px) {
+                    .ending-message-text {
+                        padding: 8em;
+                    }
+                }
+
+
+                .end-heart {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 100%;
+                    transform: translate(-50%, -50%);
+                    margin: 0 auto;
+                    fill: #F6DCD0;
+                    z-index: 1;
                 }
 
                 .ending-gif {
+                    position: absolute;
+                    top: 60%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 2;
                     display: flex;
                     justify-content: center;
-                    align-items: center;
-                    margin-top: 20px;
+                    animation: closeGap 4s infinite;
+                    animation-delay: 2s;
+                }
+
+                .ending-message-text h2 {
+                    position: relative;
+                    z-index: 3;
+                    opacity: 0;
+                    animation: showHeading 4s infinite;
+                    animation-delay: 2s;
                 }
 
                 .ending-gif img {
-                    width: 50px;
-                    height: 50px;
-                    margin: 0 10px;
+                    width: calc(100% /3);
+                    height: auto;
+                }
+
+                @keyframes closeGap {
+                    0% {
+                        gap: 0;
+                    }
+
+                    100% {
+                        gap: 85%;
+                    }
+                }
+
+                @keyframes showHeading {
+                    0% {
+                        opacity: 0;
+                    }
+
+                    90% {
+                        opacity: 1;
+                    }
                 }
             </style>
-            <div class="grid-container-a"></div>
-            <div class="grid-container-b"></div>
-            <div class="grid-container-a"></div>
-            <div class="grid-container-b"></div>
-            <div class="grid-container-a"></div>
-            <div class="grid-container-b"></div>
+
         </div>
+
     </section>
 
 
@@ -535,6 +616,7 @@
     <script src="assets/js/map.js"></script>
     <script src="assets/js/countdown.js"></script>
     <script src="assets/js/common.js"></script>
+    <script src="assets/js/message.js"></script>
 
 </body>
 

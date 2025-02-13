@@ -3,7 +3,7 @@
 // ]
 
 const musicList = window.location.pathname.includes('home.html') ? 
-    ['assets/music/marriedlife.m4a'] : 
+    ['assets/music/bettertogether.m4a'] : 
     ['assets/music/sothisislove.m4a'];
 
 class MusicPlayer {

@@ -112,10 +112,6 @@ section {
 	/* overflow-x: hidden; */
 }
 
-section {
-	overflow-x: hidden;
-}
-
 body {
 	line-height: 1;
 }
@@ -324,9 +320,12 @@ h6 {
 
 
 /* underline when hovered */
+.special a {
+	text-decoration: underline;
+}
+
 .special a:hover {
 	color: #276A34;
-	text-decoration: underline;
 }
 
 h1 a,
