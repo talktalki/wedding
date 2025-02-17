@@ -107,11 +107,8 @@ function appendMessageToDOM(message) {
     updateShowMoreButton();
 }
 let isExpanded = false;
-
 function updateShowMoreButton() {
     let showMoreButton = document.getElementById('show-more-button');
-    const showMoreTextEn = 'Show More';
-    const showLessTextEn = 'Show Less';
     const showMoreTextKo = '더보기';
     const showLessTextKo = '줄이기';
 
@@ -126,12 +123,8 @@ function updateShowMoreButton() {
     const totalMessages = messagesContainer.children.length;
     showMoreButton.style.display = totalMessages > 3 ? 'block' : 'none';
 
-    const currentLang = document.documentElement.lang === 'ko' ? 'ko' : 'en';
-    const showMoreText = currentLang === 'ko' ? showMoreTextKo : showMoreTextEn;
-    const showLessText = currentLang === 'ko' ? showLessTextKo : showLessTextEn;
-    showMoreButton.textContent = isExpanded ? showLessText : showMoreText;
+    showMoreButton.textContent = isExpanded ? showLessTextKo : showMoreTextKo;
     showMoreButton.setAttribute('data-ko', isExpanded ? showLessTextKo : showMoreTextKo);
-    showMoreButton.setAttribute('data-en', isExpanded ? showLessTextEn : showMoreTextEn);
 
     showMoreButton.onclick = () => {
         const messages = Array.from(messagesContainer.children);
@@ -224,3 +217,15 @@ function updateShowMoreButton() {
     }
 });
 
+
+
+// const params = new URLSearchParams(window.location.search);
+// const location = params.get('location');
+
+// if (location === 'y') {
+//     document.getElementById('y-details').style.display = 'block';
+//     document.getElementById('g-details').style.display = 'none';
+// } else if (location === 'g') {
+//     document.getElementById('y-details').style.display = 'none';
+//     document.getElementById('g-details').style.display = 'block';
+// }

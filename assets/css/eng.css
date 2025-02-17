@@ -3307,7 +3307,7 @@ table.alt tfoot {
 	-webkit-justify-content: center;
 	-ms-justify-content: center;
 	justify-content: center;
-	min-height: 86vh;
+	min-height: 100vh;
 	text-align: center;
 }
 
@@ -3330,9 +3330,9 @@ body.is-ie .wrapper.fullscreen {
 @media screen and (max-width: 736px) {
 
 	.wrapper.fullscreen {
-		padding: 10vh 0 0 0;
+		padding: 20vh 0 0 0;
 		justify-content: space-between;
-		/* min-height: 0; */
+		min-height: 95vh;
 	}
 
 	body.is-ie .wrapper.fullscreen {
@@ -4021,20 +4021,19 @@ body.is-preload #sidebar nav ul li {
 
 #countdown .heart-wrapper {
 	position: relative;
-	width: 100%;
 	height: 100%;
 }
 
 
 #countdown .countdown-svg {
-	width: 100%;
-	height: 100%;
+	width: 70%;
+	height: 50%;
 }
 
 #countdown .countdown-number {
 	font-family: 'Shrikhand', serif;
 	position: absolute;
-	top: 50%;
+	top: 25%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	font-size: 12px;
@@ -4052,8 +4051,7 @@ body.is-preload #sidebar nav ul li {
 
 @media screen and (max-width: 1920px) {
 	#countdown .heart-wrapper {
-		width: 80px;
-		height: 80px;
+		width: 10vh;
 	}
 
 	#countdown .countdown-number {
@@ -4067,19 +4065,11 @@ body.is-preload #sidebar nav ul li {
 	}
 
 	#countdown .heart-wrapper {
-		width: 100%;
-		height: 100%;
+		width: 7vh;
 	}
 
 	#countdown .countdown-number {
 		font-size: 12px;
-	}
-}
-
-@media screen and (max-width: 480px) {
-	#countdown .heart-wrapper {
-		width: 40px;
-		height: 40px;
 	}
 }
 

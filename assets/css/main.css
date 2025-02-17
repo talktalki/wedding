@@ -91,6 +91,8 @@ video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	max-width: 430px;
+	/* for mobile width */
 }
 
 article,
@@ -173,7 +175,12 @@ textarea {
 
 html {
 	box-sizing: border-box;
+	/* to make it mobile width even in desktop */
+	margin: 0 auto;
+	max-width: 430px;
+	background-color: white;
 }
+
 
 *,
 *:before,
@@ -203,40 +210,27 @@ input,
 select,
 textarea {
 	color: #fff;
-	font-family: "Noto Sans", sans-serif;
+	font-family: 'Gowun Dodum', sans-serif;
 	font-size: 12pt;
 	font-weight: 300;
 	letter-spacing: 0.075em;
 	line-height: 1.85em;
 }
 
-html[lang="ko"] body,
-html[lang="ko"] input,
-html[lang="ko"] select,
-html[lang="ko"] textarea {
+body,
+input,
+select,
+textarea {
 	font-family: "Gowun Dodum", sans-serif !important;
 	font-size: 0.9em;
 }
 
-html[lang="ko"] .venue,
-html[lang="ko"] .day {
+.venue,
+.day {
 	font-size: 1em;
 }
 
-html[lang="ko"] h2,
-html[lang="ko"] button {
-	font-family: "Gowun Dodum", sans-serif;
-}
 
-html[lang="ko"] .qa-question {
-	font-family: "Gowun Dodum", sans-serif;
-	font-size: 1em;
-	font-weight: 300;
-}
-
-/* .wrapper.style3.special[data-show-lang="ko"] {
-	padding: 35px 35px;
-} */
 
 .names {
 	display: flex;
@@ -344,7 +338,7 @@ h6 a {
 }
 
 h2 {
-	font-family: "Noto Sans", sans-serif;
+	font-family: "Gowun Dodum", sans-serif;
 	font-size: 20px;
 	line-height: 1.75em;
 }
@@ -2601,7 +2595,7 @@ button,
 	color: #fff;
 	cursor: pointer;
 	display: inline-block;
-	font-family: "Noto Sans", sans-serif;
+	font-family: "Gowun Dodum", sans-serif;
 	font-weight: 600;
 	height: 3.125em;
 	letter-spacing: 0.225em;
@@ -3214,7 +3208,7 @@ button.reset-style {
 }
 
 .wrapper.style3 header.major p {
-	color: #586451;
+	/* color: #586451; */
 	padding-top: 0em;
 	padding-bottom: 0em;
 }
@@ -3249,32 +3243,30 @@ button.reset-style {
 	}
 }
 
-
-/* Specific styling for time-text */
 .day {
-	font-size: 22px;
-	margin-bottom: 0.2em;
-	/* Add more space below the time */
+
+	margin-bottom: 1em;
+
 }
 
-/* Specific styling for venue */
+/*
 .venue {
-	font-size: 22px;
+
 	margin-bottom: 0.2em;
 
-	/* Small space below the venue */
+
 }
 
 
-/* Specific styling for address */
+
 .address {
 	font-size: 1em;
 	margin-top: 0;
-	/* No space above the address */
-	margin-bottom: 0.2em;
-	/* Small space below the venue */
 
-}
+	margin-bottom: 0.2em;
+
+
+} */
 
 .wrapper.style3 label {
 	color: #1A1A19;
@@ -4282,11 +4274,17 @@ body.is-mobile #main>header {
 /* Footer */
 
 #footer {
-	padding: 3em 0 1em 0;
+	padding: 2em 0 1em 0;
 	text-align: center;
 	background-color: #586451;
 	list-style: none;
 
+}
+
+#footer ul,
+#footer li {
+	color: rgba(255, 255, 255, 0.5);
+	padding: 0;
 }
 
 #footer .icons {
@@ -4344,27 +4342,11 @@ body.is-mobile #main>header {
 
 }
 
-@media screen and (max-width: 980px) {
-
-	#footer {
-		padding: 4em 3em 2em 3em;
-	}
-
-}
-
-@media screen and (max-width: 736px) {
-
-	#footer {
-		padding: 3em 2em 1em 2em;
-		font-size: 1.3em;
-	}
-
-}
-
 /* Landing */
 
 body.landing #page-wrapper {
-	background-image: url("../../images/ENGAGEMENT L-161.JPG");
+	/* background-image: url("../../images/ENGAGEMENT L-161.JPG"); */
+	background-image: url("../../images/backhug.png");
 	background-attachment: fixed;
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -4372,21 +4354,13 @@ body.landing #page-wrapper {
 	padding-top: 0;
 }
 
-body.landing #footer {
-	background-color: rgba(29, 36, 42, 0.9);
-}
-
-/* body.landing #schedule-main {
-	background-color:url("../../images/ENGAGEMENT L-161.JPG");
-} */
-
 body.is-mobile.landing #page-wrapper {
 	background: none;
 }
 
 body.is-mobile.landing #banner,
 body.is-mobile.landing .wrapper.style4 {
-	background-image: url("../../images/ENGAGEMENT L-161.JPG");
+	background-image: url("../../images/backhug.png");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -4488,8 +4462,9 @@ body.is-mobile.landing #footer {
 	border: none;
 	width: 100%;
 	text-align: left;
-	/* font-size: 1em; */
-	font-family: "Noto Sans", sans-serif;
+	font-size: 1em;
+	font-weight: 300;
+	font-family: "Gowun Dodum", sans-serif;
 	cursor: pointer;
 	display: flex;
 	justify-content: space-between;
@@ -5301,8 +5276,8 @@ h2.text-center {
 #ending {
 	transition: opacity 0.5s ease;
 	padding-bottom: 0;
-	background-image: url("../../images/ENGAGEMENT Alfred-13.JPG");
-	background-position: 70% center;
+	background-image: url("../../images/chase.png");
+	background-position: 10% center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	position: relative;
@@ -5343,7 +5318,7 @@ h2.text-center {
 
 
 .ending-border .content {
-	/* color: #fff; */
+	color: #fff;
 	font-style: italic;
 	opacity: 0;
 	animation: fadeIn 1s ease-in-out forwards;
@@ -5363,12 +5338,10 @@ h2.text-center {
 	}
 }
 
-@media screen and (max-width: 980px) {
-
-	#messages-wrapper {
-		display: block;
-	}
+#messages-wrapper {
+	display: block;
 }
+
 
 
 #venue {
