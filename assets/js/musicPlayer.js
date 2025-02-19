@@ -1,7 +1,3 @@
-// const musicList = [
-//     'assets/music/sothisislove.m4a',
-// ]
-
 const musicList = window.location.pathname.includes('home.html') ? 
     ['assets/music/bettertogether.m4a'] : 
     ['assets/music/sothisislove.m4a'];
@@ -12,7 +8,8 @@ class MusicPlayer {
         this.audio = new Audio(musicList[this.currentTrackIndex]);
         this.isPlaying = false;
         this.createPlayer();
-        this.autoplay();
+        this.setupAutoplayForIOS();
+        this.attemptAutoplay();
 
         this.audio.addEventListener('ended', () => {
             this.currentTrackIndex = (this.currentTrackIndex + 1) % musicList.length;
@@ -48,13 +45,53 @@ class MusicPlayer {
         }
     }
 
+    setupAutoplayForIOS() {
+        if (this.isIOS()) {
+            const startAudio = () => {
+                this.audio.play()
+                    .then(() => {
+                        this.isPlaying = true;
+                        this.button.innerHTML = '⏸︎';
+                        document.removeEventListener('touchstart', startAudio);
+                        document.removeEventListener('click', startAudio);
+                    })
+                    .catch(error => {
+                        console.error("Playback failed:", error);
+                    });
+            };
+
+            document.addEventListener('touchstart', startAudio);
+            document.addEventListener('click', startAudio);
+        }
+    }
+
+    isIOS() {
+        return [
+            'iPad Simulator',
+            'iPhone Simulator',
+            'iPod Simulator',
+            'iPad',
+            'iPhone',
+            'iPod'
+        ].includes(navigator.platform)
+        || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+    }
+
+    attemptAutoplay() {
+        if (!this.isIOS()) {
+            this.audio.play()
+                .then(() => {
+                    this.isPlaying = true;
+                    this.button.innerHTML = '⏸︎';
+                })
+                .catch(error => {
+                    console.error("Autoplay failed:", error);
+                });
+        }
+    }
+
     autoplay() {
-        this.audio.play().then(() => {
-            this.isPlaying = true;
-            this.button.innerHTML = '⏸︎';
-        }).catch(error => {
-            console.error("Autoplay failed:", error);
-        });
+        // This method is now deprecated, using attemptAutoplay instead
     }
 }
 

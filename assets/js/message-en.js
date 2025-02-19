@@ -42,13 +42,20 @@ document.addEventListener("DOMContentLoaded", function () {
         const card = document.createElement("li");
         card.className = "card";
         
-        const langAttribute = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(message.content) ? 'ko' : 'en';
-        const fontFamily = langAttribute === 'ko' ? 'Gowun Dodum, serif' : '';
+        // const langAttribute = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(message.content) ? 'ko' : 'en';
+        // const fontFamily = langAttribute === 'ko' ? 'Gowun Dodum, serif' : 'inherit';
+
+        // card.innerHTML = `
+        //     <p style="font-family: ${fontFamily}">${message.content}</p>
+        //     <h4 style="font-family: ${fontFamily}">${message.name}</h4>
+        // `;
 
         card.innerHTML = `
-            <p style="font-family: ${fontFamily}">${message.content}</p>
-            <h4 style="font-family: ${fontFamily}">${message.name}</h4>
+            <p>${message.content}</p>
+            <h4>${message.name}</h4>
         `;
+
+
 
         return card;
     }
