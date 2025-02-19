@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const stories = Array.from({ length: 15 }, (_, i) => ({
-        image: `images/storysample_${i}.PNG`,
+    const stories = Array.from({ length: 18 }, (_, i) => ({
+        image: `images/ourstory_${i}.webp`,
         text: 'First time we met'
     }));
     const storyContainer = document.querySelector('.story-container');

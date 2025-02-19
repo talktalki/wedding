@@ -13,7 +13,7 @@
     <!-- Open Graph meta tags -->
     <meta property="og:title" content="Yosep + Grace Wedding Invitation" />
     <meta property="og:description" content="Come celebrate with us! :)" />
-    <meta property="og:image" content="https://talktalki.github.io/wedding/images/Studio-1.webp" />
+    <meta property="og:image" content="https://talktalki.github.io/wedding/images/og_image.jpeg" />
     <meta property="og:url" content="https://talktalki.github.io/wedding/home.html" />
     <meta property="og:type" content="website" />
 
@@ -21,7 +21,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Yosep + Grace Wedding Invitation" />
     <meta name="twitter:description" content="Come celebrate with us! :)" />
-    <meta name="twitter:image" content="https://talktalki.github.io/wedding/images/Studio-1.webp" />
+    <meta name="twitter:image" content="https://talktalki.github.io/wedding/images/og_image.jpeg" />
 
 </head>
 
@@ -428,17 +428,12 @@
                         <button class="nav-btn prev" onclick="changePhoto(-1)">❮</button>
                         <button class="nav-btn next" onclick="changePhoto(1)">❯</button>
                     </div>
-                    <div class="thumbnails">
-                        <script>
-
-                        </script>
-                    </div>
+                    <div class="thumbnails"></div>
                 </div>
 
                 <!-- Desktop Grid Gallery -->
                 <div class="desktop-gallery">
-                    <div class="grid-gallery">
-                    </div>
+                    <div class="grid-gallery"></div>
                 </div>
             </div>
         </section>
@@ -452,6 +447,7 @@
             .gallery-container {
                 max-width: 800px;
                 margin: 0 auto;
+                position: relative;
             }
 
             #current-photo {
@@ -468,10 +464,14 @@
                 top: 50%;
                 transform: translateY(-50%);
                 color: #276A34 !important;
-                border: none;
+                border: none !important;
                 padding: 1rem;
                 cursor: pointer;
                 font-size: 1.2rem;
+            }
+
+            .nav-btn:hover {
+                border: none !important;
             }
 
             .prev {
@@ -483,7 +483,7 @@
             }
 
             .thumbnails {
-                display: flex;
+                display: none;
                 gap: 0.5rem;
                 overflow-x: auto;
                 padding: 0.5rem;
@@ -519,6 +519,7 @@
                 height: 400px;
                 object-fit: cover;
                 transition: transform 0.3s ease;
+                cursor: pointer;
             }
 
             .grid-gallery img:hover {
@@ -531,6 +532,10 @@
                     display: block;
                 }
 
+                .thumbnails {
+                    display: flex;
+                }
+
                 .desktop-gallery {
                     display: none;
                 }
@@ -538,64 +543,46 @@
         </style>
 
         <script>
-            const photos = Array.from({length: 18}, (_, i) =>
-                `images/Studio-${i + 1}.webp`
-            );
+            const photos = Array.from({length: 18}, (_, i) => `images/Studio-${i + 1}.webp`);
             let currentIndex = 0;
 
+            // Generate thumbnails and gallery images
+            const thumbnailsDiv = document.querySelector('.thumbnails');
+            const galleryDiv = document.querySelector('.grid-gallery');
+
+            photos.forEach((photo, index) => {
+                // Thumbnails for mobile
+                const thumbImg = document.createElement('img');
+                thumbImg.src = photo;
+                thumbImg.alt = `Thumbnail ${index + 1}`;
+                thumbImg.loading = "lazy";
+                thumbImg.onclick = () => showPhoto(index);
+                if (index === 0) thumbImg.classList.add('active');
+                thumbnailsDiv.appendChild(thumbImg);
+
+                // Desktop gallery images
+                const galleryImg = document.createElement('img');
+                galleryImg.src = photo;
+                galleryImg.alt = `Gallery Photo ${index + 1}`;
+                galleryImg.loading = "lazy";
+                galleryDiv.appendChild(galleryImg);
+            });
+
+            // Show photo in mobile gallery
             function showPhoto(index) {
                 const mainPhoto = document.getElementById('current-photo');
                 const thumbnails = document.querySelectorAll('.thumbnails img');
 
                 currentIndex = index;
                 mainPhoto.src = photos[index];
-
-                thumbnails.forEach((thumb, i) => {
-                    thumb.classList.toggle('active', i === index);
-                });
+                thumbnails.forEach((thumb, i) => thumb.classList.toggle('active', i === index));
             }
 
+            // Change photo in mobile gallery
             function changePhoto(direction) {
                 currentIndex = (currentIndex + direction + photos.length) % photos.length;
                 showPhoto(currentIndex);
             }
-
-            // Touch events for mobile
-            let touchStartX = 0;
-            const mainPhoto = document.querySelector('.main-photo');
-
-            mainPhoto.addEventListener('touchstart', e => {
-                touchStartX = e.touches[0].clientX;
-            });
-
-            mainPhoto.addEventListener('touchend', e => {
-                const touchEndX = e.changedTouches[0].clientX;
-                const diff = touchStartX - touchEndX;
-
-                if (Math.abs(diff) > 50) {
-                    changePhoto(diff > 0 ? 1 : -1);
-                }
-            });
-
-            // Generate thumbnails dynamically
-            const thumbnailsDiv = document.querySelector('.thumbnails');
-            photos.forEach((photo, index) => {
-                const img = document.createElement('img');
-                img.src = photo;
-                img.alt = `Thumbnail ${index + 1}`;
-                img.onclick = () => showPhoto(index);
-                if (index === 0) img.classList.add('active');
-                thumbnailsDiv.appendChild(img);
-            });
-            // Generate gallery images dynamically
-            const galleryDiv = document.querySelector('.grid-gallery');
-            photos.forEach((photo, index) => {
-                const img = document.createElement('img');
-                img.src = photo;
-                img.alt = `Gallery Photo ${index + 1}`;
-                img.loading = "lazy"; // Add lazy loading
-                galleryDiv.appendChild(img);
-            });
         </script>
 
         <section id="ending-bottom-grid" class="special">

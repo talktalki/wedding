@@ -56,8 +56,8 @@ const urlParams = new URLSearchParams(window.location.search);
 const fragmentLang = window.location.hash.replace('#', '');
 const paramLang = urlParams.get('lang');
 
-// Set initial language based on URL or default to English
-let currentLanguage = paramLang || fragmentLang || 'en';
+// Set initial language based on URL or default to Korean
+let currentLanguage = paramLang || fragmentLang || 'ko';
 if (currentLanguage === 'ko' || currentLanguage === 'en') {
     changeLanguage(currentLanguage);
 }

@@ -5267,7 +5267,7 @@ h2.text-center {
 
 @media screen and (max-width: 768px) {
 	.dropdown-container {
-		width: 75%;
+		/* width: 75%; */
 		padding: 10px;
 		justify-self: center;
 	}

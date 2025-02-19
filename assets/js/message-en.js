@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 closeButton.className = 'close-button';
                 closeButton.style.position = 'absolute';
                 closeButton.style.top = '10px';
-                closeButton.style.color = 'black';
-                closeButton.style.right = '10px';
+                closeButton.style.color = '#276A34';
+                closeButton.style.right = '20px';
                 closeButton.style.cursor = 'pointer';
                 closeButton.addEventListener('click', () => {
                     handleDelete(card);
