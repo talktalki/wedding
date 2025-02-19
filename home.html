@@ -5,8 +5,14 @@
     <title>Grace + Yosep Wedding</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/eng.css" />
+
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="images/intro-hug.gif">
+
+
+    <link rel="stylesheet" href="assets/css/eng.css">
     <noscript>
+
         <link rel="stylesheet" href="assets/css/noscript.css" />
     </noscript>
 
@@ -123,7 +129,7 @@
                 </p>
                 <p>
                     Wondering how we made it through 7 years? </br>
-                    Check out [<a href="ourstory.html" class="special">Our Story</a>].
+                    Check out <a href="ourstory.html" class="special" style="font-style: italic;">Our Story</a>.
                 </p>
             </div>
 
@@ -164,7 +170,7 @@
                     <section>
                         <div class="text-center">
                             <h2>Reception in Korea </h2>
-                            <h3>May 17 2025 5:00 PM </h3>
+                            <h3>May 17 2025 11:00 AM </h3>
                             <h3>The Honors</h3>
                             <p>서울시 중랑구 망우로 353</p>
                         </div>
@@ -400,12 +406,13 @@
 
             </div>
             <div class="inner" id="message-cards">
-                <ul class="cards"></ul>
-
                 <div class="card-navigation">
                     <button id="prev-card" class="arrow-button"></button>
                     <button id="next-card" class="arrow-button"></button>
                 </div>
+                <ul class="cards"></ul>
+
+
             </div>
         </section>
 
@@ -441,110 +448,6 @@
                 </div>
             </div>
         </section>
-
-        <style>
-            /* Mobile Gallery Styles */
-            .mobile-gallery {
-                display: none;
-            }
-
-            .gallery-container {
-                max-width: 800px;
-                margin: 0 auto;
-                position: relative;
-            }
-
-            #current-photo {
-                position: relative;
-                aspect-ratio: 3/4;
-                margin-bottom: 1rem;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            .nav-btn {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                color: #276A34 !important;
-                border: none !important;
-                padding: 1rem;
-                cursor: pointer;
-                font-size: 1.2rem;
-            }
-
-            .nav-btn:hover {
-                border: none !important;
-            }
-
-            .prev {
-                left: 0;
-            }
-
-            .next {
-                right: 0;
-            }
-
-            .thumbnails {
-                display: none;
-                gap: 0.5rem;
-                overflow-x: auto;
-                padding: 0.5rem;
-            }
-
-            .thumbnails img {
-                height: 60px;
-                width: auto;
-                cursor: pointer;
-                opacity: 0.6;
-                transition: opacity 0.3s;
-            }
-
-            .thumbnails img.active {
-                opacity: 1;
-                border: 2px solid #F6DCD0;
-            }
-
-            /* Desktop Grid Gallery Styles */
-            .desktop-gallery {
-                display: block;
-            }
-
-            .grid-gallery {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            .grid-gallery img {
-                width: 100%;
-                height: 400px;
-                object-fit: cover;
-                transition: transform 0.3s ease;
-                cursor: pointer;
-            }
-
-            .grid-gallery img:hover {
-                transform: scale(1.02);
-            }
-
-            /* Media Query for Mobile */
-            @media screen and (max-width: 768px) {
-                .mobile-gallery {
-                    display: block;
-                }
-
-                .thumbnails {
-                    display: flex;
-                }
-
-                .desktop-gallery {
-                    display: none;
-                }
-            }
-        </style>
 
         <script>
             const photos = Array.from({length: 18}, (_, i) => `images/Studio-${i + 1}.webp`);
@@ -587,6 +490,17 @@
                 currentIndex = (currentIndex + direction + photos.length) % photos.length;
                 showPhoto(currentIndex);
             }
+
+            // Preload images for caching
+            function preloadImages() {
+                photos.forEach(photo => {
+                    const img = new Image();
+                    img.src = photo;
+                });
+            }
+
+            // Preload images on window load
+            window.onload = preloadImages;
         </script>
 
         <section id="ending-bottom-grid" class="special">
@@ -632,7 +546,6 @@
         <script src="assets/js/common.js"></script>
         <script type="module" src="assets/js/message-en.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-
 </body>
 
 </html>
