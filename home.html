@@ -11,17 +11,17 @@
     </noscript>
 
     <!-- Open Graph meta tags -->
-    <meta property="og:title" content="Grace + Yosep Wedding" />
-    <meta property="og:description" content="Join us in celebrating our wedding!" />
-    <meta property="og:image" content="https://talktalki.github.io/wedding/images/ENGAGEMENT%20L-161.JPG" />
-    <meta property="og:url" content="https://talktalki.github.io/wedding" />
+    <meta property="og:title" content="Yosep + Grace Wedding Invitation" />
+    <meta property="og:description" content="Come celebrate with us! :)" />
+    <meta property="og:image" content="https://talktalki.github.io/wedding/images/Studio-1.webp" />
+    <meta property="og:url" content="https://talktalki.github.io/wedding/home.html" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card meta tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Grace + Yosep Wedding" />
-    <meta name="twitter:description" content="Join us in celebrating the wedding of Grace and Yosep!" />
-    <meta name="twitter:image" content="https://talktalki.github.io/wedding/images/ENGAGEMENT%20L-161.JPG" />
+    <meta name="twitter:title" content="Yosep + Grace Wedding Invitation" />
+    <meta name="twitter:description" content="Come celebrate with us! :)" />
+    <meta name="twitter:image" content="https://talktalki.github.io/wedding/images/Studio-1.webp" />
 
 </head>
 
@@ -134,8 +134,7 @@
                 <div class="features text-center">
                     <section class="checkerboard-container">
                         <div class="checkerboard">
-                            <!-- Circle Image -->
-                            <img src="images/backhug.png" alt="Circle Image" class="circle-image">
+                            <img src="images/venue-1.webp" class="circle-image">
                         </div>
                     </section>
                     <section>
@@ -174,8 +173,7 @@
                     </section>
                     <section class="checkerboard-container">
                         <div class="checkerboard">
-                            <!-- Circle Image -->
-                            <img src="images/backhug.png" alt="Circle Image" class="circle-image">
+                            <img src="images/venue-2.webp" class="circle-image">
                         </div>
                     </section>
 
@@ -204,14 +202,6 @@
                     gift we could ask for. If you'd still like to share a gift, we have three ways we can receive them.
                     Thank you for celebrating with us!</p>
                 <div class="registry-cards">
-                    <!-- <svg viewBox="0 0 100 100" class="circular-text">
-                        <defs>
-                            <path id="circlePath" d="M 50,50 m -40,0 a 40,40 0 0,1 40,-40" fill="none" />
-                        </defs>
-                        <text fill="#FFFFFF" font-size="6">
-                            <textPath href="#circlePath">Click Me</textPath>
-                        </text>
-                    </svg> -->
                     <section class="registry-circle">
 
                         <a href="https://www.amazon.com/wedding/share/graceyosepyay" target="_blank">
@@ -247,6 +237,7 @@
                 <span class="close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span>
                 <h3>Zelle Payment</h3>
                 <p>Scan in your banking app or copy the phone number.</p>
+                <div class="copy-feedback" style="opacity: 0;">Copied!</div>
                 <a href="#" onclick="copyToClipboard('331-218-8431', this); return false;">
                     331-218-8431
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -343,18 +334,6 @@
                         </div>
                     </div>
 
-                    <!-- Question 6 -->
-                    <div class="qa-item">
-                        <button class="qa-question">
-                            <h2>
-                                Will the ceremony be live-streamed?</h2><span class="arrow"></span>
-                        </button>
-                        <div class="qa-answer">
-                            <p>Yes! For those cheering us on from afar (or from the couch in pajamas), we'll be
-                                live-streaming the ceremony. Stay tuned for the link—it's coming soon! </p>
-                        </div>
-                    </div>
-
                     <!-- Question 7 -->
                     <div class="qa-item">
                         <button class="qa-question">
@@ -395,7 +374,7 @@
         <section id="messages" class="wrapper style1 fade-up">
             <div class="inner" id="message-form">
                 <h2>Leave A Message</h2>
-                <form method="post" action="#">
+                <form method="post" action="#" onsubmit="return false;">
                     <div class="fields">
                         <div class="field half">
                             <label for="name">Name</label>
@@ -403,7 +382,8 @@
                         </div>
                         <div class="field half">
                             <label for="email">Password</label>
-                            <input type="text" name="email" id="email" />
+                            <input type="password" name="email" id="email" />
+                            <!-- Changed from type="text" to type="password" -->
                         </div>
                         <div class="field">
                             <label for="message">Message</label>
@@ -411,49 +391,20 @@
                         </div>
                     </div>
                     <ul class="actions">
-                        <li><a href="" class="button submit">Send Message</a></li>
+                        <li><button type="submit" class="button submit" id="submit-message">Send Message</button></li>
                     </ul>
                 </form>
 
             </div>
             <div class="inner" id="message-cards">
-                <div>
-                    <ul class="cards">
-                        <li class="card">
-                            <p>Congrats! I'm so excited for this wedding. Love you guys! This is going to be a fantastic
-                                wedding!</p>
-                            <h4>Jenny </h4>
-                        </li>
-                        <li class="card">
-                            <p>Congratulations on your wedding day! 💍✨ This marks the beginning of a beautiful new
-                                chapter
-                                filled with love, joy, and countless cherished moments. May your journey together be
-                                blessed
-                                with laughter, unwavering support, and the kind of happiness that only grows stronger
-                                with
-                                time.</p>
-                            <h4>Comment Card 1 </h4>
-                        <li class="card">
-                            <p>Congrats! I'm so excited for this wedding. Love you guys!</p>
-                            <h4>Comment Card 1 </h4>
-                        </li>
-                        <li class="card">
-                            <p>Congrats! I'm so excited for this wedding. Love you guys!</p>
-                            <h4>Comment Card 1 </h4>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Arrow buttons for flipping through cards -->
+                <ul class="cards"></ul>
+
                 <div class="card-navigation">
-                    <button id="prev-card" class="arrow-button">←</button>
-                    <button id="next-card" class="arrow-button">→</button>
+                    <button id="prev-card" class="arrow-button"></button>
+                    <button id="next-card" class="arrow-button"></button>
                 </div>
             </div>
         </section>
-
-        <style>
-
-        </style>
 
         <section id="map-container" class="wrapper style3 fade-up">
             <div class="inner">
@@ -470,153 +421,227 @@
         <section id="accommodations" class="wrapper style1 fade-up special">
             <div class="inner">
                 <h2 class="dotted">Gallery</h2>
+                <!-- Mobile Gallery -->
+                <div class="mobile-gallery">
+                    <div class="gallery-container">
+                        <div class="main-photo"></div>
+                        <img id="current-photo" src="images/Studio-1.webp" alt="Gallery Photo">
+                        <button class="nav-btn prev" onclick="changePhoto(-1)">❮</button>
+                        <button class="nav-btn next" onclick="changePhoto(1)">❯</button>
+                    </div>
+                    <div class="thumbnails">
+                        <script>
 
+                        </script>
+                    </div>
+                </div>
+
+                <!-- Desktop Grid Gallery -->
+                <div class="desktop-gallery">
+                    <div class="grid-gallery">
+                    </div>
+                </div>
             </div>
         </section>
 
-    </div>
+        <style>
+            /* Mobile Gallery Styles */
+            .mobile-gallery {
+                display: none;
+            }
 
-    <section id="ending-bottom-grid" class="special">
-        <div class="inner">
-            <div class="grid-container-a"></div>
-            <div class="grid-container-b"></div>
-            <div class="ending">
-                <div class="ending-message">
-                    <div class="ending-message-text">
-                        <h2>See you soon!</h2>
-                        <svg class="end-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                        </svg>
+            .gallery-container {
+                max-width: 800px;
+                margin: 0 auto;
+            }
 
+            #current-photo {
+                position: relative;
+                aspect-ratio: 3/4;
+                margin-bottom: 1rem;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .nav-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #276A34 !important;
+                border: none;
+                padding: 1rem;
+                cursor: pointer;
+                font-size: 1.2rem;
+            }
+
+            .prev {
+                left: 0;
+            }
+
+            .next {
+                right: 0;
+            }
+
+            .thumbnails {
+                display: flex;
+                gap: 0.5rem;
+                overflow-x: auto;
+                padding: 0.5rem;
+            }
+
+            .thumbnails img {
+                height: 60px;
+                width: auto;
+                cursor: pointer;
+                opacity: 0.6;
+                transition: opacity 0.3s;
+            }
+
+            .thumbnails img.active {
+                opacity: 1;
+                border: 2px solid #F6DCD0;
+            }
+
+            /* Desktop Grid Gallery Styles */
+            .desktop-gallery {
+                display: block;
+            }
+
+            .grid-gallery {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .grid-gallery img {
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+
+            .grid-gallery img:hover {
+                transform: scale(1.02);
+            }
+
+            /* Media Query for Mobile */
+            @media screen and (max-width: 768px) {
+                .mobile-gallery {
+                    display: block;
+                }
+
+                .desktop-gallery {
+                    display: none;
+                }
+            }
+        </style>
+
+        <script>
+            const photos = Array.from({length: 18}, (_, i) =>
+                `images/Studio-${i + 1}.webp`
+            );
+            let currentIndex = 0;
+
+            function showPhoto(index) {
+                const mainPhoto = document.getElementById('current-photo');
+                const thumbnails = document.querySelectorAll('.thumbnails img');
+
+                currentIndex = index;
+                mainPhoto.src = photos[index];
+
+                thumbnails.forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+            }
+
+            function changePhoto(direction) {
+                currentIndex = (currentIndex + direction + photos.length) % photos.length;
+                showPhoto(currentIndex);
+            }
+
+            // Touch events for mobile
+            let touchStartX = 0;
+            const mainPhoto = document.querySelector('.main-photo');
+
+            mainPhoto.addEventListener('touchstart', e => {
+                touchStartX = e.touches[0].clientX;
+            });
+
+            mainPhoto.addEventListener('touchend', e => {
+                const touchEndX = e.changedTouches[0].clientX;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > 50) {
+                    changePhoto(diff > 0 ? 1 : -1);
+                }
+            });
+
+            // Generate thumbnails dynamically
+            const thumbnailsDiv = document.querySelector('.thumbnails');
+            photos.forEach((photo, index) => {
+                const img = document.createElement('img');
+                img.src = photo;
+                img.alt = `Thumbnail ${index + 1}`;
+                img.onclick = () => showPhoto(index);
+                if (index === 0) img.classList.add('active');
+                thumbnailsDiv.appendChild(img);
+            });
+            // Generate gallery images dynamically
+            const galleryDiv = document.querySelector('.grid-gallery');
+            photos.forEach((photo, index) => {
+                const img = document.createElement('img');
+                img.src = photo;
+                img.alt = `Gallery Photo ${index + 1}`;
+                img.loading = "lazy"; // Add lazy loading
+                galleryDiv.appendChild(img);
+            });
+        </script>
+
+        <section id="ending-bottom-grid" class="special">
+            <div class="inner">
+                <div class="grid-container-a"></div>
+                <div class="grid-container-b"></div>
+                <div class="ending">
+                    <div class="ending-message">
+                        <div class="ending-message-text">
+                            <h2>See you soon!</h2>
+                            <svg class="end-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+
+                        </div>
                     </div>
-                </div>
-                <div class="ending-gif">
-                    <img src="images/yosep_football.png">
-                    <img src="images/grace_football.png">
-                </div>
+                    <div class="ending-gif">
+                        <img src="images/yosep_football.png">
+                        <img src="images/grace_football.png">
+                    </div>
 
+                </div>
             </div>
-            <style>
-                .ending {
-                    position: relative;
-                    height: 50vh;
-                }
 
-                @media screen and (max-width: 768px) {
-                    .ending {
-                        height: 30vh;
-                    }
-
-                }
-
-                .ending-message {
-                    background-color: transparent;
-                    position: absolute;
-                    bottom: 40%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    z-index: 1;
-                    width: 100%;
-                }
-
-                .ending-message-text {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    text-align: center;
-                    padding: 2em;
-                    z-index: 2;
-                }
-
-                /* increase padding for larger screens */
-                @media screen and (min-width: 768px) {
-                    .ending-message-text {
-                        padding: 8em;
-                    }
-                }
+        </section>
 
 
-                .end-heart {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    width: 100%;
-                    transform: translate(-50%, -50%);
-                    margin: 0 auto;
-                    fill: #F6DCD0;
-                    z-index: 1;
-                }
+        <div id="footer-placeholder"></div>
 
-                .ending-gif {
-                    position: absolute;
-                    top: 60%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    z-index: 2;
-                    display: flex;
-                    justify-content: center;
-                    animation: closeGap 4s infinite;
-                    animation-delay: 2s;
-                }
-
-                .ending-message-text h2 {
-                    position: relative;
-                    z-index: 3;
-                    opacity: 0;
-                    animation: showHeading 4s infinite;
-                    animation-delay: 2s;
-                }
-
-                .ending-gif img {
-                    width: calc(100% /3);
-                    height: auto;
-                }
-
-                @keyframes closeGap {
-                    0% {
-                        gap: 0;
-                    }
-
-                    100% {
-                        gap: 85%;
-                    }
-                }
-
-                @keyframes showHeading {
-                    0% {
-                        opacity: 0;
-                    }
-
-                    90% {
-                        opacity: 1;
-                    }
-                }
-            </style>
-
-        </div>
-
-    </section>
-
-
-    <div id="footer-placeholder"></div>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/musicPlayer.js"></script>
-    <script src="assets/js/cards.js"></script>
-    <script src="assets/js/checkerboard.js"></script>
-    <script src="assets/js/map.js"></script>
-    <script src="assets/js/countdown.js"></script>
-    <script src="assets/js/common.js"></script>
-    <script src="assets/js/message.js"></script>
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/musicPlayer.js"></script>
+        <script src="assets/js/checkerboard.js"></script>
+        <script src="assets/js/map.js"></script>
+        <script src="assets/js/countdown.js"></script>
+        <script src="assets/js/common.js"></script>
+        <script type="module" src="assets/js/message-en.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
 </body>
 

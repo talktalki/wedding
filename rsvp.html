@@ -49,10 +49,14 @@
 					<input type="email" name="Email" id="email" value="" placeholder="EMAIL*" required="required" />
 					<div class="col-6 col-12-medium">
 						<label>Will you be coming?</label>
-						<input type="radio" id="rsvp-yes" name="RSVP" value="Yes" required="required" />
-						<label for="rsvp-yes">Happy to be there :)</label>
-						<input type="radio" id="rsvp-no" name="RSVP" value="No">
-						<label for="rsvp-no">Sad to miss it :(</label>
+						<div style="margin-bottom: 10px;">
+							<input type="radio" id="rsvp-yes" name="RSVP" value="Yes" required="required" />
+							<label for="rsvp-yes">Happy to be there :)</label>
+						</div>
+						<div>
+							<input type="radio" id="rsvp-no" name="RSVP" value="No" required="required" />
+							<label for="rsvp-no">Sad to miss it :(</label>
+						</div>
 					</div>
 
 					<div>
@@ -98,41 +102,45 @@
 	<script src="assets/js/language.js"></script>
 
 	<script>
-		$('#wedding-form').on('submit', function (e) {
+		// Move DOMContentLoaded outside form submission
+		document.addEventListener("DOMContentLoaded", function () {
+			const urlParams = new URLSearchParams(window.location.search);
+			const fragmentLang = window.location.hash.replace('#', '');
+			const paramLang = urlParams.get('lang');
+			let currentLanguage = paramLang || fragmentLang || 'en';
+			if (currentLanguage === 'ko' || currentLanguage === 'en') {
+				changeLanguage(currentLanguage);
+			}
+		});
 
+		$('#wedding-form').on('submit', function (e) {
 			e.preventDefault();
+
+			// Add loading indicator
+			const submitBtn = $(this).find('input[type="submit"]');
+			submitBtn.val('Submitting...').prop('disabled', true);
 
 			$.ajax({
 				url: "https://script.google.com/macros/s/AKfycbwQkBGLg5wEKCYA-XwZ_Lu9w5NKFx3yzIPGLocPfGdM2hJ1V-z9KjjL_wCFJBrZWL0/exec",
-				// url: "https://script.google.com/macros/s/AKfycbzQ6z6wG7p0BDQsn4QwUgzsW2BIozkCuCQeFdpCFI6s73JfVg7MNNYEAD9-POIQV_EL/exec",
 				method: "POST",
 				dataType: "json",
 				data: $("#wedding-form").serialize(),
+				timeout: 10000, // Add timeout of 10 seconds
 				success: function (response) {
-					console.log("response!");
-					console.log(response);
-					console.log($("#wedding-form").serialize());
-
 					if (response.result == "success") {
 						$('#wedding-form')[0].reset();
-						alert('Thank you for RSVPing!');
-						return true;
+						alert('Thank you for RSVPing! Close to return to home page.');
+						window.location.href = 'home.html';
 					} else {
-						alert("The form was not submitted successfully.")
+						alert("The form was not submitted successfully.");
 					}
 				},
 				error: function () {
-					alert("The form failed.")
-				}
-			})
-			// Call changeLanguage on page load
-			document.addEventListener("DOMContentLoaded", function () {
-				const urlParams = new URLSearchParams(window.location.search);
-				const fragmentLang = window.location.hash.replace('#', '');
-				const paramLang = urlParams.get('lang');
-				let currentLanguage = paramLang || fragmentLang || 'en';
-				if (currentLanguage === 'ko' || currentLanguage === 'en') {
-					changeLanguage(currentLanguage);
+					alert("The form submission failed. Please try again.");
+				},
+				complete: function () {
+					// Re-enable submit button
+					submitBtn.val('Submit').prop('disabled', false);
 				}
 			});
 		});

@@ -66,9 +66,12 @@ function copyToClipboard(text, element) {
 
 function showCopyFeedback(element, message) {
 
-    const feedback = element.querySelector('.copy-feedback');
+    const feedback = document.querySelector('.copy-feedback');
 
-    feedback.textContent = message;
+    // only show text content if user is on index.html, not home.html
+    if (window.location.pathname.endsWith('index.html')) {
+        feedback.textContent = message;
+    }
 
     feedback.style.opacity = '1';
 
