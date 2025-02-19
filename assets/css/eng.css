@@ -4883,6 +4883,10 @@ header button::after {
 		height: 30vh;
 	}
 
+	.ending-message {
+		width: 100%;
+	}
+
 }
 
 .ending-message {
@@ -4892,7 +4896,19 @@ header button::after {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 1;
-	width: 100%;
+	width: 70%;
+}
+
+.ending-message h2 {
+	font-size: 2em;
+}
+
+@media screen and (max-width: 768px) {
+	.ending-message h2 {
+		font-size: 1em;
+		margin-bottom: 10px;
+	}
+
 }
 
 .ending-message-text {
@@ -4908,7 +4924,7 @@ header button::after {
 /* increase padding for larger screens */
 @media screen and (min-width: 768px) {
 	.ending-message-text {
-		padding: 8em;
+		padding: 5em;
 	}
 }
 
@@ -4955,7 +4971,7 @@ header button::after {
 	}
 
 	100% {
-		gap: 85%;
+		gap: 65%;
 	}
 }
 
