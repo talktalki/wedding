@@ -5143,3 +5143,28 @@ header button::after {
 		color: #F6DCD0;
 	}
 }
+
+#header a {
+	cursor: pointer;
+}
+
+.floating-heart {
+	position: fixed;
+	top: -15vh;
+	color: #F6DCD0;
+	font-size: 5em;
+	pointer-events: none;
+	animation: float 3s ease-in forwards;
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateY(100vh);
+		opacity: 0;
+	}
+}
