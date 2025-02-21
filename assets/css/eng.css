@@ -3337,7 +3337,7 @@ body.is-ie .wrapper.fullscreen {
 @media screen and (max-width: 1280px) {
 
 	.wrapper.fullscreen {
-		/* min-height: calc(100vh - 2.5em); */
+		min-height: calc(90vh - 2.5em);
 	}
 
 	body.is-ie .wrapper.fullscreen {
@@ -3976,21 +3976,16 @@ body.is-preload #sidebar nav ul li {
 }
 
 /* Intro */
-
 #intro .inner {
-	padding: 0;
+	padding: 4em 0 0 0;
 }
 
 #intro .intro-gif {
-	width: 70%;
+	width: 40%;
 	height: auto;
 }
 
 @media screen and (max-width: 768px) {
-
-	#intro .inner {
-		padding: 4em 0 0 0;
-	}
 
 	#intro .intro-gif {
 		width: 100%;
@@ -4002,6 +3997,14 @@ body.is-preload #sidebar nav ul li {
 	}
 }
 
+@media screen and (max-width: 1680px) {
+
+	#intro .intro-gif {
+		width: 70%;
+		height: auto;
+	}
+
+}
 
 #intro h2 {
 	font-family: 'alkaline', cursive;
@@ -4282,17 +4285,21 @@ body.is-preload #sidebar nav ul li {
 /* Circle image */
 .circle-image {
 	position: absolute;
-	width: 90%;
-	height: auto;
+	height: min(90%, 90vh);
 	border-radius: 50%;
 	border: 4px solid #276A34;
 	object-fit: cover;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	aspect-ratio: 1/1;
+	aspect-ratio: 1 / 1;
 }
 
+@media screen and (min-width: 736px) and (max-width: 1280px) {
+	.circle-image {
+		width: 100%;
+	}
+}
 
 
 #welcome-message,
@@ -4412,7 +4419,44 @@ h2.dotted {
 	justify-content: center;
 	align-items: center;
 	width: 50%;
+	height: 60vh;
 }
+
+
+.card-navigation {
+	position: absolute;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	margin-top: 1em;
+	z-index: 6;
+
+}
+
+@media screen and (max-width: 736px) {
+	.card-navigation {
+		margin-top: 4em;
+	}
+}
+
+
+
+.arrow-button {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='%23FEFCE7' fill='none' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	padding: 1em;
+	width: 2em;
+	transform: rotate(90deg);
+	border: none !important;
+	border-radius: 50%;
+	font-size: 1.5em;
+	line-height: normal;
+	cursor: pointer;
+}
+
+
 
 #message-cards ul {
 	padding: 0;
@@ -4421,20 +4465,16 @@ h2.dotted {
 .cards {
 	position: relative;
 	list-style-type: none;
-	max-width: 34em;
 	display: flex;
 	flex-direction: column;
 	margin: 0;
 }
 
-@media screen and (max-width: 736px) {
-	.cards {
-		min-height: 65vh;
-	}
 
-}
 
 .card {
+	max-width: 34em;
+	min-width: 30em;
 	position: absolute;
 	top: 0;
 	left: -5px;
@@ -4449,6 +4489,17 @@ h2.dotted {
 	cursor: pointer;
 	user-select: none;
 	text-align: left;
+	max-height: 20em;
+	overflow: hidden;
+	border: 2px solid #276A34;
+
+}
+
+@media screen and (max-width: 736px) {
+	.card {
+		min-width: 0;
+	}
+
 }
 
 .card--next {
@@ -4466,14 +4517,22 @@ h2.dotted {
 }
 
 .card--current {
+	max-height: none;
 	cursor: auto;
 	user-select: auto;
 	position: relative;
 	z-index: 10;
 	opacity: 1;
-	border: 2px solid #276A34;
 	background: #FEFCE7;
 	transform: rotate(-1deg) translateX(0%) scale(1);
+}
+
+.card p {
+	opacity: 0;
+}
+
+.card--current p {
+	opacity: 1;
 }
 
 #message-form h2,
@@ -4494,6 +4553,7 @@ h2.dotted {
 
 	#message-cards {
 		margin: 2em 0;
+		padding: 4em;
 	}
 }
 
@@ -4802,32 +4862,6 @@ h2.dotted {
 		scroll-snap-align: start;
 		position: relative;
 	}
-}
-
-.card-navigation {
-	position: absolute;
-	display: flex;
-	width: 100%;
-	justify-content: space-between;
-	margin-top: 1em;
-	z-index: 6;
-
-}
-
-
-.arrow-button {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke='%23FEFCE7' fill='none' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-	padding: 1em;
-	width: 2em;
-	transform: rotate(90deg);
-	border: none !important;
-	border-radius: 50%;
-	font-size: 1.5em;
-	line-height: normal;
-	cursor: pointer;
 }
 
 #next-card {
@@ -5150,7 +5184,7 @@ header button::after {
 
 .floating-heart {
 	position: fixed;
-	top: -15vh;
+	top: -18vh;
 	color: #F6DCD0;
 	font-size: 5em;
 	pointer-events: none;

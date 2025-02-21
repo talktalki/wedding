@@ -4,6 +4,14 @@ let cityElements = Array.from(document.querySelectorAll('.city-element'));
 
 // Load Google Maps API asynchronously
 function loadGoogleMapsAPI() {
+    // Suppress console warnings from Google Maps API
+    const originalWarn = console.warn;
+    console.warn = function() {
+        if (!(arguments[0].includes && arguments[0].includes('Google Maps'))) {
+            originalWarn.apply(console, arguments);
+        }
+    };
+
     const script = document.createElement("script");
     script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDFfSJjhoHZ9H7l7AlH2qtamQEWorEIf1k&callback=initMap";
     script.async = true;
@@ -180,21 +188,22 @@ function initMap() {
                             locationCounts[locationKey].count++;
 
                             // Create a marker
+                            const markerSvg = `
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
+                                    <path fill="#506f21" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                    ${(locationCounts[locationKey]?.count || 0) > 1 ? `
+                                        <circle cx="12" cy="9" r="7" fill="#506f21" />
+                                        <text x="12" y="11" font-family="Arial"
+                                        text-anchor="middle" fill="#fff" font-size="8">${locationCounts[locationKey].count}</text>
+                                    ` : ''}
+                                </svg>
+                            `;
                             const marker = new google.maps.Marker({
                                 map: map,
                                 position: location,
                                 title: city,
                                 icon: {
-                                    url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
-                                            <path fill="#506f21" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                                            ${locationCounts[locationKey].count > 1 ? `
-                                                <circle cx="12" cy="9" r="7" fill="#506f21" />
-                                                <text x="12" y="11" font-family="Arial"
-                                                text-anchor="middle" fill="#fff" font-size="8">${locationCounts[locationKey].count}</text>
-                                            ` : ''}
-                                        </svg>
-                                    `),
+                                    url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(markerSvg),
                                     scaledSize: new google.maps.Size(36, 36)
                                 } 
                             });
@@ -209,7 +218,10 @@ function initMap() {
                             document.body.appendChild(cityElement);
                             cityElements.push(cityElement); // Use the array method
                         } else {
-                            console.error('Geocode error for city "' + city + '": ' + status);
+                            // Suppress warning messages
+                            if (status !== 'ZERO_RESULTS' && status !== 'OVER_QUERY_LIMIT') {
+                                console.error('Geocode error for city "' + city + '": ' + status);
+                            }
                         }
                     });
                 }
