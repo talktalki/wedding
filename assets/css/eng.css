@@ -5116,3 +5116,23 @@ header button::after {
 		display: none;
 	}
 }
+
+.animated-link {
+	animation: color-change 2s infinite;
+	font-style: italic;
+	font-weight: bold;
+}
+
+@keyframes color-change {
+	0% {
+		color: #F6DCD0;
+	}
+
+	50% {
+		color: #ec8daa;
+	}
+
+	100% {
+		color: #F6DCD0;
+	}
+}
