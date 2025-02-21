@@ -4919,14 +4919,21 @@ header button::after {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: center;
-	padding: 2em;
+	padding: 2em 3em 4em;
 	z-index: 2;
 }
 
-/* increase padding for larger screens */
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
 	.ending-message-text {
-		padding: 5em;
+		padding: 1em;
+	}
+
+}
+
+/* increase padding for larger screens */
+@media screen and (min-width: 1280px) {
+	.ending-message-text {
+		padding: 3em 5em 5em;
 	}
 }
 
@@ -4944,7 +4951,7 @@ header button::after {
 
 .ending-gif {
 	position: absolute;
-	top: 60%;
+	top: 65%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 2;

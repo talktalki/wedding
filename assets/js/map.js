@@ -2,12 +2,6 @@
 // Example: Collecting all elements with the class 'city-element'
 let cityElements = Array.from(document.querySelectorAll('.city-element'));
 
-// Example usage of cityElements
-cityElements.forEach(element => {
-    // Perform operations on each city element
-    console.log(element.textContent);
-});
-
 // Load Google Maps API asynchronously
 function loadGoogleMapsAPI() {
     const script = document.createElement("script");
@@ -170,28 +164,39 @@ function initMap() {
         .then((data) => {
             const cities = data.values.slice(1); // Skip the header row
             const geocoder = new google.maps.Geocoder();
+            const locationCounts = {};
 
             cities.forEach((row) => {
                 const city = row[4];
                 if (city) {
                     geocoder.geocode({ address: city }, (results, status) => {
                         if (status === 'OK') {
-                            // Log the result for debugging
-                            console.log(`City: ${city}, Location: ${results[0].geometry.location}`);
+                            const location = results[0].geometry.location;
+                            const locationKey = `${location.lat()},${location.lng()}`;
+
+                            if (!locationCounts[locationKey]) {
+                                locationCounts[locationKey] = { count: 0, location: location };
+                            }
+                            locationCounts[locationKey].count++;
 
                             // Create a marker
                             const marker = new google.maps.Marker({
                                 map: map,
-                                position: results[0].geometry.location,
+                                position: location,
                                 title: city,
                                 icon: {
                                     url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
                                             <path fill="#506f21" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                            ${locationCounts[locationKey].count > 1 ? `
+                                                <circle cx="12" cy="9" r="7" fill="#506f21" />
+                                                <text x="12" y="11" font-family="Arial"
+                                                text-anchor="middle" fill="#fff" font-size="8">${locationCounts[locationKey].count}</text>
+                                            ` : ''}
                                         </svg>
                                     `),
-                                    scaledSize: new google.maps.Size(24, 24)
-                                }
+                                    scaledSize: new google.maps.Size(36, 36)
+                                } 
                             });
 
                             // Create a corresponding HTML element for the city
@@ -215,7 +220,7 @@ function initMap() {
                 for (const entry of entries) {
                     if (entry.isIntersecting) {
                         const city = entry.target.dataset.city;
-                        console.log(`City in view: ${city}`); // Log city for debugging
+                        // console.log(`City in view: ${city}`); // Log city for debugging
                         entry.target.classList.add("drop"); // Add animation class
                         intersectionObserver.unobserve(entry.target); // Stop observing
                     }
