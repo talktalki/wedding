@@ -23,7 +23,62 @@ function loadGoogleMapsAPI() {
 document.addEventListener("DOMContentLoaded", loadGoogleMapsAPI);
 
 // Your Google Sheets CSV link or API fetch
-const SHEET_API_URL = 'https://sheets.googleapis.com/v4/spreadsheets/1OAm8bZG1l7nOVbFq3FU2eOw6rLXz9S3tPjztXkUK3ew/values/Sheet1!A2:G?key=AIzaSyDFfSJjhoHZ9H7l7AlH2qtamQEWorEIf1k';
+const SHEET_API_URL = 'https://sheets.googleapis.com/v4/spreadsheets/1OAm8bZG1l7nOVbFq3FU2eOw6rLXz9S3tPjztXkUK3ew/values/Sheet1!A2:J?key=AIzaSyDFfSJjhoHZ9H7l7AlH2qtamQEWorEIf1k';
+
+class GeocodeDB {
+    constructor() {
+        this.geocodeData = [];
+        this.SHEET_ID = '1OAm8bZG1l7nOVbFq3FU2eOw6rLXz9S3tPjztXkUK3ew';
+        this.API_KEY = 'AIzaSyDFfSJjhoHZ9H7l7AlH2qtamQEWorEIf1k';
+    }
+
+    async init() {
+        try {
+            // Read from Google Sheets
+            const response = await fetch(
+                `https://sheets.googleapis.com/v4/spreadsheets/${this.SHEET_ID}/values/Sheet2!A2:C?key=${this.API_KEY}`
+            );
+            const data = await response.json();
+            this.geocodeData = data.values || [];
+        } catch (error) {
+            console.error('Error initializing GeocodeDB:', error);
+        }
+    }
+
+    get(city) {
+        const found = this.geocodeData.find(row => row[0] === city);
+        return found ? { lat: parseFloat(found[1]), lng: parseFloat(found[2]) } : null;
+    }
+
+    async set(city, lat, lng) {
+        try {
+            // Add to local array
+            this.geocodeData.push([city, lat.toString(), lng.toString()]);
+            console.log('Geocode added:', city);
+        } catch (error) {
+            console.error('Error adding geocode:', error);
+        }
+    }
+
+}
+
+// Create instance and initialize
+const geocodeDB = new GeocodeDB();
+geocodeDB.init();
+
+function callGeoCodeAPI(city) {
+    return new Promise((resolve, reject) => {
+        const geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: city }, function (results, status) {
+            if (status === 'OK') {
+                resolve(results[0].geometry.location);
+                geocodeDB.set(city, results[0].geometry.location.lat(), results[0].geometry.location.lng());
+            } else {
+                reject(status);
+            }
+        });
+    });
+}
 
 function initMap() {
     // Initialize the map
@@ -166,64 +221,67 @@ function initMap() {
     const retroMapType = new google.maps.StyledMapType(mapStyle, { name: "Retro" });
     map.mapTypes.set('retro', retroMapType);
     map.setMapTypeId('retro');
-
+     
     fetch(SHEET_API_URL)
         .then((response) => response.json())
         .then((data) => {
-            const cities = data.values.slice(1); // Skip the header row
-            const geocoder = new google.maps.Geocoder();
+            const cities = data.values; // Skip the header row
             const locationCounts = {};
-
             cities.forEach((row) => {
                 const city = row[4];
-                if (city) {
-                    geocoder.geocode({ address: city }, (results, status) => {
-                        if (status === 'OK') {
-                            const location = results[0].geometry.location;
-                            const locationKey = `${location.lat()},${location.lng()}`;
+                if (!city) return;
+                let {lat, lng} = geocodeDB.get(city) || {};
 
-                            if (!locationCounts[locationKey]) {
-                                locationCounts[locationKey] = { count: 0, location: location };
-                            }
-                            locationCounts[locationKey].count++;
+                // if it's not found from the geocode db, call geocode api to get the lat and lng
+                if (!lat && !lng) {
+                    console.log('Geocode not found:', city);
+                    callGeoCodeAPI(city)
+                        .then(location => {
+                            lat = location.lat();
+                            lng = location.lng();
+                            console.log('Geocode found:', city, lat, lng);
+                        })
+                        .catch(error => console.error('Geocode failed:', error, city));
+                }
 
-                            // Create a marker
-                            const markerSvg = `
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
-                                    <path fill="#506f21" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                                    ${(locationCounts[locationKey]?.count || 0) > 1 ? `
-                                        <circle cx="12" cy="9" r="7" fill="#506f21" />
-                                        <text x="12" y="11" font-family="Arial"
-                                        text-anchor="middle" fill="#fff" font-size="8">${locationCounts[locationKey].count}</text>
-                                    ` : ''}
-                                </svg>
-                            `;
-                            const marker = new google.maps.Marker({
-                                map: map,
-                                position: location,
-                                title: city,
-                                icon: {
-                                    url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(markerSvg),
-                                    scaledSize: new google.maps.Size(36, 36)
-                                } 
-                            });
+                if (city && !isNaN(lat) && !isNaN(lng)) {
+                    const locationKey = `${lat},${lng}`;
 
-                            // Create a corresponding HTML element for the city
-                            const cityElement = document.createElement("div");
-                            cityElement.className = "city-marker"; // Add a class for styling
-                            cityElement.dataset.city = city; // Store city name
-                            cityElement.style.display = "none"; // Initially hidden
+                    if (!locationCounts[locationKey]) {
+                        locationCounts[locationKey] = { count: 0, location: { lat, lng } };
+                    }
+                    locationCounts[locationKey].count++;
 
-                            // Add to the document (for example, to a container)
-                            document.body.appendChild(cityElement);
-                            cityElements.push(cityElement); // Use the array method
-                        } else {
-                            // Suppress warning messages
-                            if (status !== 'ZERO_RESULTS' && status !== 'OVER_QUERY_LIMIT') {
-                                console.error('Geocode error for city "' + city + '": ' + status);
-                            }
-                        }
+                    // Create a marker
+                    const markerSvg = `
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
+                            <path fill="#506f21" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            ${(locationCounts[locationKey]?.count || 0) > 1 ? `
+                                <circle cx="12" cy="9" r="7" fill="#506f21" />
+                                <text x="12" y="11" font-family="Arial"
+                                text-anchor="middle" fill="#fff" font-size="8">${locationCounts[locationKey].count}</text>
+                            ` : ''}
+                        </svg>
+                    `;
+                    const marker = new google.maps.Marker({
+                        map: map,
+                        position: { lat, lng },
+                        title: city,
+                        icon: {
+                            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(markerSvg),
+                            scaledSize: new google.maps.Size(36, 36)
+                        } 
                     });
+
+                    // Create a corresponding HTML element for the city
+                    const cityElement = document.createElement("div");
+                    cityElement.className = "city-marker"; // Add a class for styling
+                    cityElement.dataset.city = city; // Store city name
+                    cityElement.style.display = "none"; // Initially hidden
+
+                    // Add to the document (for example, to a container)
+                    document.body.appendChild(cityElement);
+                    cityElements.push(cityElement); // Use the array method
                 }
             });
 
