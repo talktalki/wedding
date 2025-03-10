@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Validate inputs
         if (name === "" || messageContent === "" || password === "") {
-            alert("Please fill out all fields, including the password.");
+            alert("비밀번호를 포함한 모든 입력란을 채워주세요.");
             return;
         }
 
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         } catch (error) {
             console.error("Error adding message:", error);
-            alert("Failed to send message. Please try again.");
+            alert("메시지 전송에 실패했습니다. 다시 시도해주세요.");
         }
     });
 
@@ -167,7 +167,7 @@ function updateShowMoreButton() {
             button.classList.remove("edit-button");
             button.classList.add("save-button");
         } else {
-            alert("Incorrect password. You cannot edit this message.");
+            alert("잘못된 비밀번호입니다. 이 메시지를 수정할 수 없습니다.");
         }
     }
 
@@ -191,7 +191,7 @@ function updateShowMoreButton() {
             button.classList.add("edit-button");
         } catch (error) {
             console.error("Error updating message:", error);
-            alert("Failed to update message. Please try again.");
+            alert("메시지 업데이트에 실패했습니다. 다시 시도해주세요.");
         }
     }
 
@@ -212,7 +212,7 @@ function updateShowMoreButton() {
             const messageElement = document.getElementById(messageId);
             messageElement.remove();
         } else {
-            alert("Incorrect password. You cannot delete this message.");
+            alert("잘못된 비밀번호입니다. 이 메시지를 삭제할 수 없습니다.");
         }
     }
 });
