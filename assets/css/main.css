@@ -109,6 +109,7 @@ section {
 	display: block;
 }
 
+
 section {
 	width: 100%;
 	display: flex;
@@ -5333,7 +5334,7 @@ h2.text-center {
 	animation: fadeIn 1s ease-in-out forwards;
 	text-align: left;
 	/* Align text to left */
-	max-width: 50%;
+	max-width: 55%;
 	/* Limit content width */
 	padding-right: 0.5em;
 	margin-bottom: 2em;
