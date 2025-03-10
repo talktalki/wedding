@@ -208,7 +208,18 @@
 			</div>
 		</section>
 
-
+		<section id="accomodation" class="wrapper style3 special">
+			<div class="inner">
+				<h2 class="dotted">갤러리</h2>
+				<div class="gallery-container">
+					<div class="main-photo"></div>
+					<img id="current-photo" src="images/Studio-1.webp" alt="Gallery Photo">
+					<button class="nav-btn prev" onclick="changePhoto(-1)">❮</button>
+					<button class="nav-btn next" onclick="changePhoto(1)">❯</button>
+				</div>
+				<div class="thumbnails"></div>
+			</div>
+		</section>
 
 		<!-- Message Form and Display Section -->
 		<section id="messages-wrapper" class="wrapper style1 special">
@@ -355,6 +366,8 @@
 	<script src="assets/js/language.js"></script>
 	<script src="assets/js/common.js"></script>
 	<script src="assets/js/dropdown.js"></script>
+	<script src="assets/js/gallery.js"></script>
+
 	<script type="module" src="assets/js/firebase.js"></script>
 	<script type="module" src="assets/js/message-ko.js"></script>
 	<script type="module" src="assets/js/countdown.js"></script>
