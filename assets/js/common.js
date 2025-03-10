@@ -110,7 +110,7 @@ function copyAccount(text, element) {
     // Show feedback
     const feedback = element.querySelector('.copy-feedback');
     if (feedback) {
-        feedback.textContent = '복사되었습니다!';
+        feedback.textContent = '복사 완료!';
         feedback.style.opacity = '1';
         
         // Hide feedback after 2 seconds
