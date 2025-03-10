@@ -95,3 +95,27 @@ function createHeartShower() {
         setTimeout(() => heart.remove(), 3000); // Reduced from 3000ms to 1500ms
     }
 }
+
+function copyAccount(text, element) {
+    // Create a temporary input element
+    const tempInput = document.createElement('input');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    
+    // Select and copy the text
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+
+    // Show feedback
+    const feedback = element.querySelector('.copy-feedback');
+    if (feedback) {
+        feedback.textContent = '복사되었습니다!';
+        feedback.style.opacity = '1';
+        
+        // Hide feedback after 2 seconds
+        setTimeout(() => {
+            feedback.style.opacity = '0';
+        }, 2000);
+    }
+}

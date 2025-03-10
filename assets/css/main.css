@@ -227,7 +227,7 @@ textarea {
 
 .venue,
 .day {
-	font-size: 1em;
+	font-size: 20px;
 }
 
 
@@ -3988,6 +3988,10 @@ body.is-menu-visible #menu {
 	position: relative;
 	text-align: center;
 	padding-bottom: 22em;
+	background-size: cover;
+	background-image: url(../../images/Studio-15.webp);
+	background-position: center center;
+	background-repeat: no-repeat;
 	/* Adds space below the text */
 }
 
@@ -4361,7 +4365,7 @@ body.is-mobile.landing #page-wrapper {
 
 body.is-mobile.landing #banner,
 body.is-mobile.landing .wrapper.style4 {
-	background-image: url("../../images/backhug.png");
+	background-image: url("../../images/Studio-15.webp");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
