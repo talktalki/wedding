@@ -49,12 +49,12 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     // Set pictures for all events
-    events[0].setPicture("url('../images/2018.jpg')");
-    events[1].setPicture("url('../images/2019.jpg')");
-    events[2].setPicture("url('../images/2020.jpg')");
-    events[3].setPicture("url('../images/2021.jpg')");
-    events[4].setPicture("url('../images/2022.jpg')");
-    events[5].setPicture("url('../images/ring.jpg')");
+    events[0].setPicture("2018.jpg");
+    events[1].setPicture("2019.jpg");
+    events[2].setPicture("2020.jpg");
+    events[3].setPicture("2021.jpg");
+    events[4].setPicture("2022.jpg");
+    events[5].setPicture("ring.jpg");
 
 
     const dates = events.map(event => event.getDdate());
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (events[index].getPicture()) {
             imageContainer = document.createElement('div');
             imageContainer.className = 'timeline-image';
-            imageContainer.style.backgroundImage = events[index].getPicture();
+            imageContainer.style.backgroundImage = "url('../images/" + events[index].getPicture() + "')";
             imageContainer.style.backgroundSize = 'cover';
             imageContainer.style.backgroundPosition = 'center';
             imageContainer.style.height = '200px';
