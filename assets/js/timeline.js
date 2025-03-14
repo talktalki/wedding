@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (events[index].getPicture()) {
             imageContainer = document.createElement('div');
             imageContainer.className = 'timeline-image';
-            // imageContainer.style.backgroundImage =`url("../images/${events[index].getPicture()}")`;
+            imageContainer.style.backgroundImage =`url("https://talktalki.github.io/wedding/images/${events[index].getPicture()}")`;
 
             imageContainer.style.backgroundSize = 'cover';
             imageContainer.style.backgroundPosition = 'center';
