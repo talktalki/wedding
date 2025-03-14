@@ -247,6 +247,11 @@ textarea {
 
 }
 
+.details-ko p {
+	margin-bottom: 3em;
+
+}
+
 .venue {
 	font-size: 20px;
 
