@@ -155,16 +155,13 @@
 		<section class="wrapper style3 special">
 			<div class="inner">
 				<h2 data-ko="마음 전하실 곳">마음 전하실 곳</h2>
-
-
-
 				<div class="dropdown-container">
 					<div class="dropdown-block">
 						<div class="dropdown-label">신랑측 계좌번호
 						</div>
 						<div class="dropdown-item">
 							<a href="#" onclick="copyAccount('00000000-00-00000000', this); return false;">
-								은행 000000-00-000000 홍길동
+								은행 000000-00-000000 김영순
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 									class="bi bi-copy" viewBox="0 0 16 16">
 									<path fill-rule="evenodd"
@@ -213,28 +210,6 @@
 				</div>
 			</div>
 		</section>
-
-		<script>
-			// make the dropdown-label clickable
-			// it should toggle the dropdown-items display (none/block)
-			function toggleDropdown(dropdownLabel) {
-
-				var dropdownItem = dropdownLabel.nextElementSibling;
-				console.log(dropdownItem.style.display);
-				if (dropdownItem.style.display === "none") {
-					dropdownItem.style.display = "block";
-				} else {
-					dropdownItem.style.display = "none";
-				}
-			}
-
-			document.querySelectorAll('.dropdown-label').forEach(function (dropdownLabel) {
-				dropdownLabel.addEventListener('click', function () {
-					toggleDropdown(dropdownLabel);
-				});
-			});
-
-		</script>
 
 		<!-- Message Form and Display Section -->
 		<section id="messages-wrapper" class="wrapper style1 special">

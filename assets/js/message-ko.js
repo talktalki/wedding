@@ -5,8 +5,8 @@ import { collection, addDoc, updateDoc, deleteDoc, doc, query, orderBy, onSnapsh
 document.addEventListener("DOMContentLoaded", function () {
     const messagesContainer = document.getElementById("messages-container");
     const messagesRef = collection(db, "messages"); // Reference Firestore "messages" collection
-    // Create a Firestore query to order messages by timestamp
-    const messagesQuery = query(messagesRef, orderBy("timestamp"));
+    // Create a Firestore query to order messages by timestamp in descending order
+    const messagesQuery = query(messagesRef, orderBy("timestamp", "desc"));
     // Load messages from Firestore in real-time
     const loadMessages = () => {
         onSnapshot(messagesQuery, (snapshot) => {

@@ -109,3 +109,19 @@ function copyAccount(text, element) {
     // Show feedback
     alert('복사 완료!');
 }
+function toggleDropdown(dropdownLabel) {
+    var dropdownItem = dropdownLabel.nextElementSibling;
+    if (dropdownItem.style.display === "none" || dropdownItem.style.display === "") {
+        dropdownItem.style.display = "block";
+    } else {
+        dropdownItem.style.display = "none";
+    }
+}
+
+document.querySelectorAll('.dropdown-label').forEach(function (dropdownLabel) {
+    var dropdownItem = dropdownLabel.nextElementSibling;
+    dropdownItem.style.display = "none"; // Initially set to none
+    dropdownLabel.addEventListener('click', function () {
+        toggleDropdown(dropdownLabel);
+    });
+});
