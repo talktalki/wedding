@@ -106,16 +106,6 @@ function copyAccount(text, element) {
     tempInput.select();
     document.execCommand('copy');
     document.body.removeChild(tempInput);
-
     // Show feedback
-    const feedback = element.querySelector('.copy-feedback');
-    if (feedback) {
-        feedback.textContent = '복사 완료!';
-        feedback.style.opacity = '1';
-        
-        // Hide feedback after 2 seconds
-        setTimeout(() => {
-            feedback.style.opacity = '0';
-        }, 2000);
-    }
+    alert('복사 완료!');
 }

@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const dateContainer = document.getElementById("date-container");
     
     const events = [
-        new Event("2018년 2월", "저희는 대학교 2학년 때 처음 만났어요. 교회도 기숙사도 같다 보니 자연스럽게 친해졌어요. 그러다가 서로의 마음을 확인하고 여름방학부터 연애를 시작했어요."),
+        new Event("2018년 2월", "저희는 대학교 2학년 때 처음 만났어요. 교회도 기숙사도 같다 보니 자연스럽게 친해졌어요. 그러다가 서로의 마음을 확인하고 여름방학부터 교제를 시작했어요."),
         new Event("2019년 5월", "연애한 지 1년 됐을 때쯤, 요셉이가 은지네 집인 캄보디아에 방문했어요. 은지네 가족도 만나고, 캄보디아도 여행하고, 여러모로 소중한 시간이었어요."),
         new Event("2020년 5월", "코로나가 한창 심했던 시절, 다 집에 가고 아무도 없는 캠퍼스에서 둘이 졸업을 축하했어요. 함께 있었기에 외롭지 않았고, 서로에게 많이 의지했던 시기였죠."),
         new Event("2021년 8월", "졸업 후, 각자 사회인으로서 1년을 열심히 살아내고, 요셉이가 군복무로 한국에 돌아가게 됐어요. 공항에서 헤어질 때, 참 많이 울었어요. 한국-미국 롱디 시작!"),
@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
             imageContainer = document.createElement('div');
             imageContainer.className = 'timeline-image';
             imageContainer.style.backgroundImage =`url("https://talktalki.github.io/wedding/images/${events[index].getPicture()}")`;
-
             imageContainer.style.backgroundSize = 'cover';
             imageContainer.style.backgroundPosition = 'center';
             imageContainer.style.height = '200px';

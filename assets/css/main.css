@@ -4934,6 +4934,7 @@ h2.text-center {
 }
 
 .dropdown-label {
+	min-width: 260px;
 	background-color: #586451;
 	color: #ffffff;
 	padding: 10px;
@@ -4948,7 +4949,7 @@ h2.text-center {
 }
 
 .dropdown-item {
-
+	min-width: 260px;
 	text-align: left;
 	overflow: hidden;
 	background-color: #ffffff;

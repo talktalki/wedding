@@ -87,7 +87,7 @@
 						</p>
 
 						<p>사랑을 담아,</p>
-						<div data-show-lang="ko" class="names">
+						<div class="names">
 							<div>
 								김상균·유연순의
 								</br>딸 김은지
@@ -105,7 +105,7 @@
 
 		</section>
 
-		<section id="one" data-show-lang="ko" class="wrapper style3 special">
+		<section id="one" class="wrapper style3 special">
 			<div class="inner">
 				<div class="details-us">
 					<h2>미국 예식</h2>
@@ -114,7 +114,7 @@
 				</div>
 				<div class="details-ko">
 					<h2>국내 피로연 안내</h2>
-					<p>거리가 멀어 본식에 참석하지 못하시는 분들을 위해 한국에서의 피로연 자리를 마련하였습니다. </br>
+					<p>거리가 멀어 본식에 참석하지 못하시는 분들을 위해 한국에서 피로연 자리를 마련하였습니다. </br>
 						부디 참석하시어 두사람의 앞날을 축복해 주시길 바랍니다.</p>
 					<header class="major">
 						<p class="venue" style="margin-bottom: 0;">2025.05.24 토요일 오후 12:00</p>
@@ -156,14 +156,14 @@
 			<div class="inner">
 				<h2 data-ko="마음 전하실 곳">마음 전하실 곳</h2>
 
+
+
 				<div class="dropdown-container">
 					<div class="dropdown-block">
-						<div class="dropdown-label" data-en="Cash Fund" data-ko="신랑측 계좌번호">신랑측 계좌번호
-							<span class="arrow"></span>
+						<div class="dropdown-label">신랑측 계좌번호
 						</div>
 						<div class="dropdown-item">
-							<a data-show-lang="ko" href="#"
-								onclick="copyAccount('000000-00-000000', this); return false;">
+							<a href="#" onclick="copyAccount('00000000-00-00000000', this); return false;">
 								은행 000000-00-000000 홍길동
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 									class="bi bi-copy" viewBox="0 0 16 16">
@@ -172,8 +172,7 @@
 								</svg>
 								<span class="copy-feedback"></span>
 							</a>
-							<a data-show-lang="ko" href="#"
-								onclick="copyAccount('412910-53-951207', this); return false;">
+							<a href="#" onclick="copyAccount('412910-53-951207', this); return false;">
 								하나 412910-53-951207 이요셉
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 									class="bi bi-copy" viewBox="0 0 16 16">
@@ -185,16 +184,14 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="dropdown-container">
 					<div class="dropdown-block">
-						<div class="dropdown-label" data-en="Cash Fund" data-ko="신부측 계좌번호">신부측 계좌번호
+						<div class="dropdown-label">신부측 계좌번호
 							<span class="arrow"></span>
 						</div>
 						<div class="dropdown-item">
-							<a data-show-lang="ko" href="#"
-								onclick="copyAccount('00000000-00-00000000', this); return false;">
-								은행 000000-00-000000 홍길동
+							<a href="#" onclick="copyAccount('126-891627-64507', this); return false;">
+								하나 126-891627-64507 김상균
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 									class="bi bi-copy" viewBox="0 0 16 16">
 									<path fill-rule="evenodd"
@@ -202,8 +199,7 @@
 								</svg>
 								<span class="copy-feedback"></span>
 							</a>
-							<a data-show-lang="ko" href="#"
-								onclick="copyAccount('512002-04-174664', this); return false;">
+							<a href="#" onclick="copyAccount('512002-04-174664', this); return false;">
 								국민 512002-04-174664 김은지
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 									class="bi bi-copy" viewBox="0 0 16 16">
@@ -217,6 +213,28 @@
 				</div>
 			</div>
 		</section>
+
+		<script>
+			// make the dropdown-label clickable
+			// it should toggle the dropdown-items display (none/block)
+			function toggleDropdown(dropdownLabel) {
+
+				var dropdownItem = dropdownLabel.nextElementSibling;
+				console.log(dropdownItem.style.display);
+				if (dropdownItem.style.display === "none") {
+					dropdownItem.style.display = "block";
+				} else {
+					dropdownItem.style.display = "none";
+				}
+			}
+
+			document.querySelectorAll('.dropdown-label').forEach(function (dropdownLabel) {
+				dropdownLabel.addEventListener('click', function () {
+					toggleDropdown(dropdownLabel);
+				});
+			});
+
+		</script>
 
 		<!-- Message Form and Display Section -->
 		<section id="messages-wrapper" class="wrapper style1 special">
