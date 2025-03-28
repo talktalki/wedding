@@ -1,8 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
-
-@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Gowun+Dodum&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.cdnfonts.com/css/amalfi-coast");
-/* for title */
 
 html,
 body,
@@ -3907,6 +3904,7 @@ body.is-menu-visible #menu {
 }
 
 #banner p {
+  color: darkolivegreen;
   margin: 0.25em 0.25em;
   letter-spacing: 0.25em;
   text-transform: none;
