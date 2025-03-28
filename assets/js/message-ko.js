@@ -1,91 +1,103 @@
 import { db } from "./firebase.js"; // Import Firestore instance
-import { collection, addDoc, updateDoc, deleteDoc, doc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js";
-
+import {
+  collection,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  query,
+  orderBy,
+  onSnapshot,
+} from "https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-    const messagesContainer = document.getElementById("messages-container");
-    const messagesRef = collection(db, "messages"); // Reference Firestore "messages" collection
-    // Create a Firestore query to order messages by timestamp in descending order
-    const messagesQuery = query(messagesRef, orderBy("timestamp", "desc"));
-    // Load messages from Firestore in real-time
-    const loadMessages = () => {
-        onSnapshot(messagesQuery, (snapshot) => {
-            const messagesContainer = document.getElementById("messages-container");
-            messagesContainer.innerHTML = ""; // Clear the container
-    
-            // Loop through each document in the snapshot and append the message to the DOM
-            snapshot.forEach((doc) => {
-                const message = { id: doc.id, ...doc.data() };
-                appendMessageToDOM(message);
-            });
+  const messagesContainer = document.getElementById("messages-container");
+  const messagesRef = collection(db, "messages"); // Reference Firestore "messages" collection
+  // Create a Firestore query to order messages by timestamp in descending order
+  const messagesQuery = query(messagesRef, orderBy("timestamp", "desc"));
+  // Load messages from Firestore in real-time
+  const loadMessages = () => {
+    onSnapshot(messagesQuery, (snapshot) => {
+      const messagesContainer = document.getElementById("messages-container");
+      messagesContainer.innerHTML = ""; // Clear the container
+
+      // Loop through each document in the snapshot and append the message to the DOM
+      snapshot.forEach((doc) => {
+        const message = { id: doc.id, ...doc.data() };
+        appendMessageToDOM(message);
+      });
+    });
+  };
+
+  loadMessages(); // Start listening for changes
+
+  // Handle Submit
+  document
+    .getElementById("submit-message")
+    .addEventListener("click", async function () {
+      // Get input values
+      const messageNameInput = document.getElementById("message-name");
+      const messageContentInput = document.getElementById("message-content");
+      const messagePasswordInput = document.getElementById("message-password");
+
+      const name = messageNameInput.value.trim();
+      const messageContent = messageContentInput.value.trim();
+      const password = messagePasswordInput.value.trim();
+
+      // Validate inputs
+      if (name === "" || messageContent === "" || password === "") {
+        alert("비밀번호를 포함한 모든 입력란을 채워주세요.");
+        return;
+      }
+
+      try {
+        // Add a new message to Firestore
+        await addDoc(messagesRef, {
+          name: name,
+          content: messageContent,
+          password: password,
+          timestamp: Date.now(), // Add a timestamp for sorting if needed
         });
-    };
-    
-    loadMessages(); // Start listening for changes
 
-    // Handle Submit
-    document.getElementById("submit-message").addEventListener("click", async function () {
-        // Get input values
-        const messageNameInput = document.getElementById("message-name");
-        const messageContentInput = document.getElementById("message-content");
-        const messagePasswordInput = document.getElementById("message-password");
-
-        const name = messageNameInput.value.trim();
-        const messageContent = messageContentInput.value.trim();
-        const password = messagePasswordInput.value.trim();
-
-        // Validate inputs
-        if (name === "" || messageContent === "" || password === "") {
-            alert("비밀번호를 포함한 모든 입력란을 채워주세요.");
-            return;
-        }
-
-        try {
-            // Add a new message to Firestore
-            await addDoc(messagesRef, {
-                name: name,
-                content: messageContent,
-                password: password,
-                timestamp: Date.now(), // Add a timestamp for sorting if needed
-            });
-
-            // Clear inputs
-            document.getElementById("message-name").value = "";
-            document.getElementById("message-content").value = "";
-            document.getElementById("message-password").value = "";
-            // Trigger confetti effect
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
-        } catch (error) {
-            console.error("Error adding message:", error);
-            alert("메시지 전송에 실패했습니다. 다시 시도해주세요.");
-        }
+        // Clear inputs
+        document.getElementById("message-name").value = "";
+        document.getElementById("message-content").value = "";
+        document.getElementById("message-password").value = "";
+        // Trigger confetti effect
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      } catch (error) {
+        console.error("Error adding message:", error);
+        alert("메시지 전송에 실패했습니다. 다시 시도해주세요.");
+      }
     });
 
-    // Handle Edit and Delete using event delegation
-    messagesContainer.addEventListener("click", async function (event) {
-        const target = event.target;
+  // Handle Edit and Delete using event delegation
+  messagesContainer.addEventListener("click", async function (event) {
+    const target = event.target;
 
-        if (target.classList.contains("edit-button")) {
-            handleEdit(target);
-        } else if (target.classList.contains("save-button")) {
-            handleSave(target);
-        } else if (target.classList.contains("delete-button")) {
-            handleDelete(target);
-        }
-    });
+    if (target.classList.contains("edit-button")) {
+      handleEdit(target);
+    } else if (target.classList.contains("save-button")) {
+      handleSave(target);
+    } else if (target.classList.contains("delete-button")) {
+      handleDelete(target);
+    }
+  });
 
-    let visibleMessageCount = 3;
+  let visibleMessageCount = 3;
 
-function appendMessageToDOM(message) {
+  function appendMessageToDOM(message) {
     const messageElement = document.createElement("div");
     messageElement.classList.add("message");
     messageElement.id = message.id;
 
-    const langAttribute = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(message.content) ? 'ko' : 'en';
+    const langAttribute = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(message.content)
+      ? "ko"
+      : "en";
     messageElement.innerHTML = `
         <div class="message-header">
             <strong>${message.name}</strong>
@@ -96,128 +108,136 @@ function appendMessageToDOM(message) {
         <p class="message-text">${message.content}</p>
     `;
     const messageText = messageElement.querySelector(".message-header strong");
-    const messageName =  messageElement.querySelector(".message-text");
-    messageText.style.fontFamily = langAttribute === 'ko' ? 'Gowun Dodum, serif' : 'Noto Sans, sans-serif';
-    messageName.style.fontFamily = langAttribute === 'ko' ? 'Gowun Dodum, serif' : 'Noto Sans, sans-serif';
+    const messageName = messageElement.querySelector(".message-text");
+    messageText.style.fontFamily =
+      langAttribute === "ko" ? "Gowun Dodum, serif" : "Noto Sans, sans-serif";
+    messageName.style.fontFamily =
+      langAttribute === "ko" ? "Gowun Dodum, serif" : "Noto Sans, sans-serif";
     // Add message but hide if beyond visible count
-    messageElement.style.display = messagesContainer.children.length >= visibleMessageCount ? 'none' : 'block';
+    messageElement.style.display =
+      messagesContainer.children.length >= visibleMessageCount
+        ? "none"
+        : "block";
     messagesContainer.appendChild(messageElement);
 
     // Add or update "Show More" button
     updateShowMoreButton();
-}
-let isExpanded = false;
-function updateShowMoreButton() {
-    let showMoreButton = document.getElementById('show-more-button');
-    const showMoreTextKo = '더보기';
-    const showLessTextKo = '줄이기';
+  }
+  let isExpanded = false;
+  function updateShowMoreButton() {
+    let showMoreButton = document.getElementById("show-more-button");
+    const showMoreTextKo = "더보기";
+    const showLessTextKo = "줄이기";
 
     if (!showMoreButton) {
-        showMoreButton = document.createElement('button');
-        showMoreButton.type = 'button';
-        showMoreButton.id = 'show-more-button';
-        showMoreButton.classList.add('primary');
-        messagesContainer.after(showMoreButton);
+      showMoreButton = document.createElement("button");
+      showMoreButton.type = "button";
+      showMoreButton.id = "show-more-button";
+      showMoreButton.classList.add("primary");
+      messagesContainer.after(showMoreButton);
     }
 
     const totalMessages = messagesContainer.children.length;
-    showMoreButton.style.display = totalMessages > 3 ? 'block' : 'none';
+    showMoreButton.style.display = totalMessages > 3 ? "block" : "none";
 
     showMoreButton.textContent = isExpanded ? showLessTextKo : showMoreTextKo;
-    showMoreButton.setAttribute('data-ko', isExpanded ? showLessTextKo : showMoreTextKo);
+    showMoreButton.setAttribute(
+      "data-ko",
+      isExpanded ? showLessTextKo : showMoreTextKo,
+    );
 
     showMoreButton.onclick = () => {
-        const messages = Array.from(messagesContainer.children);
-        if (isExpanded) {
-            // Show only first 3 messages
-            messages.forEach((msg, index) => {
-                msg.style.display = index < 3 ? 'block' : 'none';
-            });
-            visibleMessageCount = 3;
-        } else {
-            // Show all messages
-            messages.forEach(msg => {
-                msg.style.display = 'block';
-            });
-            visibleMessageCount = messages.length;
-        }
-        isExpanded = !isExpanded;
-        updateShowMoreButton();
+      const messages = Array.from(messagesContainer.children);
+      if (isExpanded) {
+        // Show only first 3 messages
+        messages.forEach((msg, index) => {
+          msg.style.display = index < 3 ? "block" : "none";
+        });
+        visibleMessageCount = 3;
+      } else {
+        // Show all messages
+        messages.forEach((msg) => {
+          msg.style.display = "block";
+        });
+        visibleMessageCount = messages.length;
+      }
+      isExpanded = !isExpanded;
+      updateShowMoreButton();
     };
-}
-    async function handleEdit(button) {
-        const messageId = button.dataset.id;
-        const enteredPassword = prompt("Enter the password to edit this message:");
+  }
+  async function handleEdit(button) {
+    const messageId = button.dataset.id;
+    const enteredPassword = prompt("Enter the password to edit this message:");
 
-        // Check if the user pressed "Cancel" (enteredPassword will be null)
-        if (enteredPassword === null) {
-            // If Cancel is clicked, simply return without doing anything
-            return;
-        }
-        if (enteredPassword === button.dataset.password) {
-            const messageElement = document.getElementById(messageId);
-            const messageText = messageElement.querySelector(".message-text");
-
-            // Make the message text editable
-            messageText.contentEditable = true;
-            messageText.focus();
-
-            // Change the edit button to a "Save" button
-            button.textContent = "Save";
-            button.classList.remove("edit-button");
-            button.classList.add("save-button");
-        } else {
-            alert("잘못된 비밀번호입니다. 이 메시지를 수정할 수 없습니다.");
-        }
+    // Check if the user pressed "Cancel" (enteredPassword will be null)
+    if (enteredPassword === null) {
+      // If Cancel is clicked, simply return without doing anything
+      return;
     }
+    if (enteredPassword === button.dataset.password) {
+      const messageElement = document.getElementById(messageId);
+      const messageText = messageElement.querySelector(".message-text");
 
-    async function handleSave(button) {
-        const messageId = button.dataset.id;
-        const messageElement = document.getElementById(messageId);
-        const messageText = messageElement.querySelector(".message-text");
+      // Make the message text editable
+      messageText.contentEditable = true;
+      messageText.focus();
 
-        try {
-            // Save the updated content to Firestore
-            await updateDoc(doc(db, "messages", messageId), {
-                content: messageText.textContent.trim(),
-            });
-
-            // Make the text non-editable
-            messageText.contentEditable = false;
-
-            // Change the button back to "Edit"
-            button.textContent = "Edit";
-            button.classList.remove("save-button");
-            button.classList.add("edit-button");
-        } catch (error) {
-            console.error("Error updating message:", error);
-            alert("메시지 업데이트에 실패했습니다. 다시 시도해주세요.");
-        }
+      // Change the edit button to a "Save" button
+      button.textContent = "Save";
+      button.classList.remove("edit-button");
+      button.classList.add("save-button");
+    } else {
+      alert("잘못된 비밀번호입니다. 이 메시지를 수정할 수 없습니다.");
     }
+  }
 
-    async function handleDelete(button) {
-        const messageId = button.dataset.id;
-        const enteredPassword = prompt("Enter the password to delete this message:");
+  async function handleSave(button) {
+    const messageId = button.dataset.id;
+    const messageElement = document.getElementById(messageId);
+    const messageText = messageElement.querySelector(".message-text");
 
-        // Check if the user pressed "Cancel" (enteredPassword will be null)
-        if (enteredPassword === null) {
-            // If Cancel is clicked, simply return without doing anything
-            return;
-        }
-        if (enteredPassword === button.dataset.password) {
-            // Delete the message from Firestore
-            await deleteDoc(doc(db, "messages", messageId));
+    try {
+      // Save the updated content to Firestore
+      await updateDoc(doc(db, "messages", messageId), {
+        content: messageText.textContent.trim(),
+      });
 
-            // Remove the message from the DOM
-            const messageElement = document.getElementById(messageId);
-            messageElement.remove();
-        } else {
-            alert("잘못된 비밀번호입니다. 이 메시지를 삭제할 수 없습니다.");
-        }
+      // Make the text non-editable
+      messageText.contentEditable = false;
+
+      // Change the button back to "Edit"
+      button.textContent = "Edit";
+      button.classList.remove("save-button");
+      button.classList.add("edit-button");
+    } catch (error) {
+      console.error("Error updating message:", error);
+      alert("메시지 업데이트에 실패했습니다. 다시 시도해주세요.");
     }
+  }
+
+  async function handleDelete(button) {
+    const messageId = button.dataset.id;
+    const enteredPassword = prompt(
+      "Enter the password to delete this message:",
+    );
+
+    // Check if the user pressed "Cancel" (enteredPassword will be null)
+    if (enteredPassword === null) {
+      // If Cancel is clicked, simply return without doing anything
+      return;
+    }
+    if (enteredPassword === button.dataset.password) {
+      // Delete the message from Firestore
+      await deleteDoc(doc(db, "messages", messageId));
+
+      // Remove the message from the DOM
+      const messageElement = document.getElementById(messageId);
+      messageElement.remove();
+    } else {
+      alert("잘못된 비밀번호입니다. 이 메시지를 삭제할 수 없습니다.");
+    }
+  }
 });
-
-
 
 // const params = new URLSearchParams(window.location.search);
 // const location = params.get('location');

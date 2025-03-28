@@ -1,89 +1,93 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const stories = Array.from({ length: 18 }, (_, i) => ({
-        image: `images/ourstory_${i}.webp`,
-        text: 'First time we met'
-    }));
-    const storyContainer = document.querySelector('.story-container');
-    const storyContent = document.querySelector('.story-content');
-    const progressContainer = document.querySelector('.story-progress');
-    
-    let currentStory = 0;
-    let storyTimeout;
-    const STORY_DURATION = 5000;
+document.addEventListener("DOMContentLoaded", function () {
+  const stories = Array.from({ length: 18 }, (_, i) => ({
+    image: `images/ourstory_${i}.webp`,
+    text: "First time we met",
+  }));
+  const storyContainer = document.querySelector(".story-container");
+  const storyContent = document.querySelector(".story-content");
+  const progressContainer = document.querySelector(".story-progress");
 
-    // Initialize stories
-    function initStories() {
-        console.log('Initializing stories...'); // Debug
-        stories.forEach((story, index) => {
-            // Create progress bar
-            const progressBar = document.createElement('div');
-            progressBar.className = 'progress-bar';
-            progressContainer.appendChild(progressBar);
-            console.log(`Added progress bar ${index}`); // Debug
+  let currentStory = 0;
+  let storyTimeout;
+  const STORY_DURATION = 5000;
 
-            // Create story
-            const storyElement = document.createElement('div');
-            storyElement.className = 'story';
-            storyElement.style.backgroundImage = `url(${story.image})`;
-            storyContent.appendChild(storyElement);
-            console.log(`Added story ${index}: ${story.image}`); // Debug
-        });
+  // Initialize stories
+  function initStories() {
+    console.log("Initializing stories..."); // Debug
+    stories.forEach((story, index) => {
+      // Create progress bar
+      const progressBar = document.createElement("div");
+      progressBar.className = "progress-bar";
+      progressContainer.appendChild(progressBar);
+      console.log(`Added progress bar ${index}`); // Debug
 
-        showStory(0);
-    }
+      // Create story
+      const storyElement = document.createElement("div");
+      storyElement.className = "story";
+      storyElement.style.backgroundImage = `url(${story.image})`;
+      storyContent.appendChild(storyElement);
+      console.log(`Added story ${index}: ${story.image}`); // Debug
+    });
 
-    function showStory(index) {
-        console.log(`Showing story ${index}`); // Debug
-        clearTimeout(storyTimeout);
-        
-        document.querySelectorAll('.story').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('.progress-bar').forEach(p => p.classList.remove('active'));
-        
-        const stories = document.querySelectorAll('.story');
-        const progressBars = document.querySelectorAll('.progress-bar');
-        
-        if (stories[index]) {
-            stories[index].classList.add('active');
-            progressBars[index].classList.add('active');
-            
-            storyTimeout = setTimeout(() => {
-                if (currentStory < stories.length - 1) {
-                    nextStory();
-                }
-            }, STORY_DURATION);
-        }
-    }
+    showStory(0);
+  }
 
-    function nextStory() {
-        console.log('Next story'); // Debug
+  function showStory(index) {
+    console.log(`Showing story ${index}`); // Debug
+    clearTimeout(storyTimeout);
+
+    document
+      .querySelectorAll(".story")
+      .forEach((s) => s.classList.remove("active"));
+    document
+      .querySelectorAll(".progress-bar")
+      .forEach((p) => p.classList.remove("active"));
+
+    const stories = document.querySelectorAll(".story");
+    const progressBars = document.querySelectorAll(".progress-bar");
+
+    if (stories[index]) {
+      stories[index].classList.add("active");
+      progressBars[index].classList.add("active");
+
+      storyTimeout = setTimeout(() => {
         if (currentStory < stories.length - 1) {
-            currentStory++;
-            showStory(currentStory);
+          nextStory();
         }
+      }, STORY_DURATION);
     }
+  }
 
-    function previousStory() {
-        console.log('Previous story'); // Debug
-        if (currentStory > 0) {
-            currentStory--;
-            showStory(currentStory);
-        }
+  function nextStory() {
+    console.log("Next story"); // Debug
+    if (currentStory < stories.length - 1) {
+      currentStory++;
+      showStory(currentStory);
     }
+  }
 
-    // Navigation
-    document.querySelector('.nav-left').addEventListener('click', (e) => {
-        console.log('Left click'); // Debug
-        e.stopPropagation();
-        previousStory();
-    });
+  function previousStory() {
+    console.log("Previous story"); // Debug
+    if (currentStory > 0) {
+      currentStory--;
+      showStory(currentStory);
+    }
+  }
 
-    document.querySelector('.nav-right').addEventListener('click', (e) => {
-        console.log('Right click'); // Debug
-        e.stopPropagation();
-        nextStory();
-    });
+  // Navigation
+  document.querySelector(".nav-left").addEventListener("click", (e) => {
+    console.log("Left click"); // Debug
+    e.stopPropagation();
+    previousStory();
+  });
 
-    // Initialize
-    console.log('Starting initialization...'); // Debug
-    initStories();
+  document.querySelector(".nav-right").addEventListener("click", (e) => {
+    console.log("Right click"); // Debug
+    e.stopPropagation();
+    nextStory();
+  });
+
+  // Initialize
+  console.log("Starting initialization..."); // Debug
+  initStories();
 });
