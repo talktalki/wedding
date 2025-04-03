@@ -147,13 +147,15 @@
 		<section id="accomodation" class="wrapper style3 special">
 			<div class="inner">
 				<h2 class="dotted">갤러리</h2>
-				<div class="gallery-container">
-					<div class="main-photo"></div>
-					<img id="current-photo" src="images/Studio-1.webp" alt="Gallery Photo">
-					<button class="nav-btn prev" onclick="changePhoto(-1)">❮</button>
-					<button class="nav-btn next" onclick="changePhoto(1)">❯</button>
+				<div class="mobile-gallery">
+					<div class="gallery-container">
+						<div class="main-photo"></div>
+						<img id="current-photo" src="images/Studio-1.webp" alt="Gallery Photo">
+						<button class="nav-btn prev" onclick="changePhoto(-1)">❮</button>
+						<button class="nav-btn next" onclick="changePhoto(1)">❯</button>
+					</div>
+					<div class="thumbnails"></div>
 				</div>
-				<div class="thumbnails"></div>
 			</div>
 		</section>
 
@@ -165,17 +167,30 @@
 					<img src="images/korea_map.jpeg" alt="Gallery Photo">
 				</div>
 				<div class="directions">
-					<h3>지하철 이용 시</h3>
+					<div>
+						<h3>지하철 이용 시</h3>
 
-					<p>7호선 상봉역 1번 출구 도보 5분~10분</p>
-					<p>경의중앙선 망우역 1번 출구 1분</p>
-
-					<h3>버스 이용 시</h3>
-					<p>망우역 상봉터미널 하차</p>
+						<p>7호선 상봉역 1번 출구 도보 5분~10분</p>
+						<p>경의중앙선 망우역 1번 출구 1분</p>
+					</div>
+					<div>
+						<h3>버스 이용 시</h3>
+						<p>망우역 상봉터미널 하차</p>
+					</div>
 
 					<h3>주차장 (홈플러스 주차장 이용)</h3>
-					<p>지하 4층~5층까지 이용 가능</p>
+					<div class="directions-parking">
+						<p>지하 4층~5층까지 이용 가능 </p>
+						<p>주차구획 번호: 지하 3층: 87번, 지하 4층: 91번, 지하 5층: 100번 </p>
+						<p>가까운 엘리베이터 이용하시면 연회장이 연결되어 있습니다. (주차 무료)</p>
+					</div>
 				</div>
+				<style>
+					.directions-parking p {
+						margin: 0;
+						line-height: 1.5em;
+					}
+				</style>
 			</div>
 		</section>
 
@@ -188,8 +203,8 @@
 						<div class="dropdown-label">신랑측 계좌번호
 						</div>
 						<div class="dropdown-item">
-							<a href="#" onclick="copyAccount('486-910486-04207', this); return false;">
-								하나 486-910486-04207 김영순
+							<a href="#" onclick="copyAccount('12102658324', this); return false;">
+								농협 12102658324 이기철
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 									class="bi bi-copy" viewBox="0 0 16 16">
 									<path fill-rule="evenodd"

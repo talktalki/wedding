@@ -51,12 +51,6 @@ const photos = Array.from(
     { length: cdnUrls.length },
     (_, i) => cdnUrls[i],
 );
-
-    //"<img src="https://i.ibb.co/HLwhXWYM/Studio-1.jpg" alt="Studio-1" border="0">
-// const photos = Array.from(
-//   { length: 36 },
-//   (_, i) => `images/Studio-${i + 1}.webp`,
-// );
 let currentIndex = 0;
 
 // Generate thumbnails and gallery images

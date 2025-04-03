@@ -3979,14 +3979,14 @@ body.is-menu-visible #menu {
 
 #banner:after {
   pointer-events: none;
-  -moz-transition: opacity 1s ease-in-out;
-  -webkit-transition: opacity 1s ease-in-out;
-  -ms-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-  -moz-transition-delay: 1s;
-  -webkit-transition-delay: 1s;
-  -ms-transition-delay: 1s;
-  transition-delay: 1s;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  -moz-transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+  -ms-transition-delay: 0.5s;
+  transition-delay: 0.5s;
   content: "";
   background: #42392e;
   display: block;
@@ -4066,7 +4066,7 @@ body.is-menu-visible #menu {
 .intro-border .content {
   opacity: 0;
   /* Initially hide the content */
-  animation: fadeIn 1s ease-in-out forwards;
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 .intro-border .content .signature {
@@ -4991,7 +4991,7 @@ h2.text-center {
 
 /* Mobile Gallery Styles */
 .mobile-gallery {
-  display: none;
+  display: block;
 }
 
 .gallery-container {
@@ -5032,7 +5032,7 @@ h2.text-center {
 }
 
 .thumbnails {
-  display: none;
+  display: flex;
   gap: 0.5rem;
   overflow-x: auto;
   padding: 0.5rem;
