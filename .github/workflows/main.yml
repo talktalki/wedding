@@ -1,4 +1,4 @@
-name: Sync Repos
+name: Sync Repository (excluding workflows)
 
 on:
   push:
@@ -18,28 +18,26 @@ jobs:
           git config --system --unset credential.helper || true
           git config --global --unset credential.helper || true
 
-      - name: Push to destination repository
-        env:
-          PAT: ${{ secrets.COLLAB_TOKEN }}  
-          DEST_USER: talktalki              
-          DEST_REPO: wedding              
-          SOURCE_REPO: ${{ github.event.repository.name }}
+      - name: Configure Git identity
         run: |
-          git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
 
-          # Clone the destination repo using PAT
-          git clone https://$PAT@github.com/$DEST_USER/$DEST_REPO.git
+      - name: Sync repo to collaborator (excluding workflows)
+        env:
+          PAT: ${{ secrets.COLLAB_TOKEN }}   
+          DEST_USER: talktalki               
+          DEST_REPO: wedding                 
+        run: |
+          # Clone collaborator repo
+          git clone https://$PAT@github.com/$DEST_USER/$DEST_REPO.git destination
 
-          cd $DEST_REPO
+          # Copy everything except workflow files
+          rsync -av --exclude='.github/workflows' ./ destination/
 
-          # Add your repo as a remote
-          git remote add source https://$PAT@github.com/${{ github.repository }}.git
+          cd destination
 
-          git fetch source main
-
-          # Merge your main into collaborator's main
-          git merge source/main --allow-unrelated-histories -m "Sync update"
-
-          # Push using PAT (not the bot)
+          # Commit and push changes
+          git add --all
+          git commit -m "Sync repository from source repo (excluding workflows)" || echo "No changes to commit"
           git push https://$PAT@github.com/$DEST_USER/$DEST_REPO.git main --force
