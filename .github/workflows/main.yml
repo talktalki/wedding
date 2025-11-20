@@ -1,43 +1,49 @@
-name: Sync Repository (excluding workflows)
-
+name: Sync Repos
 on:
   push:
     branches:
       - main
-
 jobs:
   sync:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout source repository
         uses: actions/checkout@v4
-
+        with:
+          fetch-depth: 0  # Get full history for proper sync
+      
       - name: Disable GitHub credential helper
         run: |
           git config --system --unset credential.helper || true
           git config --global --unset credential.helper || true
-
-      - name: Configure Git identity
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-
-      - name: Sync repo to collaborator (excluding workflows)
+      
+      - name: Push to destination repository
         env:
-          PAT: ${{ secrets.COLLAB_TOKEN }}   
-          DEST_USER: talktalki               
-          DEST_REPO: wedding                 
+          PAT: ${{ secrets.COLLAB_TOKEN }}
+          DEST_USER: talktalki
+          DEST_REPO: wedding
         run: |
-          # Clone collaborator repo
-          git clone https://$PAT@github.com/$DEST_USER/$DEST_REPO.git destination
-
-          # Copy everything except workflow files
-          rsync -av --exclude='.github/workflows' ./ destination/
-
-          cd destination
-
-          # Commit and push changes
-          git add --all
-          git commit -m "Sync repository from source repo (excluding workflows)" || echo "No changes to commit"
-          git push https://$PAT@github.com/$DEST_USER/$DEST_REPO.git main --force
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          
+          # Clone the destination repo
+          git clone https://$PAT@github.com/$DEST_USER/$DEST_REPO.git
+          cd $DEST_REPO
+          
+          # Add your repo as a remote
+          git remote add source https://$PAT@github.com/${{ github.repository }}.git
+          git fetch source main
+          
+          # Merge with exclusion of workflow files
+          git merge source/main --allow-unrelated-histories --no-commit || true
+          
+          # Remove workflow files from the merge
+          git rm -rf .github/workflows/ 2>/dev/null || true
+          git reset -- .github/workflows/ 2>/dev/null || true
+          git checkout HEAD -- .github/workflows/ 2>/dev/null || true
+          
+          # Complete the merge
+          git commit -m "Sync update (excluding workflows)" || echo "No changes to commit"
+          
+          # Push
+          git push https://$PAT@github.com/$DEST_USER/$DEST_REPO.git main
