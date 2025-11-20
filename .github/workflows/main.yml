@@ -1,22 +1,45 @@
-name: Sync to collaborator
+name: Sync Repos
+
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   sync:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source repository
+        uses: actions/checkout@v4
 
-      - name: Configure Git
+      - name: Disable GitHub credential helper
         run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
+          git config --system --unset credential.helper || true
+          git config --global --unset credential.helper || true
 
-      - name: Push to collaborator repo
+      - name: Push to destination repository
         env:
-          PAT: ${{ secrets.COLLAB_TOKEN }}
+          PAT: ${{ secrets.COLLAB_TOKEN }}  
+          DEST_USER: talktalki              
+          DEST_REPO: wedding              
+          SOURCE_REPO: ${{ github.event.repository.name }}
         run: |
-          git push https://$PAT@github.com/talktalki/wedding.git main --force
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
+          # Clone the destination repo using PAT
+          git clone https://$PAT@github.com/$DEST_USER/$DEST_REPO.git
+
+          cd $DEST_REPO
+
+          # Add your repo as a remote
+          git remote add source https://$PAT@github.com/${{ github.repository }}.git
+
+          git fetch source main
+
+          # Merge your main into collaborator's main
+          git merge source/main --allow-unrelated-histories -m "Sync update"
+
+          # Push using PAT (not the bot)
+          git push https://$PAT@github.com/$DEST_USER/$DEST_REPO.git main --force
