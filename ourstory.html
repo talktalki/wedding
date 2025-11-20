@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Grace + Yosep Wedding</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/eng.css" />
+    <noscript>
+      <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+  </head>
+
+  <body class="is-preload">
+    <!-- Header -->
+    <header id="header">
+      <!-- &#9829; -->
+      <a onclick="createHeartShower();"> ♥&#xFE0E; </a>
+      <span>
+        <a href="home.html">Since 2018</a>
+      </span>
+      <nav id="nav">
+        <ul></ul>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <section id="rsvp-intro" class="wrapper style1 fade-up">
+      <div class="inner">
+        <h1>Our Story</h1>
+      </div>
+    </section>
+
+    <section id="ourstory-section">
+      <div class="story-container">
+        <div class="story-progress">
+          <!-- Progress bars will be dynamically added -->
+        </div>
+        <div class="story-header-actions">
+          <div class="dots-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div
+            class="close-button"
+            onclick="window.location.href='home.html'"
+            style="cursor: pointer"
+          >
+            ×
+          </div>
+        </div>
+
+        <div class="story-profile">
+          <div class="profile-image">
+            <img src="images/venue-2.webp" alt="Yosep and Grace" />
+          </div>
+          <div class="profile-info">
+            <span class="profile-name">yosep_and_grace</span>
+            <span class="story-time">Now</span>
+          </div>
+        </div>
+
+        <div class="story-content">
+          <!-- Stories will be dynamically added -->
+        </div>
+
+        <div class="story-navigation">
+          <div class="nav-left"></div>
+          <div class="nav-right"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp-intro" class="wrapper style1 fade-up">
+      <div class="inner"></div>
+    </section>
+
+    <style>
+      .story-container {
+        position: relative;
+        margin: 0 auto;
+        max-width: 510px;
+        height: 100vh;
+        background: #000;
+        overflow: hidden;
+      }
+
+      .story-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        display: flex;
+        gap: 4px;
+        padding: 10px;
+        z-index: 2;
+      }
+
+      .progress-bar {
+        flex: 1;
+        height: 0.5em;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .progress-bar {
+          height: 0.3em;
+        }
+      }
+
+      .progress-bar.active {
+        background: #fff;
+      }
+
+      .story-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .story {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .story.active {
+        opacity: 1;
+      }
+
+      .story-navigation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+      }
+
+      .nav-left,
+      .nav-right {
+        flex: 1;
+        cursor: pointer;
+      }
+
+      .story-profile {
+        position: absolute;
+        top: 20px;
+        left: 10px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        z-index: 3;
+      }
+
+      .profile-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid white;
+        margin-right: 10px;
+      }
+
+      .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .profile-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .profile-name {
+        color: white;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .story-time {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 12px;
+      }
+
+      .story-header-actions {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        z-index: 3;
+      }
+
+      .dots-menu {
+        display: flex;
+        gap: 2px;
+      }
+
+      .dots-menu span {
+        width: 4px;
+        height: 4px;
+        background-color: white;
+        border-radius: 50%;
+      }
+
+      .close-button {
+        color: white;
+        font-size: 24px;
+        font-weight: 300;
+        cursor: default;
+      }
+    </style>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/musicPlayer.js"></script>
+    <script src="assets/js/ourstory.js"></script>
+  </body>
+</html>

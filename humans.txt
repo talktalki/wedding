@@ -1,0 +1,25 @@
+/* TEAM */
+Development: Gloria Kim
+
+Leadership & Direction: Grace Kim
+
+Content & Media:
+- Writing & Copy: Grace Kim
+- Photography & Retouching: Yosep Lee (yosepleecreative.com)
+- Visual Design (GIFs & Graphics): Gloria Kim
+
+/* THANKS */
+Special thanks to to friends, family, and supporters around the globe!
+
+/* SITE */
+Last update: 2025/02/21
+Standards: HTML5, CSS3
+Components: Javascript
+
+────────────────────────────────────────────────────────────────────────────────
+
+/* HELP GLORIA FIND A JOB! */  
+If you liked this website and know of any tech-related opportunities, send them her way!  
+Email: 012kes [at] gmail.com
+LinkedIn: https://www.linkedin.com/in/gloria-eunseo-kim/
+
