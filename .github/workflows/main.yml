@@ -6,8 +6,14 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - name: Configure Git for PAT
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
 
       - name: Push to collaborator repo
         uses: ad-m/github-push-action@v0.8.0
@@ -15,3 +21,4 @@ jobs:
           github_token: ${{ secrets.COLLAB_TOKEN }}
           repository: talktalki/wedding
           branch: main
+          force: true
